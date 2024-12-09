@@ -1,6 +1,8 @@
 // import { useContext } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FiHeart } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
-// import logo from "../assets/logo3.png";
+import logo from "../assets/hansyeaggy-logo.png";
 // import { AuthContext } from "../authprovider/AuthProvider";
 
 const Navbar = () => {
@@ -68,15 +70,12 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
-          <Link
-            to="/"
-            className="btn btn-ghost font-bold text-2xl lg:flex hidden"
-          >
-            Hans_Yaggy
+          <Link to="/" className="lg:flex hidden">
+            <img className="max-w-[100px] max-h-[100px]" src={logo} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="space-x-6 text-xl px-1 gap-6">
+          <ul className="space-x-6 text-lg px-1 gap-6">
             <NavLink
               className={({ isActive }) =>
                 `font-bold ${
@@ -109,9 +108,21 @@ const Navbar = () => {
                     : "hover:text-green-500"
                 }`
               }
-              to="/how-to-help"
+              to="/bio"
             >
-              How To Fund
+              Bio
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `font-bold ${
+                  isActive
+                    ? "text-green-500  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-green-500"
+                }`
+              }
+              to="/shop"
+            >
+              Shop
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -121,19 +132,33 @@ const Navbar = () => {
                     : "hover:text-green-500"
                 }`
               }
-              to="/Dashboard"
+              to="/contact"
             >
-              Dasboard
+              Shopping Cart
             </NavLink>
           </ul>
         </div>
         <div className="navbar-end gap-5">
           <div>
+            <AiOutlineShoppingCart className="text-4xl bg-zinc-200 p-2 rounded-full" />
+            <span className="relative -top-12 -right-8 bg-white text-lg font-bold p-1 rounded-full">
+              0
+            </span>
+          </div>
+          <div>
+            <FiHeart className="text-4xl bg-zinc-200 p-2 rounded-full">
+              {" "}
+            </FiHeart>
+            <span className="relative -top-12 -right-8 bg-white text-lg font-bold p-1 rounded-full">
+              0
+            </span>
+          </div>
+          <div>
             <Link
               to="/login"
-              className="btn bg-green-400 text-xl text-white font-bold "
+              className="btn bg-[#9538E2] text-lg text-white font-bold "
             >
-              Login
+              Create an Account
             </Link>
           </div>
           {/* {user ? (
