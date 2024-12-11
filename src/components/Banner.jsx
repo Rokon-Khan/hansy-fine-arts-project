@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <>
       <div className="hero min-h-screen bg-banner">
-        <div className="hero-overlay bg-opacity-50"></div>
+        <div className="hero-overlay bg-opacity-10"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-[990px]">
             <h1 className="mb-5 text-5xl font-bold">Welcome to Hansyaeggy</h1>

@@ -1,16 +1,16 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiHeart } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/hansyeaggy-logo.png";
-// import { AuthContext } from "../authprovider/AuthProvider";
+import { AuthContext } from "../authprovider/AuthProvider";
 
 const Navbar = () => {
-  // const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  //   const handleLogOut = () => {
-  //     logOut().then().catch();
-  //   };
+  const handleLogOut = () => {
+    logOut().then().catch();
+  };
 
   return (
     <div className=" lg:px-10 lg:py-5 bg-base-200">
@@ -71,7 +71,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="lg:flex hidden">
-            <img className="max-w-[100px] max-h-[100px]" src={logo} alt="" />
+            <img className="max-w-[150px] max-h-[150px]" src={logo} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -153,28 +153,28 @@ const Navbar = () => {
               0
             </span>
           </div>
-          <div>
+          {/* <div>
             <Link
               to="/login"
               className="btn bg-[#9538E2] text-lg text-white font-bold "
             >
               Create an Account
             </Link>
-          </div>
-          {/* {user ? (
+          </div> */}
+          {user ? (
             <button
-              //   onClick={handleLogOut}
-              className="btn bg-green-400 text-xl text-white font-bold "
+              onClick={handleLogOut}
+              className="btn bg-[#9538E2] text-xl text-white font-bold "
             >
               Log Out
             </button>
           ) : (
-            <Link to="/login">
-              <button className="btn bg-green-400 text-xl text-white font-bold ">
-                Login
+            <Link to="/register">
+              <button className="btn bg-[#9538E2] text-xl text-white font-bold ">
+                Create an Account
               </button>
             </Link>
-          )} */}
+          )}
         </div>
       </div>
     </div>

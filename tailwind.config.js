@@ -8,7 +8,7 @@ export default {
         workSans: ['"Work Sans", sans-serif'],
       },
       backgroundImage: {
-        banner: "url('./assets/nature-2.jpg')",
+        banner: "url('./assets/cuadro-horizontal-1.jpg')",
       },
     },
   },

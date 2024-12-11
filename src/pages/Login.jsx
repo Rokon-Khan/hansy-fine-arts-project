@@ -1,8 +1,9 @@
-// import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// import { useContext, useState } from "react";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../authprovider/AuthProvider";
+import Swal from "sweetalert2";
+import { AuthContext } from "../authprovider/AuthProvider";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -27,7 +28,11 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-
+        Swal.fire({
+          title: "Good job!",
+          text: "Your Are Logged in Successful!",
+          icon: "success",
+        });
         // navigate after login
         navigate(location?.state ? location.state : "/");
       })

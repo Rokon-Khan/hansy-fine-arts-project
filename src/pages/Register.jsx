@@ -1,13 +1,14 @@
-// import {
-//     getAuth,
-//     GoogleAuthProvider,
-//     signInWithPopup,
-//     updateProfile,
-//   } from "firebase/auth";
-//   import { useContext, useState } from "react";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../authprovider/AuthProvider";
+import Swal from "sweetalert2";
+import { AuthContext } from "../authprovider/AuthProvider";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -27,10 +28,10 @@ const Register = () => {
     const form = new FormData(e.currentTarget);
 
     const name = form.get("name");
-    const photo = form.get("photo");
+    // const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    console.log(name, photo, email, password);
+    console.log(name, email, password);
 
     // reset error and status
     const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -44,7 +45,7 @@ const Register = () => {
 
     if (!regex.test(password)) {
       setErrorMessage(
-        "At least one uppercase, one lowercase,and More Than 6 character"
+        "At least One uppercase, One lowercase, And More Than 6 character"
       );
       return;
     }
@@ -53,6 +54,11 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         if (result.user) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Your Acoount Create Successful!",
+            icon: "success",
+          });
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
@@ -103,7 +109,7 @@ const Register = () => {
       <Navbar></Navbar>
       <div className="flex flex-col md:w-3/4 lg:w-1/2 mx-auto p-6">
         <h2 className="text-3xl my-10 font-bold text-center">
-          Register for Donation Campaign
+          SignUp for Place an Order
         </h2>
         <form onSubmit={handleRegister}>
           <div className="form-control">
@@ -118,7 +124,7 @@ const Register = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          {/* <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
@@ -129,7 +135,7 @@ const Register = () => {
               placeholder="Photo URL"
               className="input input-bordered"
             />
-          </div>
+          </div> */}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -153,16 +159,16 @@ const Register = () => {
               placeholder="Password"
               className="input input-bordered"
             />
-            <button
+            <p
               onClick={() => setShowPassword(!showPassword)}
               className="btn btn-xs absolute right-2 top-12"
             >
               {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
-            </button>
+            </p>
           </div>
           <div className="form-control mt-6 space-y-4">
             <button className="btn btn-success text-xl text-white font-bold">
-              Register
+              SignUp
             </button>
           </div>
           {errorMessage && <p className="text-red-600">{errorMessage}</p>}
@@ -172,7 +178,7 @@ const Register = () => {
           onClick={handleSigWithGoogle}
           className="btn btn-full btn-success text-xl text-white font-bold my-4"
         >
-          Register With Google
+          SignUp With Google
         </button>
         <p className="text-center mt-4">
           Already have an account?{" "}
