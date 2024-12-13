@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         workSans: ['"Work Sans", sans-serif'],
+        yesterYear: ["Yesteryear, cursive"],
       },
       backgroundImage: {
         banner: "url('./assets/cuadro-horizontal-1.jpg')",

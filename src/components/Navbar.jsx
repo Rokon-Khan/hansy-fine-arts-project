@@ -120,6 +120,18 @@ const Navbar = () => {
                     : "hover:text-green-500"
                 }`
               }
+              to="/contact"
+            >
+              Contact
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `font-bold ${
+                  isActive
+                    ? "text-green-500  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-green-500"
+                }`
+              }
               to="/shop"
             >
               Shop
@@ -132,9 +144,21 @@ const Navbar = () => {
                     : "hover:text-green-500"
                 }`
               }
-              to="/contact"
+              to="/"
             >
               Shopping Cart
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `font-bold ${
+                  isActive
+                    ? "text-green-500 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-green-500"
+                }`
+              }
+              to="/faq"
+            >
+              FAQ
             </NavLink>
           </ul>
         </div>
