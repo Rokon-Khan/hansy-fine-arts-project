@@ -1,10 +1,12 @@
+import hansAbout from "../assets/hans-about.jpg";
+
 const Bio = () => {
   return (
     <section className="bg-white py-10 px-6 md:px-16 lg:px-32">
-      <div className="flex flex-col md:flex-row items-center md:items-start">
+      <div className="max-w-7xl flex flex-col  md:flex-row justify-between items-center md:items-start mx-auto">
         {/* Left content */}
-        <div className="md:w-2/3 text-center md:text-left">
-          <h1 className="text-3xl font-bold text-blue-600 mb-2">
+        <div className="md:w-1/2 text-center md:text-left">
+          <h1 className="lg:text-5xl text-3xl font-semibold font-yesterYear text-blue-500 mb-2">
             Captain Hans Yaeggy
           </h1>
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
@@ -68,14 +70,14 @@ const Bio = () => {
           </p>
         </div>
         {/* Right image */}
-        <div className="md:w-1/3 mt-6 md:mt-0 flex justify-center">
+        <div className="md:w-1/2 mt-6 md:mt-0 flex justify-center">
           <div className="relative">
             <img
-              src="/images/hans-yaeggy.jpg"
+              src={hansAbout}
               alt="Captain Hans Yaeggy"
               className="rounded-lg shadow-lg"
             />
-            <div
+            {/* <div
               className="absolute inset-0 w-full h-full -z-10"
               style={{
                 backgroundImage: "url('../assets/hans-about.jpg')",
@@ -83,7 +85,7 @@ const Bio = () => {
                 backgroundPosition: "center",
                 opacity: 0.3,
               }}
-            ></div>
+            ></div> */}
           </div>
         </div>
       </div>

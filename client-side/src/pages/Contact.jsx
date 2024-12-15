@@ -5,17 +5,17 @@ const Contact = () => {
     <div className="contact-page bg-gray-50 min-h-screen flex items-center justify-center px-4 md:px-10 py-10">
       <div className="container max-w-6xl mx-auto flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
         {/* Left Section - Image */}
-        <div className="md:w-1/2 bg-gradient-to-br from-blue-500 to-blue-300 flex items-center justify-center p-4">
+        <div className="md:w-1/2  flex items-center justify-center p-4">
           <img
             src={hansContact}
             alt="Contact Illustration"
-            className="w-3/4 rounded-full shadow-lg"
+            className="w-3/4 "
           />
         </div>
 
         {/* Right Section - Contact Form */}
         <div className="md:w-1/2 p-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+          <h1 className="lg:text-5xl text-3xl font-semibold font-yesterYear text-blue-500 mb-6">
             Contact Me
           </h1>
           <p className="text-gray-600 mb-8">
