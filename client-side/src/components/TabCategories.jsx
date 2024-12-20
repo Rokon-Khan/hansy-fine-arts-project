@@ -1,8 +1,23 @@
 /* eslint-disable react/prop-types */
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Card from "./Card";
 
 const TabCategories = () => {
+  // const { user } = useContext(AuthContext)
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchAllProdcuts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products]);
+  const fetchAllProdcuts = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/products`
+    );
+    setProducts(data);
+  };
   //   const [arts, setArts] = useState([]);
   //   useEffect(() => {
   //     fetchAllarts();
@@ -25,59 +40,38 @@ const TabCategories = () => {
         </p>
         <div className="flex items-center justify-center">
           <TabList>
-            <Tab>Potrait</Tab>
-            <Tab>Landscape</Tab>
-            <Tab>Others</Tab>
+            <Tab>Portrait</Tab>
+            <Tab>Contemporary</Tab>
+            <Tab>Abstract</Tab>
           </TabList>
         </div>
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {/* {arts
-              .filter((art) => art.category === "potrait")
-              .map((art) => (
-                <ArtCard key={art._id} art={art} />
-                <div
-                  className="text-3xl font-bold text-center"
-                  key={art._id}
-                  art={art}
-                >
-                  This is art Card Here
-                </div>
-              ))} */}
+            {products
+              .filter((product) => product.category === "Portrait")
+              .map((product) => (
+                <Card key={product._id} product={product} />
+              ))}
           </div>
         </TabPanel>
 
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {/* {arts
-              .filter((art) => art.category === "Horizontal")
-              .map((art) => (
-                <div
-                  className="text-3xl font-bold text-center"
-                  key={art._id}
-                  art={art}
-                >
-                  This is art Card Here
-                </div>
-                <JobCard key={art._id} job={art} />
-              ))} */}
+            {products
+              .filter((product) => product.category === "Abstract")
+              .map((product) => (
+                <Card key={product._id} product={product} />
+              ))}
           </div>
         </TabPanel>
 
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {/* {arts
-              .filter((art) => job.category === "Others")
-              .map((art) => (
-                <div
-                  className="text-3xl font-bold text-center"
-                  key={art._id}
-                  art={art}
-                >
-                  This is art Card Here
-                </div>
-                <JobCard key={job._id} job={art} />
-              ))} */}
+            {products
+              .filter((product) => product.category === "Contemporary")
+              .map((product) => (
+                <Card key={product._id} product={product} />
+              ))}
           </div>
         </TabPanel>
       </div>

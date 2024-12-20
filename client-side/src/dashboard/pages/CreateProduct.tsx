@@ -1,13 +1,77 @@
+import { useState } from "react";
 import { AiOutlineSave } from "react-icons/ai";
 import { HiOutlineSave } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { ImageUpload, InputWithLabel, Sidebar } from "../components";
-import SelectInput from "../components/SelectInput";
 import SimpleInput from "../components/SimpleInput";
 import TextAreaInput from "../components/TextAreaInput";
-import { selectList, stockStatusList } from "../utils/data";
+
+import axios from "axios";
+import { useRef } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CreateProduct = () => {
+  // const auth = getAuth();
+
+  // const { createUser } = useContext(AuthContext);
+  // const location = useLocation();
+  const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleAddProduct = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = new FormData(e.currentTarget);
+    const productTitle = form.get("productTitle") as string;
+    const productImage = form.get("productImage") as string;
+    const category = form.get("category") as string;
+    const stock = form.get("stock") as string;
+    const price = form.get("price") as string;
+    const SKU = form.get("SKU") as string;
+    const stockList = form.get("stockList") as string;
+    const discount = form.get("discount") as string;
+
+    try {
+      const newProduct = {
+        productTitle,
+        stockList,
+        SKU,
+        stock,
+        discount,
+        price,
+        productImage,
+        category,
+      };
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/products`,
+        newProduct
+      );
+
+      if (response.data.insertedId) {
+        Swal.fire({
+          title: "Wow!!!",
+          text: "New Product Added Successfully!",
+          icon: "success",
+        });
+
+        if (formRef.current) {
+          (formRef.current as HTMLFormElement).reset();
+        }
+
+        navigate("/dashboard");
+      }
+    } catch (error: any) {
+      console.error("Error during product addition:", error);
+      toast.error(error.message || "Something went wrong");
+    }
+  };
+
   return (
     <div className="h-auto border-t border-blackSecondary border-1 flex dark:bg-blackPrimary bg-whiteSecondary">
       <Sidebar />
@@ -32,83 +96,122 @@ const CreateProduct = () => {
               >
                 <HiOutlineSave className="dark:text-blackPrimary text-whiteSecondary text-xl" />
                 <span className="dark:text-blackPrimary text-whiteSecondary font-semibold">
-                  Publish product
+                  Published product
                 </span>
               </Link>
             </div>
           </div>
 
           {/* Add Product section here  */}
-          <div className="px-4 sm:px-6 lg:px-8 pb-8 pt-8 grid grid-cols-2 gap-x-10 max-xl:grid-cols-1 max-xl:gap-y-10">
-            {/* left div */}
-            <div>
-              <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary">
-                Basic information
-              </h3>
+          <form onSubmit={handleAddProduct} ref={formRef}>
+            <div className="px-4 sm:px-6 lg:px-8 pb-8 pt-8 grid grid-cols-2 gap-x-10 max-xl:grid-cols-1 max-xl:gap-y-10">
+              {/* left div */}
+              <div>
+                <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary">
+                  Basic information
+                </h3>
 
-              <div className="mt-4 flex flex-col gap-5">
-                <InputWithLabel label="Title">
-                  <SimpleInput
-                    type="text"
-                    placeholder="Enter a product title..."
-                  />
-                </InputWithLabel>
-
-                <InputWithLabel label="Description">
-                  <TextAreaInput
-                    placeholder="Enter a product description..."
-                    rows={4}
-                    cols={50}
-                  />
-                </InputWithLabel>
-
-                <InputWithLabel label="Category">
-                  <SelectInput selectList={selectList} />
-                </InputWithLabel>
-              </div>
-
-              <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary mt-16">
-                Pricing & Inventory
-              </h3>
-
-              <div className="mt-4 flex flex-col gap-5">
-                <div className="grid grid-cols-2 gap-x-5 max-[500px]:grid-cols-1 max-[500px]:gap-x-0 max-[500px]:gap-y-5">
-                  <InputWithLabel label="Base pricing">
-                    <SimpleInput
-                      type="number"
-                      placeholder="Enter a product base pricing..."
-                    />
-                  </InputWithLabel>
-
-                  <InputWithLabel label="Price with dicount">
-                    <SimpleInput
-                      type="number"
-                      placeholder="Enter a price with discount..."
-                    />
-                  </InputWithLabel>
-                </div>
-
-                <div className="grid grid-cols-2 gap-x-5 max-[500px]:grid-cols-1 max-[500px]:gap-x-0 max-[500px]:gap-y-5">
-                  <InputWithLabel label="Stock">
-                    <SimpleInput
-                      type="number"
-                      placeholder="Enter a product stock..."
-                    />
-                  </InputWithLabel>
-
-                  <InputWithLabel label="SKU">
+                <div className="mt-4 flex flex-col gap-5">
+                  <InputWithLabel label="Title">
                     <SimpleInput
                       type="text"
-                      placeholder="Enter a product SKU..."
+                      name="productTitle"
+                      placeholder="Enter a product title..."
                     />
                   </InputWithLabel>
-                </div>
-                <InputWithLabel label="Stock status">
-                  <SelectInput selectList={stockStatusList} />
-                </InputWithLabel>
-              </div>
 
-              <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary mt-16">
+                  <InputWithLabel label="Description">
+                    <TextAreaInput
+                      placeholder="Enter a product description..."
+                      rows={4}
+                      cols={50}
+                      name="description"
+                    />
+                  </InputWithLabel>
+                  <InputWithLabel label="Category Name">
+                    <SimpleInput
+                      type="text"
+                      name="category"
+                      placeholder="Enter a product Category Name"
+                    />
+                  </InputWithLabel>
+                  <InputWithLabel label="Input Photo URL">
+                    <SimpleInput
+                      type="text"
+                      name="productImage"
+                      placeholder="Enter a product Category Name"
+                    />
+                  </InputWithLabel>
+
+                  {/* <InputWithLabel label="Category">
+                  <SelectInput selectList={selectList} />
+                </InputWithLabel> */}
+                </div>
+
+                <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary mt-16">
+                  Pricing & Inventory
+                </h3>
+
+                <div className="mt-4 flex flex-col gap-5">
+                  <div className="grid grid-cols-2 gap-x-5 max-[500px]:grid-cols-1 max-[500px]:gap-x-0 max-[500px]:gap-y-5">
+                    <InputWithLabel label="Base pricing">
+                      <SimpleInput
+                        type="number"
+                        name="price"
+                        placeholder="Enter a product base pricing..."
+                      />
+                    </InputWithLabel>
+
+                    <InputWithLabel label="Price with dicount">
+                      <SimpleInput
+                        type="number"
+                        name="discount"
+                        placeholder="Enter a price with discount..."
+                      />
+                    </InputWithLabel>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-x-5 max-[500px]:grid-cols-1 max-[500px]:gap-x-0 max-[500px]:gap-y-5">
+                    <InputWithLabel label="Stock">
+                      <SimpleInput
+                        type="number"
+                        name="stock"
+                        placeholder="Enter a product stock..."
+                      />
+                    </InputWithLabel>
+
+                    <InputWithLabel label="SKU">
+                      <SimpleInput
+                        type="text"
+                        name="SKU"
+                        placeholder="Enter a product SKU..."
+                      />
+                    </InputWithLabel>
+                  </div>
+                  <InputWithLabel label="Stock status">
+                    {/* <SelectInput
+                      name="stockList"
+                      selectList={stockStatusList}
+                    /> */}
+                    <SimpleInput
+                      type="text"
+                      name="stockList"
+                      placeholder="Enter a product Stock Status"
+                    />
+                  </InputWithLabel>
+                  {/* <select name={name}>
+                    {selectList.map((item) => (
+                      <option key={item.value} value={item.value}>
+                        {item.label}
+                      </option>
+                    ))}
+                  </select> */}
+                </div>
+                <button className="btn mt-4 text-xl font-bold text-white bg-slate-800">
+                  Add New Product
+                </button>
+
+                {/* <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary mt-16">
                 Delivery
               </h3>
 
@@ -161,18 +264,19 @@ const CreateProduct = () => {
                     />
                   </InputWithLabel>
                 </div>
+              </div> */}
+              </div>
+
+              {/* right div */}
+              <div>
+                <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary">
+                  Product images
+                </h3>
+
+                <ImageUpload />
               </div>
             </div>
-
-            {/* right div */}
-            <div>
-              <h3 className="text-2xl font-bold leading-7 dark:text-whiteSecondary text-blackPrimary">
-                Product images
-              </h3>
-
-              <ImageUpload />
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

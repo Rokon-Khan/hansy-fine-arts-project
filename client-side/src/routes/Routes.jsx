@@ -9,6 +9,7 @@ import Faq from "../pages/Faq";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import ProductDetails from "../pages/ProductDetails";
 import Register from "../pages/Register";
 import Shop from "../pages/Shop";
 import ShoppingCart from "../pages/ShoppingCart";
@@ -81,6 +82,23 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <Faq></Faq>,
+      },
+    ],
+  },
+  {
+    path: "/product",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/product/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+
+        // loader: async ({ params }) =>
+        //   fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`).then(
+        //     (res) => res.json()
+        //   ),
       },
     ],
   },

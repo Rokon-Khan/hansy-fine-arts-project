@@ -29,7 +29,7 @@ async function run() {
     await client.connect();
 
     const database = client.db("hansyArt");
-    const addNewArt = database.collection("products");
+    const addNewProduct = database.collection("products");
     const userCollection = database.collection("users");
 
     // Add New Art To Database
@@ -43,18 +43,26 @@ async function run() {
 
     // Add New Product to Database
     app.post("/products", async (req, res) => {
-      const newArt = req.body;
-      console.log("New product Added", newArt);
-      const result = await addNewArt.insertOne(newArt);
+      const product = req.body;
+      console.log("New product Added", product);
+      const result = await addNewProduct.insertOne(product);
       res.send(result);
     });
 
     // Get Campaign From Database
 
-    app.get("/newart", async (req, res) => {
-      const cursor = addNewArt.find();
+    app.get("/products", async (req, res) => {
+      const cursor = addNewProduct.find();
       const result = await cursor.toArray();
       res.send(result);
+    });
+
+    app.get("/products/:id", async (req, res) => {
+      const id = req.params.id;
+      const cursor = await addNewProduct.findOne({ _id: new ObjectId(id) });
+      // const result = await cursor.toArray();
+
+      res.send(cursor);
     });
 
     app.delete("/newart/:id", async (req, res) => {
