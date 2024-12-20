@@ -29,7 +29,7 @@ async function run() {
     await client.connect();
 
     const database = client.db("hansyArt");
-    const addNewArt = database.collection("newArt");
+    const addNewArt = database.collection("products");
     const userCollection = database.collection("users");
 
     // Add New Art To Database
@@ -41,10 +41,10 @@ async function run() {
       res.send(result);
     });
 
-    // Add New Campaign to Database
-    app.post("/newart", async (req, res) => {
+    // Add New Product to Database
+    app.post("/products", async (req, res) => {
       const newArt = req.body;
-      console.log("New Campaign Added", newArt);
+      console.log("New product Added", newArt);
       const result = await addNewArt.insertOne(newArt);
       res.send(result);
     });

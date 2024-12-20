@@ -1,10 +1,12 @@
+import axios from "axios";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -21,19 +23,17 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const formRef = useRef(null);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
-    const form = new FormData(e.currentTarget);
 
+    const form = new FormData(e.currentTarget);
     const name = form.get("name");
-    // const photo = form.get("photo");
+    const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    console.log(name, email, password);
 
-    // reset error and status
     const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     setErrorMessage("");
     setSuccess(false);
@@ -45,63 +45,106 @@ const Register = () => {
 
     if (!regex.test(password)) {
       setErrorMessage(
-        "At least One uppercase, One lowercase, And More Than 6 character"
+        "At least one uppercase, one lowercase, and more than 6 characters"
       );
       return;
     }
 
-    // create user
-    createUser(email, password)
-      .then((result) => {
-        if (result.user) {
+    try {
+      // Create Firebase user
+      const result = await createUser(email, password);
+      const firebaseUser = result.user;
+
+      // Update profile
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photo,
+      });
+
+      // Prepare user object for MongoDB
+      const newUser = {
+        uid: firebaseUser.uid,
+        name,
+        email,
+      };
+
+      // Add user to MongoDB
+      try {
+        // 1. Make a POST request with axios
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/users`,
+          newUser
+        );
+
+        // 2. Check the response
+        if (response.data.insertedId) {
           Swal.fire({
-            title: "Good job!",
-            text: "Your Acoount Create Successful!",
+            title: "Wow!!!",
+            text: "User Registered Successfully!",
             icon: "success",
           });
-          updateProfile(auth.currentUser, {
-            displayName: name,
-            photoURL: photo,
-          })
-            .then(() => {
-              // Profile updated!
-              navigate(location?.state ? location.state : "/");
-            })
-            .catch((error) => {
-              // An error occurred
-              // ...
-            });
-        }
 
-        console.log(result.user);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          // 3. Reset form
+          if (formRef.current) {
+            formRef.current.reset();
+          }
+
+          // 4. Navigate to the next page
+          navigate(location?.state ? location.state : "/");
+        }
+      } catch (error) {
+        console.error("Error during registration:", error);
+        toast.error(error.message);
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setErrorMessage(error.message);
+    }
   };
 
-  const handleSigWithGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
+  const handleSignWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const firebaseUser = result.user;
+
+      // Prepare user object for MongoDB
+      const newUser = {
+        uid: firebaseUser.uid,
+        name: firebaseUser.displayName,
+        // photo: firebaseUser.photoURL,
+        email: firebaseUser.email,
+      };
+
+      // Add user to MongoDB
+      try {
+        // 1. Make a POST request with axios
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/users`,
+          newUser
+        );
+
+        // 2. Check the response
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Wow!!!",
+            text: "User Registered Successfully!",
+            icon: "success",
+          });
+
+          // 3. Reset form
+          // If there is no form, you can remove or adjust this line
+          // form.reset();
+
+          // 4. Navigate to the next page
+          navigate(location?.state ? location.state : "/");
+        }
+      } catch (error) {
+        console.error("Error during registration:", error);
+        toast.error(error.message);
+      }
+    } catch (error) {
+      console.error("Error during Google sign-in:", error);
+    }
   };
 
   return (
@@ -111,7 +154,7 @@ const Register = () => {
         <h2 className="text-3xl my-10 font-bold text-center">
           SignUp for Place an Order
         </h2>
-        <form onSubmit={handleRegister}>
+        <form ref={formRef} onSubmit={handleRegister}>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -175,7 +218,7 @@ const Register = () => {
           {success && <p className="text-green-600">Register is Successful.</p>}
         </form>
         <button
-          onClick={handleSigWithGoogle}
+          onClick={handleSignWithGoogle}
           className="btn btn-full btn-success text-xl text-white font-bold my-4"
         >
           SignUp With Google

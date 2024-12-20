@@ -13,8 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" lg:px-10 lg:py-5 bg-base-200">
-      <div className="navbar ">
+    <div className="lg:py-5 bg-base-200">
+      <div className="navbar backdrop-blur-xl bg-white/30 z-50 fixed top-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,7 +40,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-green-500" : "hover:text-warning"
+                    isActive ? "text-purple-700" : "hover:text-warning"
                   }`
                 }
                 to="/"
@@ -50,23 +50,63 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-green-500" : "hover:text-warning"
+                    isActive ? "text-purple-700" : "hover:text-warning"
                   }`
                 }
-                to="/donation-campaign"
+                to="/gallery"
               >
                 Gallery
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `font-bold ${
+                    isActive ? "text-purple-700" : "hover:text-warning"
+                  }`
+                }
+                to="/bio"
+              >
+                Bio
               </NavLink>
 
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-green-500" : "hover:text-warning"
+                    isActive ? "text-purple-700" : "hover:text-warning"
                   }`
                 }
-                to="/Dashboard"
+                to="/contact"
               >
-                Dasboard
+                Contact
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `font-bold ${
+                    isActive ? "text-purple-700" : "hover:text-warning"
+                  }`
+                }
+                to="/shop"
+              >
+                Shop
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `font-bold ${
+                    isActive ? "text-purple-700" : "hover:text-warning"
+                  }`
+                }
+                to="/cart"
+              >
+                cart
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `font-bold ${
+                    isActive ? "text-purple-700" : "hover:text-warning"
+                  }`
+                }
+                to="/faq"
+              >
+                Faq
               </NavLink>
             </ul>
           </div>
@@ -80,8 +120,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-700 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-700"
                 }`
               }
               to="/"
@@ -92,8 +132,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-700  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-700"
                 }`
               }
               to="/gallery"
@@ -104,8 +144,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-700  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-700"
                 }`
               }
               to="/bio"
@@ -116,8 +156,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-700  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-500"
                 }`
               }
               to="/contact"
@@ -128,8 +168,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-500  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-500"
                 }`
               }
               to="/shop"
@@ -140,11 +180,11 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-500 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-500"
                 }`
               }
-              to="/"
+              to="/cart"
             >
               Shopping Cart
             </NavLink>
@@ -152,8 +192,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-green-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-green-500"
+                    ? "text-purple-500 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-purple-700"
                 }`
               }
               to="/faq"
