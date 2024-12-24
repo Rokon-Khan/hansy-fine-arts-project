@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Outlet } from "react-router-dom";
 import purchasegIcon from "../assets/Group.png";
 import Cart from "../components/Cart";
+import ProductCart from "../components/ProductCart";
 import Wishlist from "../components/Wishlist";
 import {
   clearAllCarts,
@@ -163,6 +164,7 @@ const ShoppingCart = () => {
       >
         open modal
       </button> */}
+      <ProductCart></ProductCart>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="flex justify-center">

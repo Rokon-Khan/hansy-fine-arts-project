@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ProductCards from "../components/ProductCards";
 import App from "../dashboard/App";
 
 import MainLayout from "../layout/MainLayout";
@@ -62,9 +63,50 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop></Shop>,
+        loader: async () => {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/products`
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch products");
+          }
+          return response.json(); // Load all products
+        },
+        children: [
+          {
+            path: "", // Default child route for /shop
+            element: <ProductCards></ProductCards>, // Render all products here
+            loader: async () => {
+              const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/products`
+              );
+              if (!response.ok) {
+                throw new Error("Failed to fetch products");
+              }
+              return response.json(); // Return all products
+            },
+          },
+          {
+            path: "category/:category",
+            element: <ProductCards></ProductCards>,
+            loader: async ({ params }) => {
+              const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/products`
+              );
+              if (!response.ok) {
+                throw new Error("Failed to fetch products");
+              }
+              const products = await response.json();
+              return products.filter(
+                (product) => product.category === params.category
+              ); // Filter products by category
+            },
+          },
+        ],
       },
     ],
   },
+
   {
     path: "/cart",
     element: <MainLayout></MainLayout>,
@@ -93,7 +135,8 @@ const router = createBrowserRouter([
         path: "/product/:id",
         element: <ProductDetails></ProductDetails>,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+        // fetch(`http://localhost:5000/products/${params.id}`),
 
         // loader: async ({ params }) =>
         //   fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`).then(

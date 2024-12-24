@@ -1,4 +1,7 @@
 import toast from "react-hot-toast";
+// import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+// const navigate = useNavigate();
 // get all cart product from local storage
 const getAllCarts = () => {
   //   const all = localStorage.getItem("carts");
@@ -41,7 +44,13 @@ const addTOCart = (product) => {
   if (isExist) return toast.error("This Product already Add To Cart!");
   carts.push(product);
   localStorage.setItem("carts", JSON.stringify(carts));
-  toast.success("Add to Cart Successfully added!");
+  Swal.fire({
+    title: "Wow!!!",
+    text: " Cart Added Successfully!",
+    icon: "success",
+  });
+  // Navigate((to = "/cart"));
+  // toast.success("Add to Cart Successfully added!");
 };
 // Add to Wishlist
 const addTOWishList = (product) => {
