@@ -5,18 +5,9 @@ import { useCart } from "../cartprovider/CartContext";
 const ProductCart = ({ product }) => {
   const { productTitle, productImage, description, category, price } =
     product || {};
-  // const [cart, setCart] = useState([]);
-  // const fetchAllarts = async () => {
-  //   const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products`);
-  //   const formattedData = data.map((item) => ({
-  //     ...item,
-  //     price: parseFloat(item.price), // Ensure price is numeric
-  //   }));
-  //   setCart(formattedData);
-  // };
 
   const { cart, dispatch } = useCart();
-  console.log(cart);
+  // console.log(cart);
 
   const updateQuantity = (id, delta) => {
     const product = cart.find((item) => item.id === id);

@@ -30,7 +30,7 @@ const Cart = ({ product, handleRemove }) => {
         </div>
         <div className=" relative -right-[300px] -top-10">
           <button onClick={() => handleRemove(product)} className="btn">
-            <MdDeleteForever />
+            <MdDeleteForever className="text-5xl text-red-400" />
           </button>
         </div>
       </div>

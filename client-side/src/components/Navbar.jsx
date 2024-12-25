@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { FiHeart } from "react-icons/fi";
+import { useContext, useEffect } from "react";
+import { FaRegCircleUser } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/hansyeaggy-logo.png";
 import { AuthContext } from "../authprovider/AuthProvider";
+import { useCart } from "../cartprovider/CartContext";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -10,8 +11,29 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut().then().catch();
   };
+  // Cart Data
+  const { cart, dispatch } = useCart();
+  // console.log(cart);
 
-  const [cartLength, setCartLength] = useState(0);
+  // const updateQuantity = (id, delta) => {
+  //   const product = cart.find((item) => item.id === id);
+  //   if (product) {
+  //     dispatch({
+  //       type: "UPDATE_QUANTITY",
+  //       payload: { id, quantity: product.quantity + delta },
+  //     });
+  //   }
+  // };
+
+  // const removeItem = (id) => {
+  //   dispatch({ type: "REMOVE_FROM_CART", payload: id });
+  // };
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = cart
+    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .toFixed(2);
+  // const [cartLength, setCartLength] = useState(0);
   useEffect(() => {
     const load = async () => {
       const carts = await getAllCarts();
@@ -25,7 +47,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="lg:py-5 bg-base-200">
+    <div className="lg:py-5 py-4 bg-base-200">
       <div className="navbar backdrop-blur-xl bg-white/30 z-50 fixed top-0">
         <div className="navbar-start">
           <div className="dropdown">
@@ -243,7 +265,7 @@ const Navbar = () => {
                   />
                 </svg>
                 <span className="badge badge-sm indicator-item">
-                  {cartLength}
+                  {totalItems}
                 </span>
               </div>
             </div>
@@ -252,24 +274,29 @@ const Navbar = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="text-lg font-bold">
+                  Total Items: {totalItems}
+                </span>
+                <span className="text-info">Subtotal: ${totalPrice}</span>
                 <div className="card-actions">
-                  <Link to="/cart" className="btn btn-primary btn-block">
+                  <Link
+                    to="/cart"
+                    className="btn bg-[#9538E2] text-white btn-block"
+                  >
                     View cart
                   </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div>
+          {/* <div>
             <FiHeart className="text-4xl bg-zinc-200 p-2 rounded-full">
               {" "}
             </FiHeart>
             <span className="relative -top-12 -right-8 bg-white text-lg font-bold p-1 rounded-full">
               0
             </span>
-          </div>
+          </div> */}
           {/* <div>
             <Link
               to="/login"
@@ -279,68 +306,6 @@ const Navbar = () => {
             </Link>
           </div> */}
 
-          {/* New Navbar start */}
-          {/* <div className="navbar bg-base-100">
-  <div className="flex-1">
-    <a className="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div className="flex-none">
-    <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-        <div className="indicator">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <span className="badge badge-sm indicator-item">8</span>
-        </div>
-      </div>
-      <div
-        tabIndex={0}
-        className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
-        <div className="card-body">
-          <span className="text-lg font-bold">8 Items</span>
-          <span className="text-info">Subtotal: $999</span>
-          <div className="card-actions">
-            <button className="btn btn-primary btn-block">View cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-        </div>
-      </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div> */}
-
-          {/* New Navbar End */}
-
           {user ? (
             <div className="dropdown dropdown-end">
               <div
@@ -348,11 +313,8 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
+                <div>
+                  <FaRegCircleUser className="text-4xl bg-slate-100 p-2  rounded-full" />
                 </div>
               </div>
               <ul
@@ -360,18 +322,14 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
+                  <Link to={"/dashboard"} className="justify-between">
+                    Dashboard
+                  </Link>
                 </li>
                 <li>
                   <button
                     onClick={handleLogOut}
-                    className="btn bg-[#9538E2] text-xl text-white font-bold "
+                    className="btn bg-[#9538E2] text-lg text-white font-semibold "
                   >
                     Log Out
                   </button>
@@ -379,11 +337,47 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <Link to="/register">
-              <button className="btn bg-[#9538E2] text-xl text-white font-bold ">
-                Create an Account
-              </button>
-            </Link>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div>
+                  <FaRegCircleUser className="text-4xl bg-slate-100 p-2  rounded-full" />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-56 p-2 shadow space-y-2"
+              >
+                <li>
+                  <Link
+                    to="/login"
+                    className="btn bg-[#9538E2] text-base text-white font-bold "
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/register"
+                    className="btn bg-[#9538E2] text-base text-white font-bold "
+                  >
+                    Create An Account
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to={"/dashboard"}
+                    className="btn bg-[#9538E2] text-base text-white font-bold"
+                  >
+                    Admin Dashboard
+                  </Link>
+                </li>
+              </ul>
+            </div>
           )}
         </div>
       </div>
