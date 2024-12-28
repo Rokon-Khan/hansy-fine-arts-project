@@ -15,6 +15,8 @@ import {
   HiOutlineSun,
 } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import profile from "../../assets/hansyaeggy.jpg";
+import logo from "../../assets/hansyeaggy-logo.png";
 import { toggleDarkMode } from "../features/darkMode/darkModeSlice";
 import { setSidebar } from "../features/dashboard/dashboardSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
@@ -32,11 +34,7 @@ const Header = () => {
           onClick={() => dispatch(setSidebar())}
         />
         <Link to="/">
-          <img
-            src="/src/assets/logohans.jpg"
-            alt="profile"
-            className="rounded-lg w-30 h-20"
-          />
+          <img src={logo} alt="profile" className="rounded-lg w-30 h-20" />
           {/* <FaReact className="text-4xl dark:text-whiteSecondary text-blackPrimary hover:rotate-180 hover:duration-1000 hover:ease-in-out cursor-pointer" /> */}
         </Link>
         <SearchInput />
@@ -59,16 +57,16 @@ const Header = () => {
           <Link to="/profile">
             <div className="flex gap-2 items-center">
               <img
-                src="/src/assets/logohans.jpg"
+                src={profile}
                 alt="profile"
                 className="rounded-full w-10 h-10"
               />
               <div className="flex flex-col">
                 <p className="dark:text-whiteSecondary text-blackPrimary text-base max-xl:text-sm">
-                  Md Rokonuzzaman
+                  Hansyaeggy
                 </p>
                 <p className="dark:text-whiteSecondary text-blackPrimary text-sm max-xl:text-xs">
-                  Web Developer
+                  Pilot & Watercolor Artist
                 </p>
               </div>
             </div>

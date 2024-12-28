@@ -12,22 +12,7 @@ const Navbar = () => {
     logOut().then().catch();
   };
   // Cart Data
-  const { cart, dispatch } = useCart();
-  // console.log(cart);
-
-  // const updateQuantity = (id, delta) => {
-  //   const product = cart.find((item) => item.id === id);
-  //   if (product) {
-  //     dispatch({
-  //       type: "UPDATE_QUANTITY",
-  //       payload: { id, quantity: product.quantity + delta },
-  //     });
-  //   }
-  // };
-
-  // const removeItem = (id) => {
-  //   dispatch({ type: "REMOVE_FROM_CART", payload: id });
-  // };
+  const { cart } = useCart();
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = cart
@@ -38,10 +23,7 @@ const Navbar = () => {
     const load = async () => {
       const carts = await getAllCarts();
       const wishlists = await getAllWishlists();
-
-      // setWishlists(wishlists);
-      setCartLength(carts.length);
-      // setWishlist(wishlists.length);
+      // setCartLength(carts.length);
     };
     load();
   }, []);
@@ -306,7 +288,7 @@ const Navbar = () => {
             </Link>
           </div> */}
 
-          {user ? (
+          {user && user.email ? (
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -368,14 +350,14 @@ const Navbar = () => {
                   </Link>
                 </li>
 
-                <li>
+                {/* <li>
                   <Link
                     to={"/dashboard"}
                     className="btn bg-[#9538E2] text-base text-white font-bold"
                   >
                     Admin Dashboard
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           )}

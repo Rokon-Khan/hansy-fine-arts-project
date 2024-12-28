@@ -16,7 +16,7 @@ const TabCategories = () => {
     const { data } = await axios.get(
       `${import.meta.env.VITE_API_URL}/products`
     );
-    setProducts(data);
+    setProducts(data.data);
   };
   //   const [arts, setArts] = useState([]);
   //   useEffect(() => {

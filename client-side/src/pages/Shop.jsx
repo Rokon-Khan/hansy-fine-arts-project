@@ -10,12 +10,14 @@ const Shop = () => {
   useEffect(() => {
     // Simulate loading delay (if needed)
     const timeout = setTimeout(() => {
-      setCategories([...new Set(products.map((product) => product.category))]); // Compute categories
+      setCategories([
+        ...new Set(products.data.map((product) => product.category)),
+      ]); // Compute categories
       setLoading(false); // Stop loading
     }, 500); // Adjust delay as needed
 
     return () => clearTimeout(timeout); // Clean up timeout
-  }, [products]);
+  }, [products.data]);
 
   if (loading) {
     return (

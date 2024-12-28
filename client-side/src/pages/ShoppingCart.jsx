@@ -59,7 +59,7 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div>
+    <div className="lg:my-20 my-10">
       <Helmet>
         <title>Watercolor|Fantastic Cart</title>
       </Helmet>

@@ -4,12 +4,14 @@ import App from "../dashboard/App";
 
 import MainLayout from "../layout/MainLayout";
 import Bio from "../pages/Bio";
+import CheckOut from "../pages/CheckOut";
 import Contact from "../pages/Contact";
 import Error from "../pages/Error";
 import Faq from "../pages/Faq";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import ProductDetail from "../pages/ProductDetail";
 import ProductDetails from "../pages/ProductDetails";
 import Register from "../pages/Register";
 import Shop from "../pages/Shop";
@@ -97,7 +99,7 @@ const router = createBrowserRouter([
                 throw new Error("Failed to fetch products");
               }
               const products = await response.json();
-              return products.filter(
+              return products.data.filter(
                 (product) => product.category === params.category
               ); // Filter products by category
             },
@@ -118,6 +120,16 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/checkout",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/checkout",
+        element: <CheckOut></CheckOut>,
+      },
+    ],
+  },
+  {
     path: "/faq",
     element: <MainLayout></MainLayout>,
     children: [
@@ -134,6 +146,24 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <ProductDetails></ProductDetails>,
+        loader: async ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+        // fetch(`http://localhost:5000/products/${params.id}`),
+
+        // loader: async ({ params }) =>
+        //   fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`).then(
+        //     (res) => res.json()
+        //   ),
+      },
+    ],
+  },
+  {
+    path: "/product-detail",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/product-detail/:id",
+        element: <ProductDetail></ProductDetail>,
         loader: async ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
         // fetch(`http://localhost:5000/products/${params.id}`),

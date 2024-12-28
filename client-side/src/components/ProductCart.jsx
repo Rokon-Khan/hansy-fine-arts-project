@@ -1,5 +1,6 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { useCart } from "../cartprovider/CartContext";
 
 const ProductCart = ({ product }) => {
@@ -9,43 +10,25 @@ const ProductCart = ({ product }) => {
   const { cart, dispatch } = useCart();
   // console.log(cart);
 
-  const updateQuantity = (id, delta) => {
-    const product = cart.find((item) => item.id === id);
+  const updateQuantity = (_id, delta) => {
+    const product = cart.find((item) => item._id === _id);
+    console.log(product);
     if (product) {
       dispatch({
         type: "UPDATE_QUANTITY",
-        payload: { id, quantity: product.quantity + delta },
+        payload: { _id, quantity: product.quantity + delta },
       });
     }
   };
 
-  const removeItem = (id) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: id });
+  const removeItem = (_id) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: _id });
   };
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = cart
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
-
-  // const updateQuantity = (id, delta) => {
-  //   setCart((prevCart) =>
-  //     prevCart.map((item) =>
-  //       item.id === id
-  //         ? { ...item, quantity: Math.max(item.quantity + delta, 1) }
-  //         : item
-  //     )
-  //   );
-  // };
-
-  // const removeItem = (id) => {
-  //   setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-  // };
-
-  // const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  // const totalPrice = cart
-  //   .reduce((total, item) => total + item.price * item.quantity, 0)
-  //   .toFixed(2);
 
   return (
     <div className="flex flex-col md:flex-row justify-between p-4 gap-6">
@@ -92,8 +75,8 @@ const ProductCart = ({ product }) => {
           ))}
         </div> */}
         <div className="space-y-4">
-          {cart.map((item) => (
-            <div key={item.id} className="flex items-center border-b pb-4">
+          {/* {cart.map((item) => (
+            <div key={item._id} className="flex items-center border-b pb-4">
               <img
                 src={item.productImage}
                 alt={item.name}
@@ -108,14 +91,14 @@ const ProductCart = ({ product }) => {
               <div className="flex items-center gap-2">
                 <button
                   className="px-2 py-1 bg-gray-200 rounded"
-                  onClick={() => updateQuantity(item.id, -1)}
+                  onClick={() => updateQuantity(item._id, -1)}
                 >
                   -
                 </button>
                 <p>{item.quantity}</p>
                 <button
                   className="px-2 py-1 bg-gray-200 rounded"
-                  onClick={() => updateQuantity(item.id, 1)}
+                  onClick={() => updateQuantity(item._id, 1)}
                 >
                   +
                 </button>
@@ -128,7 +111,51 @@ const ProductCart = ({ product }) => {
               </p>
               <button
                 className="ml-4 text-red-500"
-                onClick={() => removeItem(item.id)}
+                onClick={() => removeItem(item._id)}
+              >
+                <MdDeleteForever />
+              </button>
+            </div>
+          ))} */}
+          {cart.map((item) => (
+            <div key={item._id} className="flex items-center border-b pb-4">
+              <img
+                src={item.productImage}
+                alt={item.productTitle || "Product Image"}
+                className="w-16 h-16 object-cover rounded mr-4"
+              />
+              <div className="flex-grow">
+                <p className="text-lg font-medium">
+                  {item.productTitle || "Unknown"}
+                </p>
+                <p className="text-gray-600">
+                  ${isNaN(item.price) ? "0.00" : Number(item.price).toFixed(2)}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  className="px-2 py-1 bg-gray-200 rounded"
+                  onClick={() => updateQuantity(item._id, -1)}
+                >
+                  -
+                </button>
+                <p>{item.quantity || 1}</p>
+                <button
+                  className="px-2 py-1 bg-gray-200 rounded"
+                  onClick={() => updateQuantity(item._id, 1)}
+                >
+                  +
+                </button>
+              </div>
+              <p className="w-16 text-right">
+                $
+                {isNaN(item.price)
+                  ? "0.00"
+                  : (item.price * (item.quantity || 1)).toFixed(2)}
+              </p>
+              <button
+                className="ml-4 text-red-500"
+                onClick={() => removeItem(item._id)}
               >
                 <MdDeleteForever />
               </button>
@@ -157,9 +184,12 @@ const ProductCart = ({ product }) => {
           <p className="text-gray-600">Total Price:</p>
           <p className="font-bold">${totalPrice}</p>
         </div>
-        <button className="w-full bg-purple-600 text-white py-2 rounded-lg font-medium">
+        <Link
+          to="/checkout"
+          className="btn w-full bg-purple-600 text-white py-2 rounded-lg font-medium"
+        >
           Proceed to Checkout
-        </button>
+        </Link>
       </div>
     </div>
   );
