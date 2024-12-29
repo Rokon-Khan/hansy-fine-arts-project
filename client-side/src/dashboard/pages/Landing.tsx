@@ -17,7 +17,7 @@ const Landing = () => {
         <div>
           <div>
             <Welcome>
-              <Welcome.Title>Good evening, Sherwood 😀</Welcome.Title>
+              <Welcome.Title>Good evening, Hansyaeggy 😀</Welcome.Title>
               <Welcome.Description>
                 Here is the complete overview of your eCommerce store. Analyze
                 the statistics and make smart decisions.

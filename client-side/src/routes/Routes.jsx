@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import ProductCards from "../components/ProductCards";
+import RoomPreview from "../components/RoomPreview";
 import App from "../dashboard/App";
-
 import MainLayout from "../layout/MainLayout";
 import Bio from "../pages/Bio";
 import CheckOut from "../pages/CheckOut";
@@ -55,6 +55,16 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+    ],
+  },
+  {
+    path: "/roompreview",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/roompreview",
+        element: <RoomPreview></RoomPreview>,
       },
     ],
   },

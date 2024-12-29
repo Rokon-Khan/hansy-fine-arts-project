@@ -77,7 +77,6 @@ const navigation = [
   {
     name: "YouTube",
     href: "http://Www.YouTube.com/@YaeggyArt",
-
     icon: () => (
       <svg
         fill="currentColor"
