@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/hansyeaggy-logo.png";
@@ -7,6 +7,17 @@ import { useCart } from "../cartprovider/CartContext";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   const handleLogOut = () => {
     logOut().then().catch();
@@ -19,18 +30,18 @@ const Navbar = () => {
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
   // const [cartLength, setCartLength] = useState(0);
-  useEffect(() => {
-    const load = async () => {
-      const carts = await getAllCarts();
-      const wishlists = await getAllWishlists();
-      // setCartLength(carts.length);
-    };
-    load();
-  }, []);
+  // useEffect(() => {
+  //   const load = async () => {
+  //     const carts = await getAllCarts();
+  //     const wishlists = await getAllWishlists();
+  //     // setCartLength(carts.length);
+  //   };
+  //   load();
+  // }, []);
 
   return (
     <div className="lg:py-5 py-4 bg-base-200">
-      <div className="navbar backdrop-blur-xl bg-white/30 z-50 fixed top-0">
+      <div className="navbar backdrop-blur-xl bg-white/80 z-50 fixed top-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,7 +67,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/"
@@ -66,7 +77,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/gallery"
@@ -76,7 +87,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/bio"
@@ -87,7 +98,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/contact"
@@ -97,17 +108,17 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/shop"
               >
-                Shop
+                Artist Shop
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/cart"
@@ -117,7 +128,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-purple-700" : "hover:text-warning"
+                    isActive ? "text-black-700" : "hover:text-warning"
                   }`
                 }
                 to="/faq"
@@ -136,8 +147,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-700 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-700"
+                    ? "text-black-700 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-700"
                 }`
               }
               to="/"
@@ -148,8 +159,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-700  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-700"
+                    ? "text-black-700  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-700"
                 }`
               }
               to="/gallery"
@@ -160,8 +171,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-700  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-700"
+                    ? "text-black-700  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-700"
                 }`
               }
               to="/bio"
@@ -172,8 +183,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-700  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-500"
+                    ? "text-black-700  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-500"
                 }`
               }
               to="/contact"
@@ -184,32 +195,32 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-500  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-500"
+                    ? "text-black-500  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-500"
                 }`
               }
               to="/shop"
             >
-              Shop
+              Artist Shop
             </NavLink>
             <NavLink
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-500"
+                    ? "text-black-500 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-500"
                 }`
               }
               to="/cart"
             >
-              Shopping Cart
+              Cart
             </NavLink>
             <NavLink
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-purple-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-purple-700"
+                    ? "text-black-500 bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-black-700"
                 }`
               }
               to="/faq"
@@ -219,6 +230,38 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-5">
+          <button
+            className="btn btn-ghost btn-circle"
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+          >
+            {theme === "light" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="currentColor"
+              >
+                <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728l-.707-.707M6.343 17.657l-.707-.707M12 9a3 3 0 100 6 3 3 0 000-6z"
+                />
+              </svg>
+            )}
+          </button>
           {/* <div>
             <AiOutlineShoppingCart className="text-4xl bg-zinc-200 p-2 rounded-full" />
             <span className="relative -top-12 -right-8 bg-white text-lg font-bold p-1 rounded-full">

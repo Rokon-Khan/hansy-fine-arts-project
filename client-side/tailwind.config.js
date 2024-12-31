@@ -6,11 +6,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        Raleway: ['"Raleway", serif'],
         workSans: ['"Work Sans", sans-serif'],
         yesterYear: ["Yesteryear, cursive"],
       },
       backgroundImage: {
         banner: "url('./assets/cuadro-horizontal-1.jpg')",
+        banner_1: "url('./assets/Hnasyaeggy_Studio.jpg')",
         login_background: "url('/src/assets/dark login bg 1.jpg')",
       },
       colors: {
@@ -24,4 +26,7 @@ export default {
     },
   },
   plugins: [daisyui],
+  daisyui: {
+    themes: ["light", "dark"], // Add DaisyUI's default light and dark themes
+  },
 };

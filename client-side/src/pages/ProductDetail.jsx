@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { CiImageOn } from "react-icons/ci";
 // import Lightbox from "react-image-lightbox";
 // import "react-image-lightbox/style.css";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
 
 const ProductDetail = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
-  const { productTitle, productImage, description, stockList, price } =
+  const { _id, productTitle, productImage, description, stockList, price } =
     product.data || {}; // Ensure fallback in case `product` is undefined
 
   console.log(price);
@@ -51,13 +52,16 @@ const ProductDetail = () => {
               alt="Product"
               className="rounded-lg max-w-[500px] max-h-full object-cover transform transition duration-300 group-hover:scale-110"
             />
-            <p
+            {/* <p
               onClick={handleEnlargeImage}
               className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-4 py-2 rounded cursor-pointer hover:bg-gray-900"
             >
               Click to Enlarge
-            </p>
+            </p> */}
           </div>
+          <Link to={`/roompreview/${_id}`}>
+            <CiImageOn className="text-5xl border-2 border-dotted bg-white p-2" />
+          </Link>
         </div>
 
         {/* Product Details */}

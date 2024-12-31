@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { SketchPicker } from "react-color";
 import Draggable from "react-draggable";
+import { useLoaderData } from "react-router-dom";
 
 const RoomPreview = () => {
+  const product = useLoaderData();
+  const { productImage } = product.data || {};
   const [wallColor, setWallColor] = useState("#ffffff");
   const [frameSize, setFrameSize] = useState({ width: 150, height: 120 });
   const [backgroundImage, setBackgroundImage] = useState(
@@ -173,13 +176,15 @@ const RoomPreview = () => {
               left: "50%",
               transform: "translate(-50%, -50%)",
             }}
-          ></div>
+          >
+            <img src={productImage} alt="" />
+          </div>
         </Draggable>
       </div>
 
       {/* Room Gallery */}
       <h2 className="font-bold text-lg mt-6 mb-2 text-center">Select a Room</h2>
-      <div className="flex gap-4 justify-center">
+      <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-5 justify-center">
         {galleryImages.map((image) => (
           <div
             key={image.label}

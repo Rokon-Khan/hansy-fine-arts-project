@@ -92,21 +92,21 @@ const Card = ({ product, handleRemove }) => {
         </figure>
         <div className="p-4">
           <h1 className="text-2xl font-bold">{productTitle}</h1>
-          <p className="text-2xl font-bold">Price: ${price}</p>
+          {/* <p className="text-2xl font-bold">Price: ${price}</p> */}
         </div>
         <Link
           to={`/product-detail/${_id}`}
-          className="btn text-xl text-purple-600 rounded-full border-2 border-purple-600"
+          className="btn text-xl text-black-600 rounded-lg border-2 border-black-600"
         >
           View Details
         </Link>
-        <button
+        {/* <button
           onClick={() => handleAddToCart(product)}
           className="btn bg-[#9538E2] text-white"
         >
           Add To Cart
           <i className="fa-solid fa-cart-shopping text-2xl ml-2"></i>
-        </button>
+        </button> */}
       </div>
       {pathname === "/cart" && (
         <div

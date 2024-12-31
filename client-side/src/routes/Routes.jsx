@@ -63,8 +63,10 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children: [
       {
-        path: "/roompreview",
+        path: "/roompreview/:id",
         element: <RoomPreview></RoomPreview>,
+        loader: async ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
       },
     ],
   },
