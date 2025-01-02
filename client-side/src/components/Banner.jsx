@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <>
-      <div className="hero min-h-screen bg-banner_1">
+      <div className="hero min-h-screen bg-banner_1 bg-cover bg-no-repeat">
         <div className="hero-overlay bg-opacity-10"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-[990px]">

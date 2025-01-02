@@ -70,14 +70,13 @@ import { useLoaderData } from "react-router-dom";
 import Card from "./Card";
 
 const ProductCards = () => {
-  const products = useLoaderData(); // Load filtered products or all products
+  const products = useLoaderData();
+  console.log(products);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
-      {products.data.length > 0 ? (
-        products.data.map((product) => (
-          <Card key={product._id} product={product} />
-        ))
+      {products.length > 0 ? (
+        products.map((product) => <Card key={product._id} product={product} />)
       ) : (
         <h2 className="text-4xl font-bold text-[#9538E2] text-center bg-slate-200 p-6 rounded-lg max-w-[1024px] my-10 mx-auto">
           No products available for this category

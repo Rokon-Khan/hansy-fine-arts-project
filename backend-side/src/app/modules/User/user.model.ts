@@ -11,19 +11,7 @@ const UserSchema = new Schema<IUser>(
 			type: String,
 			required: true,
 		},
-		password: {
-			type: String,
-			required: true,
-		},
-		role: {
-			type: String,
-			required: true,
-		},
-		date: {
-			type: String,
-			required: true,
-		},
-		photoURL: {
+		uid: {
 			type: String,
 			required: true,
 		},

@@ -306,7 +306,7 @@ const Navbar = () => {
                 <div className="card-actions">
                   <Link
                     to="/cart"
-                    className="btn bg-[#9538E2] text-white btn-block"
+                    className="btn bg-zinc-800 text-white btn-block"
                   >
                     View cart
                   </Link>
@@ -354,7 +354,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleLogOut}
-                    className="btn bg-[#9538E2] text-lg text-white font-semibold "
+                    className="btn bg-slate-800 text-lg text-white font-semibold "
                   >
                     Log Out
                   </button>
@@ -379,7 +379,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/login"
-                    className="btn bg-[#9538E2] text-base text-white font-bold "
+                    className="btn bg-slate-800 text-base text-white font-bold "
                   >
                     Login
                   </Link>
@@ -387,7 +387,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/register"
-                    className="btn bg-[#9538E2] text-base text-white font-bold "
+                    className="btn bg-slate-800 text-base text-white font-bold "
                   >
                     Create An Account
                   </Link>

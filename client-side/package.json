@@ -13,6 +13,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^9.120.5",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/xr": "^6.4.12",
     "@reduxjs/toolkit": "^2.2.5",
     "algoliasearch": "^5.4.3",
     "axios": "^1.7.9",
@@ -22,6 +25,7 @@
     "firebase-admin": "^12.5.0",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
+    "mind-ar-react": "^0.1.1",
     "nanoid": "^5.0.7",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
@@ -37,7 +41,8 @@
     "react-tabs": "^6.0.2",
     "recharts": "^2.15.0",
     "sort-by": "^0.0.2",
-    "sweetalert2": "^11.6.13"
+    "sweetalert2": "^11.6.13",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

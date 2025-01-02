@@ -5,6 +5,8 @@ import { CiImageOn } from "react-icons/ci";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
+import FinerWorksAPI from "../components/FinerWorksAPI";
+import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
   const product = useLoaderData();
@@ -59,9 +61,13 @@ const ProductDetail = () => {
               Click to Enlarge
             </p> */}
           </div>
-          <Link to={`/roompreview/${_id}`}>
-            <CiImageOn className="text-5xl border-2 border-dotted bg-white p-2" />
-          </Link>
+          <div>
+            <Link to={`/roompreview/${_id}`}>
+              <CiImageOn className="text-5xl border-2 border-dotted bg-white p-2" />
+            </Link>
+            {/* <WebXRPreview imageUrl={productImage}></WebXRPreview> */}
+            <ARLivePreview image={productImage}></ARLivePreview>
+          </div>
         </div>
 
         {/* Product Details */}
@@ -99,6 +105,7 @@ const ProductDetail = () => {
 
           {/* Medium Selection */}
           <div className="mt-8">
+            <FinerWorksAPI></FinerWorksAPI>
             <h2 className="text-lg font-bold mb-2">Medium</h2>
             <div className="grid grid-cols-4 gap-2">
               <button className="border p-4 rounded hover:bg-gray-200">

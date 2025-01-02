@@ -45,7 +45,7 @@ const Register = () => {
 
     if (!regex.test(password)) {
       setErrorMessage(
-        "At least one uppercase, one lowercase, and more than 6 characters"
+        "At least One uppercase, One lowercase, and More than 6 characters"
       );
       return;
     }
@@ -75,9 +75,9 @@ const Register = () => {
           `${import.meta.env.VITE_API_URL}/users`,
           newUser
         );
-
+        console.log(response.data);
         // 2. Check the response
-        if (response.data.insertedId) {
+        if (response.data.success) {
           Swal.fire({
             title: "Wow!!!",
             text: "User Registered Successfully!",
@@ -210,7 +210,7 @@ const Register = () => {
             </p>
           </div>
           <div className="form-control mt-6 space-y-4">
-            <button className="btn btn-success text-xl text-white font-bold">
+            <button className="btn bg-zinc-950 text-xl text-white font-bold">
               SignUp
             </button>
           </div>
@@ -219,13 +219,13 @@ const Register = () => {
         </form>
         <button
           onClick={handleSignWithGoogle}
-          className="btn btn-full btn-success text-xl text-white font-bold my-4"
+          className="btn btn-full bg-zinc-950 text-xl text-white font-bold my-4"
         >
           SignUp With Google
         </button>
         <p className="text-center mt-4">
           Already have an account?{" "}
-          <Link className="text-green-600 font-bold" to="/login">
+          <Link className="text-blue-600 font-bold" to="/login">
             Login
           </Link>
         </p>
