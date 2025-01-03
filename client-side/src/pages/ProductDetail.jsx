@@ -5,7 +5,9 @@ import { CiImageOn } from "react-icons/ci";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
+import ArtPreview from "../components/ArtPreview";
 import FinerWorksAPI from "../components/FinerWorksAPI";
+import Google3DModelPreview from "../components/Google3DModelPreview";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
@@ -67,6 +69,9 @@ const ProductDetail = () => {
             </Link>
             {/* <WebXRPreview imageUrl={productImage}></WebXRPreview> */}
             <ARLivePreview image={productImage}></ARLivePreview>
+            <ArtPreview image={productImage}></ArtPreview>
+            <Google3DModelPreview modelSrc={productImage} />
+            <Google3DModelPreview modelSrc="https://modelviewer.dev/shared-assets/models/Astronaut.glb" />
           </div>
         </div>
 
@@ -106,6 +111,7 @@ const ProductDetail = () => {
           {/* Medium Selection */}
           <div className="mt-8">
             <FinerWorksAPI></FinerWorksAPI>
+
             <h2 className="text-lg font-bold mb-2">Medium</h2>
             <div className="grid grid-cols-4 gap-2">
               <button className="border p-4 rounded hover:bg-gray-200">

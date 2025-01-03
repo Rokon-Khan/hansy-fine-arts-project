@@ -4,8 +4,9 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 const app = express();
+const axios = require("axios");
 
 app.use(cors());
 app.use(express.json());
@@ -101,6 +102,46 @@ async function run() {
       const query = { _id: new ObjectId(id) };
       const user = await userCollection.findOne(query);
       res.send(user);
+    });
+
+    // Fineer Work API
+
+    const API_URL = "https://api.finerworks.com/v3/list_collections";
+
+    app.post("/api/test", async (req, res) => {
+      try {
+        console.log(req.body);
+        const response = await axios.post(API_URL, req.body, {
+          headers: {
+            "Content-Type": "application/json",
+            web_api_key: "4b1a2f13-18a3-4bfa-a46e-cf41913025d9",
+            app_key: "6b3a5893-e9b3-42dd-a33a-db85390a40bb",
+          },
+        });
+        console.log(response);
+        res.send(response.data);
+      } catch (error) {
+        res.status(error.response?.status || 500).send(error.message);
+      }
+    });
+
+    const API_URL_Products = "https://api.finerworks.com/v3/list_mats";
+
+    app.post("/api/products", async (req, res) => {
+      try {
+        console.log(req.body);
+        const response = await axios.post(API_URL_Products, req.body, {
+          headers: {
+            "Content-Type": "application/json",
+            web_api_key: "4b1a2f13-18a3-4bfa-a46e-cf41913025d9",
+            app_key: "6b3a5893-e9b3-42dd-a33a-db85390a40bb",
+          },
+        });
+        console.log(response);
+        res.send(response.data);
+      } catch (error) {
+        res.status(error.response?.status || 500).send(error.message);
+      }
     });
 
     // Send a ping to confirm a successful connection
