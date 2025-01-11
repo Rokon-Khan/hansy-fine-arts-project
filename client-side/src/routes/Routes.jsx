@@ -35,6 +35,15 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
+        loader: async () => {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/products`
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch products");
+          }
+          return response.json(); // Load all products
+        },
       },
     ],
   },
@@ -111,7 +120,7 @@ const router = createBrowserRouter([
                 throw new Error("Failed to fetch products");
               }
               const products = await response.json();
-              return products.data.filter(
+              return products.filter(
                 (product) => product.category === params.category
               ); // Filter products by category
             },

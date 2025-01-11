@@ -1,18 +1,46 @@
-import MasonaryGrid from "../components/MasonaryGrid";
+import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import Slider from "../components/Slider";
 
 const Gallery = () => {
+  const data = useLoaderData();
+  console.log(data);
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    setProduct(data);
+  }, [data]);
+
   return (
     <div>
-      <div className="lg:my-20 my-10">
-        <div className="w-full h-[250px] bg-[#9538E2] text-center text-white space-y-3  py-6">
-          <h2 className="text-3xl font-bold">The Elegant Watercolor Gallery</h2>
-          <p className=" max-w-[796px] mx-auto">
-            Explore the elegant gallery images experience to the next level.
-            Choose the beautiful potrait for your home decoration and office.
-          </p>
+      <div className="grid lg:grid-cols-2 mt-20 max-w-7xl mx-auto gap-10">
+        <div className="flex flex-col gap-5">
+          <button className="btn text-black">Portraits</button>
+          <button className="btn text-black">Contemporary</button>
+        </div>
+        <div>
+          <Slider></Slider>
+          <button className="btn bg-slate-200 text-black">
+            Become a Member
+          </button>
         </div>
       </div>
-      <MasonaryGrid></MasonaryGrid>
+      <div className="max-w-[1140px] columns-1 sm:columns-2 lg:columns-3 py-10 md:py-20 gap-4 mx-auto">
+        {product.map((productItem) => (
+          <Link
+            to={`/product-detail/${productItem._id}`} // Correctly using the productItem._id
+            key={productItem._id} // Moving key to the Link element
+          >
+            <div className="mb-4 break-inside-avoid transition hover:scale-105 shadow-xl">
+              <img
+                className="w-full h-auto object-cover rounded-lg"
+                src={productItem.productImage}
+                alt={productItem.productTitle}
+              />
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

@@ -108,14 +108,14 @@ async function run() {
 
     const API_URL = "https://api.finerworks.com/v3/list_collections";
 
-    app.post("/api/test", async (req, res) => {
+    app.post("/api/list", async (req, res) => {
       try {
         console.log(req.body);
         const response = await axios.post(API_URL, req.body, {
           headers: {
             "Content-Type": "application/json",
-            web_api_key: "4b1a2f13-18a3-4bfa-a46e-cf41913025d9",
-            app_key: "6b3a5893-e9b3-42dd-a33a-db85390a40bb",
+            web_api_key: `${process.env.WEB_API_KEY}`,
+            app_key: `${process.env.WEB_APP_KEY}`,
           },
         });
         console.log(response);
@@ -125,16 +125,55 @@ async function run() {
       }
     });
 
-    const API_URL_Products = "https://api.finerworks.com/v3/list_mats";
+    const API_URL_Products =
+      "https://api.finerworks.com/v3/get_product_details";
 
     app.post("/api/products", async (req, res) => {
       try {
-        console.log(req.body);
+        console.log("Incoming Payload:", req.body);
+
+        // Validate that the request body is an array
+        if (!Array.isArray(req.body)) {
+          return res.status(400).json({
+            status: "error",
+            message: "Request body must be a JSON array.",
+          });
+        }
+
+        const headers = {
+          "Content-Type": "application/json",
+          web_api_key: `${process.env.WEB_API_KEY}`,
+          app_key: `${process.env.WEB_APP_KEY}`,
+        };
+
         const response = await axios.post(API_URL_Products, req.body, {
+          headers,
+        });
+
+        res.send(response.data);
+      } catch (error) {
+        console.error("Error Response:", error.response?.data || error.message);
+        res.status(error.response?.status || 500).json({
+          status: "error",
+          message: error.response?.data?.message || "Internal Server Error",
+          details: error.response?.data || error.message,
+        });
+      }
+    });
+
+    // Get Product Details
+
+    const API_URL_Select =
+      "https://api.finerworks.com/v3/list_file_selection?guid={guid}";
+
+    app.get("/api/select", async (req, res) => {
+      try {
+        console.log(req.body);
+        const response = await axios.post(API_URL_Select, req.body, {
           headers: {
             "Content-Type": "application/json",
-            web_api_key: "4b1a2f13-18a3-4bfa-a46e-cf41913025d9",
-            app_key: "6b3a5893-e9b3-42dd-a33a-db85390a40bb",
+            web_api_key: `${process.env.WEB_API_KEY}`,
+            app_key: `${process.env.WEB_APP_KEY}`,
           },
         });
         console.log(response);

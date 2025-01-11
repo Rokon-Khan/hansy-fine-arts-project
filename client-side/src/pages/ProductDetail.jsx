@@ -7,21 +7,22 @@ import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
 import ArtPreview from "../components/ArtPreview";
 import FinerWorksAPI from "../components/FinerWorksAPI";
-import Google3DModelPreview from "../components/Google3DModelPreview";
+// import Google3DModelPreview from "../components/Google3DModelPreview";
+import ProductList from "../components/ProductList";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
   const { _id, productTitle, productImage, description, stockList, price } =
-    product.data || {}; // Ensure fallback in case `product` is undefined
+    product || {}; // Ensure fallback in case `product` is undefined
 
   console.log(price);
   const { dispatch } = useCart();
 
   const handleAddToCart = (product) => {
     console.log(product.data);
-    dispatch({ type: "ADD_TO_CART", payload: product.data });
+    dispatch({ type: "ADD_TO_CART", payload: product });
 
     // Show success alert
     Swal.fire({
@@ -70,8 +71,8 @@ const ProductDetail = () => {
             {/* <WebXRPreview imageUrl={productImage}></WebXRPreview> */}
             <ARLivePreview image={productImage}></ARLivePreview>
             <ArtPreview image={productImage}></ArtPreview>
-            <Google3DModelPreview modelSrc={productImage} />
-            <Google3DModelPreview modelSrc="https://modelviewer.dev/shared-assets/models/Astronaut.glb" />
+            {/* <Google3DModelPreview modelSrc={productImage} /> */}
+            {/* <Google3DModelPreview modelSrc="https://modelviewer.dev/shared-assets/models/Astronaut.glb" /> */}
           </div>
         </div>
 
@@ -110,7 +111,9 @@ const ProductDetail = () => {
 
           {/* Medium Selection */}
           <div className="mt-8">
+            <ProductList></ProductList>
             <FinerWorksAPI></FinerWorksAPI>
+            {/* <FrameCollection></FrameCollection> */}
 
             <h2 className="text-lg font-bold mb-2">Medium</h2>
             <div className="grid grid-cols-4 gap-2">

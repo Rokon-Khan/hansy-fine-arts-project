@@ -2,15 +2,15 @@ import { NavLink } from "react-router-dom";
 
 const Categories = ({ categories }) => {
   return (
-    <div className="grid grid-cols-1 gap-5 lg:p-10 p-5">
+    <div className="grid lg:grid-cols-1 grid-flow-row gap-5 lg:p-10 p-5">
       {/* "All Products" Button */}
       <NavLink
         to="/shop"
         className={({ isActive }) =>
           `font-bold ${
             isActive
-              ? "text-white bg-[#9538E2] btn rounded-full"
-              : "btn rounded-full hover:text-[#9538E2]"
+              ? "text-black bg-[#d8dfd8] btn rounded-full"
+              : "btn rounded-full hover:text-black"
           }`
         }
       >
@@ -25,8 +25,8 @@ const Categories = ({ categories }) => {
           className={({ isActive }) =>
             `font-bold ${
               isActive
-                ? "text-white bg-[#9538E2] btn rounded-full"
-                : "btn rounded-full hover:text-[#9538E2]"
+                ? "text-black bg-[#d8dfd8] btn rounded-full"
+                : "btn rounded-full hover:text-zinc-500"
             }`
           }
         >
