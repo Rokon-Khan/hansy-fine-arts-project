@@ -11,7 +11,7 @@ const Banner = () => {
               Welcome to Hansyaeggy
             </h1> */}
             <h2 className="mb-5 lg:text-4xl text-3xl text-white font-semibold max-w-lg ">
-              Let's configure your own print product
+              Let&apos;s configure your own print product
             </h2>
             <Link
               to="/gallery"

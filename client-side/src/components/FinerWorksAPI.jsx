@@ -35,7 +35,7 @@
 
 // export default FinerWorksAPI;
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import apiClient from "../service/apiClient.js";
 
 const FinerWorksAPI = () => {
@@ -117,3 +117,88 @@ const FinerWorksAPI = () => {
 };
 
 export default FinerWorksAPI;
+
+// import { useEffect, useState } from "react";
+// import apiClient from "../service/apiClient.js";
+
+// const FinerWorksAPI = () => {
+//   const [products, setProducts] = useState([]);
+//   const [error, setError] = useState(null);
+
+//   // List of SKUs to filter products
+//   const productSKUs = ["AP76264P535893", "AP76264P535871", "AP76264P535883"];
+
+//   useEffect(() => {
+//     const fetchProductDetails = async () => {
+//       const url = "/api/products";
+
+//       // Payload to send to the API
+//       const data = {
+//         skus: productSKUs, // Sending SKUs as a list
+//       };
+
+//       try {
+//         const res = await apiClient.post(url, data);
+
+//         // Assuming the API returns a list of products in `product_list`
+//         const productList = res.data.product_list || [];
+
+//         // Filter the products to match SKUs (in case the API returns extra data)
+//         const filteredProducts = productList.filter((product) =>
+//           productSKUs.includes(product.product_sku)
+//         );
+
+//         setProducts(filteredProducts);
+//       } catch (err) {
+//         setError(err.message);
+//       }
+//     };
+
+//     fetchProductDetails();
+//   }, [productSKUs]);
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       {error && <p className="text-red-500 text-center">{error}</p>}
+//       {products.length === 0 && !error && (
+//         <p className="text-gray-700 text-center">No products found.</p>
+//       )}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+//         {products.map((product, index) => (
+//           <div
+//             key={index}
+//             className="border rounded-lg shadow-md overflow-hidden"
+//           >
+//             <img
+//               src={product.image_url_1 || "https://via.placeholder.com/150"}
+//               alt={product.name || "Product Image"}
+//               className="w-full h-48 object-cover"
+//             />
+//             <div className="p-4">
+//               <h3 className="text-lg font-semibold">
+//                 {product.name || "No Name Available"}
+//               </h3>
+//               <p
+//                 className="text-gray-700 text-sm"
+//                 dangerouslySetInnerHTML={{
+//                   __html:
+//                     product.description_long || "No description available",
+//                 }}
+//               ></p>
+//               <div className="mt-4">
+//                 <p className="text-blue-600 font-bold">
+//                   Price: ${product.per_item_price}
+//                 </p>
+//                 <p className="text-gray-500">
+//                   Total Price: ${product.total_price}
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default FinerWorksAPI;

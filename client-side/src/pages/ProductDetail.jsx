@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CiImageOn } from "react-icons/ci";
-// import Lightbox from "react-image-lightbox";
-// import "react-image-lightbox/style.css";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
 import ArtPreview from "../components/ArtPreview";
 import FinerWorksAPI from "../components/FinerWorksAPI";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
-import ProductList from "../components/ProductList";
+// import ProductList from "../components/ProductList";
+import { GlassMagnifier } from "react-image-magnifiers";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
-  const { _id, productTitle, productImage, description, stockList, price } =
-    product || {}; // Ensure fallback in case `product` is undefined
+  const { _id, productTitle, productImage, price } = product || {}; // Ensure fallback in case `product` is undefined
 
   console.log(price);
   const { dispatch } = useCart();
@@ -57,12 +57,33 @@ const ProductDetail = () => {
               alt="Product"
               className="rounded-lg max-w-[500px] max-h-full object-cover transform transition duration-300 group-hover:scale-110"
             />
-            {/* <p
+            <button
               onClick={handleEnlargeImage}
               className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-4 py-2 rounded cursor-pointer hover:bg-gray-900"
             >
               Click to Enlarge
-            </p> */}
+            </button>
+            <GlassMagnifier
+              imageSrc={productImage}
+              imageAlt="Example"
+              largeImageSrc={productImage} // Optional
+            />
+            {/* <Magnifier
+              imageSrc={productImage}
+              imageAlt="Example"
+              largeImageSrc="./large-image.jpg" // Optional
+              mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
+              touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
+            />  */}
+            {/* <MagnifierContainer>
+              <div className="example-class">
+                <MagnifierPreview imageSrc={productImage} />
+              </div>
+              <MagnifierZoom
+                style={{ height: "400px" }}
+                imageSrc={productImage}
+              />
+            </MagnifierContainer> */}
           </div>
           <div>
             <Link to={`/roompreview/${_id}`}>
@@ -111,7 +132,7 @@ const ProductDetail = () => {
 
           {/* Medium Selection */}
           <div className="mt-8">
-            <ProductList></ProductList>
+            {/* <ProductList></ProductList> */}
             <FinerWorksAPI></FinerWorksAPI>
             {/* <FrameCollection></FrameCollection> */}
 
