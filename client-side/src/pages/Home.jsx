@@ -1,6 +1,8 @@
+import ArtMarketingConsulting from "../components/ArtMarketingConsulting";
+import ArtSellingFeatures from "../components/ArtSellingFeatures";
 import Banner from "../components/Banner";
-import FileUploadComponent from "../components/FileUploadComponent";
 import MarQuee from "../components/MarQuee";
+import PrintOnDemandFeatures from "../components/PrintOnDemandFeatures";
 import Tabcategories from "../components/Tabcategories";
 
 const Home = () => {
@@ -9,7 +11,10 @@ const Home = () => {
       <Banner></Banner>
       <MarQuee></MarQuee>
       <Tabcategories></Tabcategories>
-      <FileUploadComponent></FileUploadComponent>
+      <ArtSellingFeatures></ArtSellingFeatures>
+      <PrintOnDemandFeatures></PrintOnDemandFeatures>
+      <ArtMarketingConsulting></ArtMarketingConsulting>
+      {/* <FileUploadComponent></FileUploadComponent> */}
     </div>
   );
 };

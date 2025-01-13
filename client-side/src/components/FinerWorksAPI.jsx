@@ -45,6 +45,8 @@ const FinerWorksAPI = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       const url = "/api/products";
+      const finerarts = await apiClient.get("http://localhost:5000/finerarts");
+      console.log(finerarts);
 
       const data = [
         {
@@ -62,10 +64,17 @@ const FinerWorksAPI = () => {
           product_qty: 1,
           product_sku: "AP76264P535883",
         },
+        {
+          product_order_po: null,
+          product_qty: 1,
+          product_sku: "AP76264P535884",
+        },
       ];
 
       try {
-        const res = await apiClient.post(url, data);
+        const res = await apiClient.post(url, finerarts.data);
+        console.log(res);
+
         setProducts(res.data.product_list); // Assuming 'product_list' is the key in the response containing the products
       } catch (err) {
         setError(err.message);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const products = [
   { name: "Watercolor Fine Art Paper", image: "/path-to-image/watercolor.png" },

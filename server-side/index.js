@@ -30,8 +30,17 @@ async function run() {
     await client.connect();
 
     const database = client.db("hansyArt");
+    const finerArts = database.collection("finerarts");
     const addNewProduct = database.collection("products");
     const userCollection = database.collection("users");
+
+    app.get("/finerarts", async (req, res) => {
+      const cursor = finerArts.find().project({ _id: 0 });
+      const result = await cursor.toArray();
+      // console.log(result);
+      // const res = await apiClient.post(url, data);
+      res.send(result);
+    });
 
     // Add New Art To Database
 
@@ -55,6 +64,8 @@ async function run() {
     app.get("/products", async (req, res) => {
       const cursor = addNewProduct.find();
       const result = await cursor.toArray();
+      // console.log(result);
+
       res.send(result);
     });
 

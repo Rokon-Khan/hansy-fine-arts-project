@@ -9,7 +9,7 @@ import ArtPreview from "../components/ArtPreview";
 import FinerWorksAPI from "../components/FinerWorksAPI";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
 // import ProductList from "../components/ProductList";
-import { GlassMagnifier } from "react-image-magnifiers";
+import { GlassMagnifier, SideBySideMagnifier } from "react-image-magnifiers";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
@@ -55,7 +55,7 @@ const ProductDetail = () => {
             <img
               src={productImage}
               alt="Product"
-              className="rounded-lg max-w-[500px] max-h-full object-cover transform transition duration-300 group-hover:scale-110"
+              className="rounded-lg max-w-[400px] max-h-[400px] object-cover transform transition duration-300 group-hover:scale-110"
             />
             <button
               onClick={handleEnlargeImage}
@@ -64,10 +64,12 @@ const ProductDetail = () => {
               Click to Enlarge
             </button>
             <GlassMagnifier
+              magnifierSize="30%"
               imageSrc={productImage}
               imageAlt="Example"
               largeImageSrc={productImage} // Optional
             />
+            <SideBySideMagnifier switchSides="true" imageSrc={productImage} />
             {/* <Magnifier
               imageSrc={productImage}
               imageAlt="Example"

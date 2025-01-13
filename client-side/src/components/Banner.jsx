@@ -14,7 +14,7 @@ const Banner = () => {
               Let&apos;s configure your own print product
             </h2>
             <Link
-              to="/gallery"
+              to="/custom-art"
               className="btn  text-xl text-white bg-[#020625]"
             >
               Print Your Own

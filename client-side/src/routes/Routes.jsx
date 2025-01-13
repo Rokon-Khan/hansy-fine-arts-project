@@ -8,6 +8,7 @@ import CheckOut from "../pages/CheckOut";
 import Contact from "../pages/Contact";
 import Error from "../pages/Error";
 import Faq from "../pages/Faq";
+import FileUploadComponent from "../pages/FileUploadComponent";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -157,6 +158,16 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <Faq></Faq>,
+      },
+    ],
+  },
+  {
+    path: "/custom-art",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/custom-art",
+        element: <FileUploadComponent></FileUploadComponent>,
       },
     ],
   },
