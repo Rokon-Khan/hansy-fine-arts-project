@@ -1,3 +1,7 @@
+import { BiSolidDiscount } from "react-icons/bi";
+import { FaServicestack } from "react-icons/fa6";
+import { GrCertificate } from "react-icons/gr";
+import { IoShirtOutline } from "react-icons/io5";
 const PrintOnDemandFeatures = () => {
   return (
     <div className="bg-white py-12 max-w-7xl mx-auto">
@@ -15,20 +19,7 @@ const PrintOnDemandFeatures = () => {
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 8c-1.38 0-2.74.56-3.76 1.64L3 16.39l7.64-1.47c1.08-1.02 1.64-2.38 1.64-3.76z"
-              />
-            </svg>
+            <GrCertificate className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             World-Class Fine Art
@@ -41,32 +32,7 @@ const PrintOnDemandFeatures = () => {
 
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 14v6"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 12h4"
-              />
-            </svg>
+            <IoShirtOutline className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             Merchandise
@@ -79,26 +45,7 @@ const PrintOnDemandFeatures = () => {
 
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 4.354a4 4 0 010 7.292"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M20.354 15.354l-8-8"
-              />
-            </svg>
+            <BiSolidDiscount className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             Exclusive Pricing & Discounts
@@ -111,20 +58,7 @@ const PrintOnDemandFeatures = () => {
 
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M17 16l4-4m0 0l-4-4m4 4H3"
-              />
-            </svg>
+            <FaServicestack className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             First-Class Service

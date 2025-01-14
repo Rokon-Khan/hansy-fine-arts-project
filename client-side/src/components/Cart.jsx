@@ -2,7 +2,7 @@ import { MdDeleteForever } from "react-icons/md";
 /* eslint-disable react/prop-types */
 const Cart = ({ product, handleRemove }) => {
   // Props:
-  const { productTitle, productImage, description, category, price } = product;
+  const { productTitle, productImage, description, price } = product;
 
   return (
     <div className="mb-6">
@@ -25,7 +25,7 @@ const Cart = ({ product, handleRemove }) => {
         <div className="space-y-3">
           <h3 className="text-3xl font-bold">Title:{productTitle}</h3>
           <p>{description}</p>
-          <p>product descrition goes here</p>
+
           <h4 className="text-lg font-bold">Price: {price}</h4>
         </div>
         <div className=" relative -right-[300px] -top-10">

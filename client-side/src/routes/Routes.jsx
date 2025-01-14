@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import FinerWorksArt from "../components/FinerWorksArt";
 import ProductCards from "../components/ProductCards";
 import RoomPreview from "../components/RoomPreview";
 import App from "../dashboard/App";
@@ -9,6 +10,7 @@ import Contact from "../pages/Contact";
 import Error from "../pages/Error";
 import Faq from "../pages/Faq";
 import FileUploadComponent from "../pages/FileUploadComponent";
+import FinerWorksProductDetail from "../pages/FinerWorksProductDetail";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -204,6 +206,29 @@ const router = createBrowserRouter([
         //   fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`).then(
         //     (res) => res.json()
         //   ),
+      },
+    ],
+  },
+  {
+    path: "/finerworks-art",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/finerworks-art",
+        element: <FinerWorksArt></FinerWorksArt>,
+      },
+    ],
+  },
+
+  {
+    path: "/finer-works-product-detail",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/finer-works-product-detail/:sku",
+        element: <FinerWorksProductDetail />,
+        loader: async ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/products/${params.sku}`),
       },
     ],
   },

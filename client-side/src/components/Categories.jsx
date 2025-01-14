@@ -33,6 +33,19 @@ const Categories = ({ categories }) => {
           {category}
         </NavLink>
       ))}
+
+      <NavLink
+        to="/finerworks-art"
+        className={({ isActive }) =>
+          `font-bold ${
+            isActive
+              ? "text-black bg-[#d8dfd8] btn rounded-full"
+              : "btn rounded-full hover:text-black"
+          }`
+        }
+      >
+        Finer Works Art
+      </NavLink>
     </div>
   );
 };

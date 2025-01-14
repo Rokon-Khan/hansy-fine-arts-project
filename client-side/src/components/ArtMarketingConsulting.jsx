@@ -1,3 +1,6 @@
+import { IoCodeWorking } from "react-icons/io5";
+import { LuHeartHandshake } from "react-icons/lu";
+import { Si365Datascience } from "react-icons/si";
 const ArtMarketingConsulting = () => {
   return (
     <div className="bg-white py-12 max-w-7xl mx-auto">
@@ -15,20 +18,7 @@ const ArtMarketingConsulting = () => {
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 7V3m8 4V3m-4 18a9 9 0 110-18 9 9 0 010 18z"
-              />
-            </svg>
+            <Si365Datascience className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             365-day Art Marketing Plan
@@ -41,20 +31,7 @@ const ArtMarketingConsulting = () => {
 
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 10l4.553 2.276A2 2 0 0120 14.105V15a2 2 0 01-2 2H6a2 2 0 01-2-2v-.895a2 2 0 01.447-1.829L9 10m3-7l-4 16m4-16l4 16m-4-16v16"
-              />
-            </svg>
+            <IoCodeWorking className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             A Ton of Work Done For You
@@ -67,20 +44,7 @@ const ArtMarketingConsulting = () => {
 
         <div className="flex flex-col items-center">
           <div className="rounded-full bg-gray-100 p-4">
-            <svg
-              className="h-12 w-12 text-gray-600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 10V7a4 4 0 00-8 0v3M5 10h14M17 10a2 2 0 11-4 0m-6 0a2 2 0 114 0m-4 5h4m2 0h2m2 0h2"
-              />
-            </svg>
+            <LuHeartHandshake className="text-5xl" />
           </div>
           <h3 className="mt-4 text-xl font-medium text-gray-900">
             One-on-One Consulting

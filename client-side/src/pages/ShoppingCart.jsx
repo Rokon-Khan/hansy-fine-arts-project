@@ -37,7 +37,7 @@ const ShoppingCart = () => {
     };
     load();
   }, [change]);
-  console.log(cart, wishlist);
+  // console.log(cart, wishlist);
   const handleRemove = (product) => {
     removeAddToCart(product.id);
     const carts = getAllCarts();
@@ -61,9 +61,9 @@ const ShoppingCart = () => {
   return (
     <div className="lg:my-20 my-10">
       <Helmet>
-        <title>Watercolor|Fantastic Cart</title>
+        <title>Watercolor | Fantastic Cart</title>
       </Helmet>
-      <div className="w-full h-[250px] bg-[#9538E2] text-center text-white space-y-3  py-6">
+      <div className="w-full h-[250px] bg-slate-900 text-center text-white space-y-3  py-6">
         <h2 className="text-3xl font-bold">Shopping Cart</h2>
         <p className=" max-w-[796px] mx-auto">
           Buy your favourite Watercolor arts from here. You can easily print
@@ -72,7 +72,7 @@ const ShoppingCart = () => {
         <div className="">
           <button
             className={`btn mr-6 text-lg font-bold rounded-full  ${
-              open ? "text-white bg-[#9538E2]" : ""
+              open ? "text-white bg-zinc-600" : ""
             }`}
             onClick={() => setOpen(true)}
           >
@@ -80,7 +80,7 @@ const ShoppingCart = () => {
           </button>
           <button
             className={`btn mr-6 text-lg font-bold rounded-full  ${
-              !open ? "text-white bg-[#9538E2]" : ""
+              !open ? "text-white bg-zinc-600" : ""
             }`}
             onClick={() => setOpen(false)}
           >
@@ -112,9 +112,9 @@ const ShoppingCart = () => {
       {open && (
         <div className={`max-w-[1024px] py-4 rounded-xl mx-auto`}>
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-2xl font-bold mb-5">Carts</h3>
+            {/* <h3 className="text-2xl font-bold mb-5">Carts</h3> */}
             {/* <h3 className="text-2xl font-bold mb-5">Cart</h3> */}
-            <div className="flex justify-between items-center gap-6">
+            {/* <div className="flex justify-between items-center gap-6">
               <h3 className="text-xl font-bold">Total Cost:{price}</h3>
               <button
                 className="btn text-lg font-bold text-white bg-[#9538E2]"
@@ -128,7 +128,7 @@ const ShoppingCart = () => {
               >
                 Purchase
               </button>
-            </div>
+            </div> */}
           </div>
           {products.length > 0 &&
             products.map((product) => (

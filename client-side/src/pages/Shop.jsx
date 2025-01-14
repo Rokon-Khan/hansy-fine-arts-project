@@ -149,9 +149,9 @@ const Shop = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center my-6">
-        Explore the Beautiful Watercolor Art
+    <div className="my-12">
+      <h1 className="text-3xl font-semibold text-center my-6">
+        Explore the Order Your Beautiful Watercolor Art
       </h1>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 md:grid-cols-12 grid-cols-1 gap-10">
         {/* Toggle Button for Mobile */}

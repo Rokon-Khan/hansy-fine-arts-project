@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { CiImageOn } from "react-icons/ci";
-import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
 import ArtPreview from "../components/ArtPreview";
-import FinerWorksAPI from "../components/FinerWorksAPI";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
 // import ProductList from "../components/ProductList";
-import { GlassMagnifier, SideBySideMagnifier } from "react-image-magnifiers";
+// import { GlassMagnifier } from "react-image-magnifiers";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
@@ -38,12 +36,12 @@ const ProductDetail = () => {
     });
   };
   const [quantity, setQuantity] = useState(1);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false); // State for Lightbox
+  // const [isLightboxOpen, setIsLightboxOpen] = useState(false); // State for Lightbox
   // Replace with your image URL
 
-  const handleEnlargeImage = () => {
-    setIsLightboxOpen(true); // Open Lightbox
-  };
+  // const handleEnlargeImage = () => {
+  //   setIsLightboxOpen(true); // Open Lightbox
+  // };
 
   return (
     <div className="max-w-7xl mx-auto p-6 lg:my-20 my-10 bg-gray-100">
@@ -57,19 +55,19 @@ const ProductDetail = () => {
               alt="Product"
               className="rounded-lg max-w-[400px] max-h-[400px] object-cover transform transition duration-300 group-hover:scale-110"
             />
-            <button
+            {/* <button
               onClick={handleEnlargeImage}
               className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-4 py-2 rounded cursor-pointer hover:bg-gray-900"
             >
               Click to Enlarge
-            </button>
-            <GlassMagnifier
+            </button> */}
+            {/* <GlassMagnifier
               magnifierSize="30%"
               imageSrc={productImage}
               imageAlt="Example"
               largeImageSrc={productImage} // Optional
-            />
-            <SideBySideMagnifier switchSides="true" imageSrc={productImage} />
+            /> */}
+            {/* <SideBySideMagnifier switchSides="true" imageSrc={productImage} /> */}
             {/* <Magnifier
               imageSrc={productImage}
               imageAlt="Example"
@@ -101,11 +99,11 @@ const ProductDetail = () => {
 
         {/* Product Details */}
         <div>
-          <h1 className="text-3xl font-bold mb-2">ALTUVE AND CORREA</h1>
-          <p className="text-xl text-gray-600 font-semibold mb-4">$53.55</p>
+          <h1 className="text-3xl font-bold mb-2">{productTitle}</h1>
+          <p className="text-xl text-gray-600 font-semibold mb-4">${price}</p>
           <p className="text-sm text-gray-500">
-            or 4 interest-free payments of $13.39 with{" "}
-            <span className="text-green-600 font-bold">Afterpay</span>
+            {/* or 4 interest-free payments of $13.39 with{" "} */}
+            {/* <span className="text-green-600 font-bold">Afterpay</span> */}
           </p>
 
           {/* Quantity Selector */}
@@ -135,7 +133,7 @@ const ProductDetail = () => {
           {/* Medium Selection */}
           <div className="mt-8">
             {/* <ProductList></ProductList> */}
-            <FinerWorksAPI></FinerWorksAPI>
+            {/* <FinerWorksAPI></FinerWorksAPI> */}
             {/* <FrameCollection></FrameCollection> */}
 
             <h2 className="text-lg font-bold mb-2">Medium</h2>
@@ -177,12 +175,12 @@ const ProductDetail = () => {
       </div>
 
       {/* Lightbox Component */}
-      {isLightboxOpen && (
+      {/* {isLightboxOpen && (
         <Lightbox
           mainSrc={productImage}
           onCloseRequest={() => setIsLightboxOpen(false)} // Close Lightbox
         />
-      )}
+      )} */}
     </div>
   );
 };

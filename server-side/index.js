@@ -172,6 +172,38 @@ async function run() {
       }
     });
 
+    // Submit Order
+
+    app.post("/api/submit-order", async (req, res) => {
+      const orderData = req.body;
+
+      try {
+        const response = await fetch(
+          "https://api.finerworks.com/v3/submit_orders",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              web_api_key: `${process.env.WEB_API_KEY}`,
+              app_key: `${process.env.WEB_APP_KEY}`, // Secure your API key
+            },
+            body: JSON.stringify(orderData),
+          }
+        );
+
+        if (response.ok) {
+          const responseData = await response.json();
+          res.status(200).json(responseData);
+        } else {
+          const errorData = await response.json();
+          res.status(response.status).json(errorData);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+      }
+    });
+
     // const API_URL_Products =
     //   "https://api.finerworks.com/v3/get_product_details";
 
