@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@paypal/react-paypal-js": "^8.7.0",
+    "country-state-city": "^3.2.1"
+  }
+}

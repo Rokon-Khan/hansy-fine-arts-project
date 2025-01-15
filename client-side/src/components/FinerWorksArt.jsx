@@ -289,12 +289,13 @@ const FinerWorksArt = () => {
   };
 
   const handleMakeOrderClick = (product) => {
-    console.log(product);
+    // console.log(product);
 
     navigate("/finer-works-order", {
       state: {
         productTitle: product.name,
         productSKU: product.sku,
+        Price: product.per_item_price,
       },
     });
   };
@@ -304,7 +305,7 @@ const FinerWorksArt = () => {
       const url = "/api/products";
       try {
         const finerarts = await apiClient.get(
-          "http://localhost:5000/finerarts"
+          `${import.meta.env.VITE_API_URL}/finerarts`
         );
         const res = await apiClient.post(url, finerarts.data);
         setProducts(res.data.product_list);
