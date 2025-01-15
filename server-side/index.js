@@ -172,6 +172,17 @@ async function run() {
       }
     });
 
+    // Product Detail by SKU
+    // app.get("/products/sku/:sku", async (res, req) => {
+    //   console.log(req.params, "sku");
+    // });
+
+    app.get("/products/sku/:sku", async (req, res) => {
+      console.log(req.params.sku, "sku");
+      // You might also want to send a response back
+      res.send({ message: `Product SKU: ${req.params.sku}` });
+    });
+
     // Submit Order
 
     app.post("/api/submit-order", async (req, res) => {

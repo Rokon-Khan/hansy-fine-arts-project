@@ -160,40 +160,144 @@
 
 // export default FinerWorksArt;
 
+// import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import Swal from "sweetalert2";
+// import { useCart } from "../cartprovider/CartContext.jsx";
+// import apiClient from "../service/apiClient.js";
+
+// const FinerWorksArt = () => {
+//   const [products, setProducts] = useState([]);
+//   const [error, setError] = useState(null);
+//   const navigate = useNavigate();
+//   const { dispatch } = useCart();
+
+//   const handleAddToCart = (product) => {
+//     dispatch({ type: "ADD_TO_CART", payload: product });
+
+//     Swal.fire({
+//       title: "Added to Cart!",
+//       text: `${product.name} has been added to your cart.`,
+//       icon: "success",
+//       confirmButtonText: "Go to Cart",
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         navigate("/cart");
+//       }
+//     });
+//   };
+//   const handleProductClick = (product) => {
+//     navigate(`/finer-works-product-detail/${product.product_sku}`);
+//   };
+//   // const handleProductClick = (product) => {
+//   //   navigate(`/product-detail`, {
+//   //     state: { sku: product.product_sku, product },
+//   //   });
+//   // };
+
+//   useEffect(() => {
+//     const fetchProductDetails = async () => {
+//       const url = "/api/products";
+//       try {
+//         const finerarts = await apiClient.get(
+//           "http://localhost:5000/finerarts"
+//         );
+//         const res = await apiClient.post(url, finerarts.data);
+//         setProducts(res.data.product_list);
+//       } catch (err) {
+//         setError(err.message);
+//       }
+//     };
+
+//     fetchProductDetails();
+//   }, []);
+
+//   return (
+//     <div className="max-w-7xl mx-auto p-4 my-10">
+//       {error && <p className="text-red-500 text-center">{error}</p>}
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+//         {products.map((product, index) => (
+//           <div
+//             key={index}
+//             className="border rounded-lg shadow-md overflow-hidden cursor-pointer"
+//             onClick={() => handleProductClick(product)}
+//           >
+//             <img
+//               src={product.image_url_1 || "https://via.placeholder.com/150"}
+//               alt={product.name || "Product Image"}
+//               className="w-full h-auto object-cover"
+//             />
+//             <div className="p-4">
+//               <h3 className="text-lg font-semibold">
+//                 {product.name || "Finerworks Art for Printing"}
+//               </h3>
+//               <div className="mt-4">
+//                 <p className="text-blue-600 font-bold">
+//                   Price: ${product.per_item_price}
+//                 </p>
+//               </div>
+//               <button
+//                 onClick={(e) => {
+//                   e.stopPropagation(); // Prevent navigation on button click
+//                   handleAddToCart(product);
+//                 }}
+//                 className="bg-black text-white px-6 py-3 rounded uppercase hover:bg-gray-800"
+//               >
+//                 Add to Cart
+//               </button>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default FinerWorksArt;
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { useCart } from "../cartprovider/CartContext.jsx";
 import apiClient from "../service/apiClient.js";
+import Spinner from "./Spinner.jsx";
 
 const FinerWorksArt = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
   const navigate = useNavigate();
-  const { dispatch } = useCart();
+  // const { dispatch } = useCart();
 
-  const handleAddToCart = (product) => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
+  // const handleAddToCart = (product) => {
+  //   dispatch({ type: "ADD_TO_CART", payload: product });
 
-    Swal.fire({
-      title: "Added to Cart!",
-      text: `${product.name} has been added to your cart.`,
-      icon: "success",
-      confirmButtonText: "Go to Cart",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/cart");
-      }
-    });
-  };
-  const handleProductClick = (product) => {
-    navigate(`/finer-works-product-detail/${product.product_sku}`);
-  };
-  // const handleProductClick = (product) => {
-  //   navigate(`/product-detail`, {
-  //     state: { sku: product.product_sku, product },
+  //   Swal.fire({
+  //     title: "Added to Cart!",
+  //     text: `${product.name} has been added to your cart.`,
+  //     icon: "success",
+  //     confirmButtonText: "Go to Cart",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       navigate("/cart");
+  //     }
   //   });
   // };
+
+  const handleProductClick = (product) => {
+    console.log(product);
+
+    navigate(`/finer-works-product-detail/sku/${product.sku}`);
+  };
+
+  const handleMakeOrderClick = (product) => {
+    console.log(product);
+
+    navigate("/finer-works-order", {
+      state: {
+        productTitle: product.name,
+        productSKU: product.sku,
+      },
+    });
+  };
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -204,8 +308,11 @@ const FinerWorksArt = () => {
         );
         const res = await apiClient.post(url, finerarts.data);
         setProducts(res.data.product_list);
+        console.log(res);
       } catch (err) {
         setError(err.message);
+      } finally {
+        setLoading(false); // Set loading to false after fetching data or encountering an error
       }
     };
 
@@ -214,41 +321,70 @@ const FinerWorksArt = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-4 my-10">
+      {loading && <Spinner></Spinner>}
       {error && <p className="text-red-500 text-center">{error}</p>}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <div
-            key={index}
-            className="border rounded-lg shadow-md overflow-hidden cursor-pointer"
-            onClick={() => handleProductClick(product)}
-          >
-            <img
-              src={product.image_url_1 || "https://via.placeholder.com/150"}
-              alt={product.name || "Product Image"}
-              className="w-full h-auto object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold">
-                {product.name || "Finerworks Art for Printing"}
-              </h3>
-              <div className="mt-4">
-                <p className="text-blue-600 font-bold">
-                  Price: ${product.per_item_price}
-                </p>
+      {!loading && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product, index) => (
+            <div
+              className="border rounded-lg shadow-md overflow-hidden cursor-pointer"
+              onClick={() => handleProductClick(product)}
+              key={index}
+            >
+              <img
+                src={product.image_url_1 || "https://via.placeholder.com/150"}
+                alt={product.name || "Product Image"}
+                className="w-full h-auto object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-semibold">
+                  {product.name || "Finerworks Art for Printing"}
+                </h3>
+                <div className="mt-4">
+                  <p className="text-blue-600 font-bold">
+                    Price: ${product.per_item_price}
+                  </p>
+                  <p>Product_sku: {product.sku}</p>
+                </div>
+                {/* <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation on button click
+                    handleAddToCart(product);
+                  }}
+                  className="bg-black text-white px-6 py-3 rounded uppercase hover:bg-gray-800"
+                >
+                  Add to Cart
+                </button> */}
+                {/* <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation on button click
+                    handleAddToCart(product);
+                  }}
+                  className="bg-black text-white px-6 py-3 rounded uppercase hover:bg-gray-800"
+                >
+                  Add to Cart
+                </button> */}
+                {/* <button
+               
+               
+                  className="btn bg-slate-800 text-white text-lg font-semibold"
+                >
+                  Product detail
+                </button> */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation on button click
+                    handleMakeOrderClick(product);
+                  }}
+                  className="bg-slate-800 text-white px-6 py-3 rounded uppercase hover:bg-slate-900"
+                >
+                  Make an Order
+                </button>
               </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent navigation on button click
-                  handleAddToCart(product);
-                }}
-                className="bg-black text-white px-6 py-3 rounded uppercase hover:bg-gray-800"
-              >
-                Add to Cart
-              </button>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

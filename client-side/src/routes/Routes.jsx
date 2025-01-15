@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import FinerWorksArt from "../components/FinerWorksArt";
+import OrderForm from "../components/OrderForm";
 import ProductCards from "../components/ProductCards";
 import RoomPreview from "../components/RoomPreview";
 import App from "../dashboard/App";
@@ -225,10 +226,20 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children: [
       {
-        path: "/finer-works-product-detail/:sku",
+        path: "/finer-works-product-detail/sku/:sku",
         element: <FinerWorksProductDetail />,
         loader: async ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/products/${params.sku}`),
+          fetch(`${import.meta.env.VITE_API_URL}/products/sku/${params.sku}`),
+      },
+    ],
+  },
+  {
+    path: "/finer-works-order",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/finer-works-order",
+        element: <OrderForm></OrderForm>,
       },
     ],
   },
