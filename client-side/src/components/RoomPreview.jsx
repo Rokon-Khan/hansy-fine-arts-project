@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SketchPicker } from "react-color";
 import Draggable from "react-draggable";
 import { useLoaderData } from "react-router-dom";
 
 const RoomPreview = () => {
   const product = useLoaderData();
-  const { productImage } = product.data || {};
+  const { productImage } = product || {};
   const [wallColor, setWallColor] = useState("#ffffff");
   const [frameSize, setFrameSize] = useState({ width: 150, height: 120 });
   const [backgroundImage, setBackgroundImage] = useState(

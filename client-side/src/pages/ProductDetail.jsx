@@ -181,6 +181,30 @@ const ProductDetail = () => {
           onCloseRequest={() => setIsLightboxOpen(false)} // Close Lightbox
         />
       )} */}
+      {/* <!-- Open the modal using ID.showModal() method --> */}
+      <button
+        className="btn"
+        onClick={() => document.getElementById("my_modal_5").showModal()}
+      >
+        Show Full Image
+      </button>
+
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <div className="flex justify-center">
+            <img className="width-full h-auto" src={productImage} alt="" />
+          </div>
+
+          <div className="modal-action justify-center">
+            <form method="dialog">
+              {/* < if there is a button in form, it will close the modal  */}
+              <button className="btn text-xl font-bold text-white bg-[#9538E2]">
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

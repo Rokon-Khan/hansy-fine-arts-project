@@ -150,6 +150,7 @@ import { useEffect, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ArtPreview from "../components/ArtPreview";
+import apiClient from "../service/apiClient.js";
 import ARLivePreview from "./ARLivePreview";
 
 const FinerWorksProductDetail = () => {
@@ -161,15 +162,14 @@ const FinerWorksProductDetail = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
+      const url = "/api/products";
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/products/${sku}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch product details.");
+        const res = await apiClient.post(url, [
+          { product_sku: sku, product_qty: 1 },
+        ]);
+        if (res.data?.product_list?.length > 0) {
+          setFinerWorksProduct(res.data.product_list[0]);
         }
-        const data = await response.json();
-        setFinerWorksProduct(data);
       } catch (err) {
         setError(err.message);
       }

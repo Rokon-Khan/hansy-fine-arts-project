@@ -1,6 +1,3 @@
-// User: hansyarts
-// Pass: spUqaJjD6yvFH05L
-
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -27,7 +24,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    // await client.connect();
 
     const database = client.db("hansyArt");
     const finerArts = database.collection("finerarts");
@@ -178,9 +175,12 @@ async function run() {
     // });
 
     app.get("/products/sku/:sku", async (req, res) => {
-      console.log(req.params.sku, "sku");
-      // You might also want to send a response back
-      res.send({ message: `Product SKU: ${req.params.sku}` });
+      // console.log(req.params.sku, "sku");
+      // // You might also want to send a response back
+      // res.send({ message: `Product SKU: ${req.params.sku}` });
+      const sku = req.params.sku;
+      const product = await finerArts.findOne({ product_sku: sku });
+      res.send(product);
     });
 
     // Submit Order
@@ -214,58 +214,6 @@ async function run() {
         res.status(500).json({ message: "Internal Server Error" });
       }
     });
-
-    // const API_URL_Products =
-    //   "https://api.finerworks.com/v3/get_product_details";
-
-    // app.post("/api/products", async (req, res) => {
-    //   try {
-    //     console.log("Incoming Payload:", req.body);
-
-    //     // Validate that the request body contains the required data
-    //     if (
-    //       !Array.isArray(req.body) ||
-    //       req.body.some(
-    //         (item) => !item.product_sku || typeof item.product_sku !== "string" // Ensure each item has a valid SKU
-    //       )
-    //     ) {
-    //       return res.status(400).json({
-    //         status: "error",
-    //         message:
-    //           "Request body must be a JSON array of objects containing a 'product_sku' field.",
-    //       });
-    //     }
-
-    //     // Construct headers
-    //     const headers = {
-    //       "Content-Type": "application/json",
-    //       web_api_key: `${process.env.WEB_API_KEY}`,
-    //       app_key: `${process.env.WEB_APP_KEY}`,
-    //     };
-
-    //     // Send request to the FinerWorks API
-    //     const response = await axios.post(API_URL_Products, req.body, {
-    //       headers,
-    //     });
-
-    //     // Respond with the product list
-    //     res.status(200).json({
-    //       status: "success",
-    //       product_list: response.data.product_list || [],
-    //     });
-    //   } catch (error) {
-    //     console.error(
-    //       "Error fetching products:",
-    //       error.response?.data || error.message
-    //     );
-
-    //     // Return an error response
-    //     res.status(error.response?.status || 500).json({
-    //       status: "error",
-    //       message: error.response?.data?.message || "Internal Server Error",
-    //     });
-    //   }
-    // });
 
     // Get Product Details
 
