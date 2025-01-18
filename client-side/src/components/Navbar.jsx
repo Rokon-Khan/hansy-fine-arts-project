@@ -40,8 +40,8 @@ const Navbar = () => {
   // }, []);
 
   return (
-    <div className="lg:py-5 py-4 bg-base-200">
-      <div className="navbar backdrop-blur-xl bg-white/80 z-50 fixed top-0">
+    <div className="  bg-base-200 sticky top-0 z-50">
+      <div className="navbar backdrop-blur-xl bg-white/80  ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,7 +67,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/"
@@ -77,7 +77,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/gallery"
@@ -87,7 +87,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/bio"
@@ -98,7 +98,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/contact"
@@ -108,7 +108,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/shop"
@@ -118,7 +118,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/cart"
@@ -128,7 +128,7 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
-                    isActive ? "text-black-700" : "hover:text-warning"
+                    isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
                 to="/faq"
@@ -147,8 +147,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-700 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-700"
+                    ? "text-[#b09f7b] bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/"
@@ -159,8 +159,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-700  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-700"
+                    ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/gallery"
@@ -171,8 +171,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-700  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-700"
+                    ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/bio"
@@ -183,8 +183,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-700  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-500"
+                    ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/contact"
@@ -195,8 +195,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-500  bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-500"
+                    ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/shop"
@@ -207,8 +207,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-500"
+                    ? "text-[#b09f7b] bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/cart"
@@ -219,8 +219,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
-                    ? "text-black-500 bg-white px-3 py-2 rounded-xl"
-                    : "hover:text-black-700"
+                    ? "text-[#b09f7b] bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
                 }`
               }
               to="/faq"

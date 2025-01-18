@@ -1,19 +1,22 @@
-import ArtMarketingConsulting from "../components/ArtMarketingConsulting";
-import ArtSellingFeatures from "../components/ArtSellingFeatures";
+import AboutUs from "../components/AboutUs";
 import Banner from "../components/Banner";
-import MarQuee from "../components/MarQuee";
-import PrintOnDemandFeatures from "../components/PrintOnDemandFeatures";
-import Tabcategories from "../components/Tabcategories";
+import MasonaryGrid from "../components/MasonaryGrid";
+import NewsSection from "../components/NewsSection";
+import PricingTestimonials from "../components/PricingTestimonials";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <MarQuee></MarQuee>
-      <Tabcategories></Tabcategories>
-      <ArtSellingFeatures></ArtSellingFeatures>
-      <PrintOnDemandFeatures></PrintOnDemandFeatures>
-      <ArtMarketingConsulting></ArtMarketingConsulting>
+      <AboutUs></AboutUs>
+      {/* <MarQuee></MarQuee> */}
+      {/* <Tabcategories></Tabcategories> */}
+      <MasonaryGrid></MasonaryGrid>
+      <PricingTestimonials></PricingTestimonials>
+      <NewsSection></NewsSection>
+      {/* <ArtSellingFeatures></ArtSellingFeatures> */}
+      {/* <PrintOnDemandFeatures></PrintOnDemandFeatures> */}
+      {/* <ArtMarketingConsulting></ArtMarketingConsulting> */}
       {/* <FileUploadComponent></FileUploadComponent> */}
     </div>
   );
