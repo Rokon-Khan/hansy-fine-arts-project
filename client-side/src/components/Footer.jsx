@@ -6,7 +6,7 @@ import websticker_4 from "../assets/website-sticker-4.png";
 const Footer = () => {
   return (
     <div>
-      <footer className=" bg-slate-900 text-white p-10">
+      <footer className=" bg-[#b09f7b] text-white p-10 mt-10 max-w-7xl mx-auto">
         <div className="lg:flex gap-5 flex-ol justify-center mb-5">
           <img src={websticker_1} alt="" className="w-[100px] h-[100px]" />
           <img src={websticker_2} alt="" className="w-[100px] h-[100px]" />

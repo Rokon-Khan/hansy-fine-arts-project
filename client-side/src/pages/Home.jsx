@@ -1,16 +1,19 @@
 import AboutUs from "../components/AboutUs";
-import Banner from "../components/Banner";
+import BannerSlider from "../components/BannerSlider";
 import MasonaryGrid from "../components/MasonaryGrid";
 import NewsSection from "../components/NewsSection";
 import PricingTestimonials from "../components/PricingTestimonials";
+import TabCategories from "../components/TabCategories";
 
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
+      {/* <Banner></Banner> */}
+      <BannerSlider></BannerSlider>
       <AboutUs></AboutUs>
+      <TabCategories></TabCategories>
       {/* <MarQuee></MarQuee> */}
-      {/* <Tabcategories></Tabcategories> */}
+
       <MasonaryGrid></MasonaryGrid>
       <PricingTestimonials></PricingTestimonials>
       <NewsSection></NewsSection>

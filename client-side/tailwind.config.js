@@ -12,6 +12,7 @@ export default {
       },
       backgroundImage: {
         banner: "url('./assets/cuadro-horizontal-1.jpg')",
+        banner_2: "url('./assets/cuadro-horizontal-2.jpg')",
         banner_1: "url('./assets/Hnasyaeggy_Studio.jpg')",
         login_background: "url('/src/assets/dark login bg 1.jpg')",
       },

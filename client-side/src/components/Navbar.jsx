@@ -143,7 +143,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="space-x-6 text-lg px-1 gap-6">
-            <NavLink
+            {/* <NavLink
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
@@ -154,7 +154,7 @@ const Navbar = () => {
               to="/"
             >
               Home
-            </NavLink>
+            </NavLink> */}
             <NavLink
               className={({ isActive }) =>
                 `font-bold ${
