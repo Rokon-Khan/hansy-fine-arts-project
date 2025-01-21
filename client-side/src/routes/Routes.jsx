@@ -5,9 +5,11 @@ import ProductCards from "../components/ProductCards";
 import RoomPreview from "../components/RoomPreview";
 import App from "../dashboard/App";
 import MainLayout from "../layout/MainLayout";
+import ArtsyProduct from "../pages/ArtsyProduct";
 import Bio from "../pages/Bio";
 import CheckOut from "../pages/CheckOut";
 import Contact from "../pages/Contact";
+import CustomPortrait from "../pages/CustomPortrait";
 import Error from "../pages/Error";
 import Faq from "../pages/Faq";
 import FileUploadComponent from "../pages/FileUploadComponent";
@@ -33,11 +35,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/gallery",
+    path: "/shop-art",
     element: <MainLayout></MainLayout>,
     children: [
       {
-        path: "/gallery",
+        path: "/shop-art",
         element: <Gallery></Gallery>,
         loader: async () => {
           const response = await fetch(
@@ -58,6 +60,26 @@ const router = createBrowserRouter([
       {
         path: "/bio",
         element: <Bio></Bio>,
+      },
+    ],
+  },
+  {
+    path: "/custom-portrait",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/custom-portrait",
+        element: <CustomPortrait></CustomPortrait>,
+      },
+    ],
+  },
+  {
+    path: "/artsy-product",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/artsy-product",
+        element: <ArtsyProduct></ArtsyProduct>,
       },
     ],
   },

@@ -21,7 +21,7 @@ const BannerSlider = () => {
       >
         <SwiperSlide>
           <div className="hero min-h-[600px] bg-cover bg-no-repeat bg-banner">
-            <div className="hero-overlay bg-opacity-30"></div>
+            <div className="hero-overlay bg-opacity-10"></div>
             <div className="hero-content text-neutral-content text-center">
               {/* <div className="max-w-lg">
                 <h1 className="mb-5 text-4xl font-bold">
@@ -48,7 +48,7 @@ const BannerSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="hero min-h-[600px] bg-banner_1 bg-cover bg-no-repeat ">
-            <div className="hero-overlay bg-opacity-30"></div>
+            <div className="hero-overlay bg-opacity-10"></div>
             <div className="hero-content text-neutral-content text-center">
               {/* <div className="max-w-lg">
                 <h1 className="mb-5 text-4xl font-bold">
@@ -75,7 +75,7 @@ const BannerSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="hero min-h-[600px] bg-banner_2 bg-cover bg-no-repeat ">
-            <div className="hero-overlay bg-opacity-30"></div>
+            <div className="hero-overlay bg-opacity-10"></div>
             <div className="hero-content text-neutral-content text-center">
               {/* <div className="max-w-lg">
                 <h1 className="mb-5 text-4xl font-bold">

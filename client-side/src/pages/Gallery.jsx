@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import Slider from "../components/Slider";
+import NewNavbar from "../components/NewNavbar";
+import NewGallery from "./NewGallery";
+// import Slider from "../components/Slider";
 
 const Gallery = () => {
   const data = useLoaderData();
@@ -13,7 +15,8 @@ const Gallery = () => {
 
   return (
     <div>
-      <div className="grid lg:grid-cols-2 mt-20 max-w-7xl mx-auto gap-10">
+      <NewNavbar></NewNavbar>
+      {/* <div className="grid lg:grid-cols-2 mt-20 max-w-7xl mx-auto gap-10">
         <div className="flex flex-col gap-5">
           <button className="btn text-black">Portraits</button>
           <button className="btn text-black">Contemporary</button>
@@ -24,7 +27,10 @@ const Gallery = () => {
             Become a Member
           </button>
         </div>
-      </div>
+      </div> */}
+
+      <NewGallery data={data}></NewGallery>
+
       <div className="max-w-[1140px] columns-1 sm:columns-2 lg:columns-3 py-10 md:py-20 gap-4 mx-auto">
         {product.map((productItem) => (
           <Link

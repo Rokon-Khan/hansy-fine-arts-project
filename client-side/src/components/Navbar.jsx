@@ -115,7 +115,7 @@ const Navbar = () => {
               >
                 Artist Shop
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
@@ -124,7 +124,7 @@ const Navbar = () => {
                 to="/cart"
               >
                 cart
-              </NavLink>
+              </NavLink> */}
               <NavLink
                 className={({ isActive }) =>
                   `font-bold ${
@@ -163,9 +163,33 @@ const Navbar = () => {
                     : "hover:text-[#b09f7b]"
                 }`
               }
-              to="/gallery"
+              to="/shop-art"
             >
-              Gallery
+              SHOP ART
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `font-bold ${
+                  isActive
+                    ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
+                }`
+              }
+              to="/custom-portrait"
+            >
+              CUSTOM PORTRAIT
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `font-bold ${
+                  isActive
+                    ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
+                    : "hover:text-[#b09f7b]"
+                }`
+              }
+              to="/artsy-product"
+            >
+              ARTSY PRODUCTS
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -177,7 +201,7 @@ const Navbar = () => {
               }
               to="/bio"
             >
-              Bio
+              ABOUT
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -189,9 +213,9 @@ const Navbar = () => {
               }
               to="/contact"
             >
-              Contact
+              CONTACT
             </NavLink>
-            <NavLink
+            {/* <NavLink
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
@@ -202,8 +226,8 @@ const Navbar = () => {
               to="/shop"
             >
               Artist Shop
-            </NavLink>
-            <NavLink
+            </NavLink> */}
+            {/* <NavLink
               className={({ isActive }) =>
                 `font-bold ${
                   isActive
@@ -214,7 +238,7 @@ const Navbar = () => {
               to="/cart"
             >
               Cart
-            </NavLink>
+            </NavLink> */}
             <NavLink
               className={({ isActive }) =>
                 `font-bold ${
@@ -295,15 +319,15 @@ const Navbar = () => {
             >
               <div className="card-body">
                 <span className="text-lg font-bold">
-                  Total Items: {totalItems}
+                  Your Favourites: {totalItems}
                 </span>
-                <span className="text-info">Favourites: ${totalPrice}</span>
+                {/* <span className="text-info">Favourites: ${totalPrice}</span> */}
                 <div className="card-actions">
                   <Link
                     to="/cart"
                     className="btn bg-zinc-800 text-white btn-block"
                   >
-                    View cart
+                    Fvourites
                   </Link>
                 </div>
               </div>
