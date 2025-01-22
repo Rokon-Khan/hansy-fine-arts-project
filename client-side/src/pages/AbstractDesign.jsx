@@ -1,5 +1,5 @@
 import banner from "../assets/gallery-banner.jpg";
-const NewNavbar = () => {
+const AbstractDesign = () => {
   return (
     <div className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       <div className="absolute inset-0">
@@ -10,8 +10,10 @@ const NewNavbar = () => {
         />
       </div>
       <div className="relative z-10 text-white text-center py-10">
-        <h1 className="text-5xl font-bold tracking-widest">FINE ART</h1>
-        <p className="text-lg italic mt-2">Hans Yaeggy Fine Arts Gallery</p>
+        <h1 className="text-5xl font-bold tracking-widest">
+          HANSYAEGGY FINE ART
+        </h1>
+        <p className="text-lg italic mt-2">Abstract & Designs</p>
       </div>
       {/* <nav className="relative z-10">
         <ul className="flex justify-center space-x-10 text-white uppercase text-lg font-semibold">
@@ -26,4 +28,4 @@ const NewNavbar = () => {
   );
 };
 
-export default NewNavbar;
+export default AbstractDesign;

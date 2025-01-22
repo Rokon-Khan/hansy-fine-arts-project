@@ -5,10 +5,12 @@ import ProductCards from "../components/ProductCards";
 import RoomPreview from "../components/RoomPreview";
 import App from "../dashboard/App";
 import MainLayout from "../layout/MainLayout";
+import AbstractDesign from "../pages/AbstractDesign";
 import ArtsyProduct from "../pages/ArtsyProduct";
 import Bio from "../pages/Bio";
 import CheckOut from "../pages/CheckOut";
 import Contact from "../pages/Contact";
+import Contemporary from "../pages/Contemporary";
 import CustomPortrait from "../pages/CustomPortrait";
 import Error from "../pages/Error";
 import Faq from "../pages/Faq";
@@ -80,6 +82,26 @@ const router = createBrowserRouter([
       {
         path: "/artsy-product",
         element: <ArtsyProduct></ArtsyProduct>,
+      },
+    ],
+  },
+  {
+    path: "/contemporary",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/contemporary",
+        element: <Contemporary></Contemporary>,
+      },
+    ],
+  },
+  {
+    path: "/abstract-designs",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/abstract-designs",
+        element: <AbstractDesign></AbstractDesign>,
       },
     ],
   },

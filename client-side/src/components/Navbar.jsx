@@ -165,7 +165,23 @@ const Navbar = () => {
               }
               to="/shop-art"
             >
-              SHOP ART
+              <div className="dropdown dropdown-hover">
+                <div tabIndex={0}>SHOP ART</div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100  z-[1] w-52 p-2 shadow"
+                >
+                  <li>
+                    <Link to="/contemporary"> Contemporary</Link>
+                  </li>
+                  <li>
+                    <Link to="/abstract-designs">Abstract & Designs</Link>
+                  </li>
+                  <li>
+                    <Link to="/custom-portrait">Custom Portraits</Link>
+                  </li>
+                </ul>
+              </div>
             </NavLink>
             <NavLink
               className={({ isActive }) =>
