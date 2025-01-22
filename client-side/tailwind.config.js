@@ -14,6 +14,8 @@ export default {
         banner: "url('./assets/cuadro-horizontal-1.jpg')",
         banner_2: "url('./assets/cuadro-horizontal-2.jpg')",
         banner_1: "url('./assets/Hnasyaeggy_Studio.jpg')",
+        banner_3: "url('./assets/banner-1.jpg')",
+        banner_4: "url('./assets/gallery-banner.jpg')",
         login_background: "url('/src/assets/dark login bg 1.jpg')",
       },
       colors: {

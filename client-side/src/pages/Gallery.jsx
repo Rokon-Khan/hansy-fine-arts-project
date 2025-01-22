@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import NewNavbar from "../components/NewNavbar";
-import NewGallery from "./NewGallery";
+import ShopArtCategory from "../components/ShopArtCategory";
 // import Slider from "../components/Slider";
 
 const Gallery = () => {
@@ -29,7 +29,8 @@ const Gallery = () => {
         </div>
       </div> */}
 
-      <NewGallery data={data}></NewGallery>
+      {/* <NewGallery data={data}></NewGallery> */}
+      <ShopArtCategory></ShopArtCategory>
 
       <div className="max-w-[1140px] columns-1 sm:columns-2 lg:columns-3 py-10 md:py-20 gap-4 mx-auto">
         {product.map((productItem) => (
