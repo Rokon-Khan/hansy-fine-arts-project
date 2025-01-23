@@ -10,11 +10,11 @@ const Home = () => {
     <div>
       {/* <Banner></Banner> */}
       <BannerSlider></BannerSlider>
-      <AboutUs></AboutUs>
       <TabCategories></TabCategories>
       {/* <MarQuee></MarQuee> */}
-
       <MasonaryGrid></MasonaryGrid>
+
+      <AboutUs></AboutUs>
       <PricingTestimonials></PricingTestimonials>
       <NewsSection></NewsSection>
       {/* <ArtSellingFeatures></ArtSellingFeatures> */}

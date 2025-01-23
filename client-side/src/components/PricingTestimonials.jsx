@@ -133,7 +133,7 @@ function PricingTestimonials() {
         {/* Testimonials Section */}
         <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-zinc-100 p-6">
           <h2 className="text-2xl font-bold mb-4">Testimonials</h2>
-          <div className="flex gap-4">
+          <div className="flex lg:flex-row flex-col gap-4 ">
             <div className="w-3/4 pl-4">
               <blockquote className="text-lg italic">
                 <RiDoubleQuotesL className="text-5xl text-[#b09f7b]" />
