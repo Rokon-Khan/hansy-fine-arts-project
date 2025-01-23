@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/hansyeaggy-logo.png";
 import { AuthContext } from "../authprovider/AuthProvider";
 import { useCart } from "../cartprovider/CartContext";
+import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -66,7 +67,7 @@ const Navbar = () => {
             >
               <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -76,7 +77,7 @@ const Navbar = () => {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -86,7 +87,7 @@ const Navbar = () => {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -97,7 +98,7 @@ const Navbar = () => {
 
               <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -107,7 +108,7 @@ const Navbar = () => {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -117,7 +118,7 @@ const Navbar = () => {
               </NavLink>
               {/* <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -127,7 +128,7 @@ const Navbar = () => {
               </NavLink> */}
               <NavLink
                 className={({ isActive }) =>
-                  `font-bold ${
+                  `font-semibold ${
                     isActive ? "text-[#b09f7b]" : "hover:text-[#b09f7b]"
                   }`
                 }
@@ -145,7 +146,7 @@ const Navbar = () => {
           <ul className="space-x-6 text-lg px-1 gap-6">
             {/* <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b] bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -155,9 +156,9 @@ const Navbar = () => {
             >
               Home
             </NavLink> */}
-            <NavLink
+            {/* <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -182,10 +183,11 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-            </NavLink>
+            </NavLink> */}
+            <Dropdown></Dropdown>
             <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -197,7 +199,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -209,7 +211,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -221,7 +223,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -233,7 +235,7 @@ const Navbar = () => {
             </NavLink>
             {/* <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b]  bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -245,7 +247,7 @@ const Navbar = () => {
             </NavLink> */}
             {/* <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b] bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -257,7 +259,7 @@ const Navbar = () => {
             </NavLink> */}
             <NavLink
               className={({ isActive }) =>
-                `font-bold ${
+                `font-semibold ${
                   isActive
                     ? "text-[#b09f7b] bg-white px-3 py-2 rounded-xl"
                     : "hover:text-[#b09f7b]"
@@ -304,7 +306,7 @@ const Navbar = () => {
           </button>
           {/* <div>
             <AiOutlineShoppingCart className="text-4xl bg-zinc-200 p-2 rounded-full" />
-            <span className="relative -top-12 -right-8 bg-white text-lg font-bold p-1 rounded-full">
+            <span className="relative -top-12 -right-8 bg-white text-lg font-semibold p-1 rounded-full">
               0
             </span>
           </div> */}
@@ -334,7 +336,7 @@ const Navbar = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">
+                <span className="text-lg font-semibold">
                   Your Favourites: {totalItems}
                 </span>
                 {/* <span className="text-info">Favourites: ${totalPrice}</span> */}
@@ -380,7 +382,7 @@ const Navbar = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">
+                <span className="text-lg font-semibold">
                   Total Items: {totalItems}
                 </span>
                 <span className="text-info">Subtotal: ${totalPrice}</span>
@@ -398,14 +400,14 @@ const Navbar = () => {
 
           {/* <div>
             <FiHeart className="text-4xl bg-zinc-200 p-2 rounded-full"></FiHeart>
-            <span className="relative -top-12 -right-8 bg-white text-lg font-bold p-1 rounded-full">
+            <span className="relative -top-12 -right-8 bg-white text-lg font-semibold p-1 rounded-full">
               0
             </span>
           </div> */}
           {/* <div>
             <Link
               to="/login"
-              className="btn bg-[#9538E2] text-lg text-white font-bold "
+              className="btn bg-[#9538E2] text-lg text-white font-semibold "
             >
               Create an Account
             </Link>
@@ -459,7 +461,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/login"
-                    className="btn bg-slate-800 text-base text-white font-bold "
+                    className="btn bg-slate-800 text-base text-white font-semibold "
                   >
                     Login
                   </Link>
@@ -467,7 +469,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/register"
-                    className="btn bg-slate-800 text-base text-white font-bold "
+                    className="btn bg-slate-800 text-base text-white font-semibold "
                   >
                     Create An Account
                   </Link>
@@ -476,7 +478,7 @@ const Navbar = () => {
                 {/* <li>
                   <Link
                     to={"/dashboard"}
-                    className="btn bg-[#9538E2] text-base text-white font-bold"
+                    className="btn bg-[#9538E2] text-base text-white font-semibold"
                   >
                     Admin Dashboard
                   </Link>

@@ -7,8 +7,9 @@ export default {
     extend: {
       fontFamily: {
         Raleway: ['"Raleway", serif'],
-        workSans: ['"Work Sans", sans-serif'],
         yesterYear: ["Yesteryear, cursive"],
+        Meie: ['"Meie Script", serif"'],
+        Lato: ["Lato, serif"],
       },
       backgroundImage: {
         banner: "url('./assets/cuadro-horizontal-1.jpg')",

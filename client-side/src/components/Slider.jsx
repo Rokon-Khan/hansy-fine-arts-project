@@ -89,8 +89,10 @@ const Slider = () => {
           <SwiperSlide key={product._id}>
             <SwiperCard
               _id={product._id}
-              productImage={product.productImage} // Replace with the actual key for the image URL
-              productTitle={product.productTitle} // Replace with the actual key for the product title
+              productImage={product.productImage}
+              className="w-full h-auto"
+              // Replace with the actual key for the image URL
+              // productTitle={product.productTitle} // Replace with the actual key for the product title
             />
           </SwiperSlide>
         ))}

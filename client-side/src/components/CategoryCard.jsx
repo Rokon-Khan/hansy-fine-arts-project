@@ -64,7 +64,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const CategoryCard = ({ product }) => {
-  const { _id, productTitle, productImage } = product || {};
+  const { _id, productTitle, productImage, category } = product || {};
   return (
     <Link
       to={`/product-detail/${_id}`}
@@ -105,10 +105,8 @@ const CategoryCard = ({ product }) => {
             "
           >
             <div className="text-white text-center">
-              <div className="font-semibold text-lg">{productTitle}</div>
-              <div className="font-semibold text-lg">
-                Category: {productTitle}
-              </div>
+              {/* <div className="font-semibold text-lg">{productTitle}</div> */}
+              <div className="font-semibold text-lg">Category: {category}</div>
             </div>
           </div>
         </div>

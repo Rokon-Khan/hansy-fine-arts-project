@@ -1,17 +1,17 @@
-import websticker_1 from "../assets/website-sticker-1.png";
-import websticker_2 from "../assets/website-sticker-2.png";
-import websticker_3 from "../assets/website-sticker-3.png";
-import websticker_4 from "../assets/website-sticker-4.png";
+import websticker_5 from "../assets/website-sticker-5.png";
+import websticker_6 from "../assets/website-sticker-6.png";
+import websticker_7 from "../assets/website-sticker-7.png";
+import websticker_8 from "../assets/website-sticker-8.png";
 
 const Footer = () => {
   return (
     <div>
       <footer className=" bg-[#b09f7b] text-white p-10 mt-10 max-w-7xl mx-auto">
         <div className="lg:flex gap-5 flex-ol justify-center mb-5">
-          <img src={websticker_1} alt="" className="w-[100px] h-[100px]" />
-          <img src={websticker_2} alt="" className="w-[100px] h-[100px]" />
-          <img src={websticker_3} alt="" className="w-[100px] h-[100px]" />
-          <img src={websticker_4} alt="" className="w-[100px] h-[100px]" />
+          <img src={websticker_5} alt="" className="w-[100px] h-[100px]" />
+          <img src={websticker_6} alt="" className="w-[100px] h-[100px]" />
+          <img src={websticker_7} alt="" className="w-[100px] h-[100px]" />
+          <img src={websticker_8} alt="" className="w-[100px] h-[100px]" />
         </div>
         <div className="footer">
           <nav>

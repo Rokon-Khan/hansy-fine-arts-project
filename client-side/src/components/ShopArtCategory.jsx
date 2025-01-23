@@ -12,7 +12,15 @@ const Card = ({ image, category, author, route }) => {
       <img src={image} alt={category} />
       <div className="paint-title">
         <h2 style={{ color: "teal" }}>{category}</h2>
-        <p>{author}</p>
+        <p>
+          <span
+            style={{ color: "teal" }}
+            className="font-yesterYear lowercase text-3xl"
+          >
+            by
+          </span>{" "}
+          {author}
+        </p>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const Contemporary = () => {
         />
       </div>
       <div className="relative z-10 text-white text-center py-10">
-        <h1 className="text-5xl font-bold tracking-widest">
+        <h1 className="text-4xl font-bold tracking-widest">
           HANS YAEGGY FINE ART
         </h1>
         <p className="text-lg italic mt-2">Contemporary</p>
