@@ -4,6 +4,8 @@ import {
   FaPhoneAlt,
   FaTwitter,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import logo from "../assets/hansyeaggy-logo.png";
 
 const TopNavbar = () => {
   return (
@@ -21,7 +23,7 @@ const TopNavbar = () => {
         </a>
       </div>
       <div className="text-center">
-        <span className="text-2xl font-bold border-2 border-l-[#1a1815] border-t-[#1a1815]  border-b-[#1a1815]">
+        {/* <span className="text-2xl font-bold border-2 border-l-[#1a1815] border-t-[#1a1815]  border-b-[#1a1815]">
           art
         </span>
         <span className="text-2xl font-light border-2 border-t-[#b09f7b] border-b-[#b09f7b] border-r-[#b09f7b]">
@@ -29,7 +31,10 @@ const TopNavbar = () => {
         </span>
         <div className="text-sm tracking-wide text-gray-500">
           CREATIVE FUTURE
-        </div>
+        </div> */}
+        <Link to="/" className="lg:flex hidden">
+          <img className="max-w-[150px] max-h-[150px]" src={logo} alt="" />
+        </Link>
       </div>
       <div className="flex items-center space-x-2">
         <FaPhoneAlt className="text-2xl text-[#b09f7b]" />

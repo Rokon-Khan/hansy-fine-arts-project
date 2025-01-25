@@ -4,7 +4,6 @@ import "react-image-lightbox/style.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useCart } from "../cartprovider/CartContext";
-import ArtPreview from "../components/ArtPreview";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
 // import ProductList from "../components/ProductList";
 // import { GlassMagnifier } from "react-image-magnifiers";
@@ -53,7 +52,7 @@ const ProductDetail = () => {
             <img
               src={productImage}
               alt="Product"
-              className="rounded-lg max-w-[400px] max-h-[400px] object-cover transform transition duration-300 group-hover:scale-110"
+              className="rounded-lg w-[85%] max-h-auto object-cover transform transition duration-300 group-hover:scale-110"
             />
             {/* <button
               onClick={handleEnlargeImage}
@@ -85,13 +84,20 @@ const ProductDetail = () => {
               />
             </MagnifierContainer> */}
           </div>
-          <div>
+          <div className="flex items-center gap-10">
+            <button
+              className="btn"
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+            >
+              Show Full Image
+            </button>
             <Link to={`/roompreview/${_id}`}>
               <CiImageOn className="text-5xl border-2 border-dotted bg-white p-2" />
             </Link>
             {/* <WebXRPreview imageUrl={productImage}></WebXRPreview> */}
             <ARLivePreview image={productImage}></ARLivePreview>
-            <ArtPreview image={productImage}></ArtPreview>
+
+            {/* <ArtPreview image={productImage}></ArtPreview> */}
             {/* <Google3DModelPreview modelSrc={productImage} /> */}
             {/* <Google3DModelPreview modelSrc="https://modelviewer.dev/shared-assets/models/Astronaut.glb" /> */}
           </div>
@@ -182,12 +188,6 @@ const ProductDetail = () => {
         />
       )} */}
       {/* <!-- Open the modal using ID.showModal() method --> */}
-      <button
-        className="btn"
-        onClick={() => document.getElementById("my_modal_5").showModal()}
-      >
-        Show Full Image
-      </button>
 
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">

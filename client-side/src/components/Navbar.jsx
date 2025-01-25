@@ -8,7 +8,7 @@ import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  const [sticky, setSticky] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
@@ -39,6 +39,19 @@ const Navbar = () => {
   //   };
   //   load();
   // }, []);
+
+  // Sticky Navbar Logic
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="  bg-base-200 sticky top-0 z-50">
@@ -138,12 +151,25 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
-          <Link to="/" className="lg:flex hidden">
+          {/* <Link to="/" className="lg:flex hidden">
             <img className="max-w-[150px] max-h-[150px]" src={logo} alt="" />
+          </Link> */}
+          {/* Logo */}
+          <Link
+            to="/"
+            className={`logo transition-opacity duration-300 ${
+              sticky ? "opacity-100 visible" : "opacity-0 invisible"
+            }`}
+          >
+            <img
+              className="max-w-[150px] max-h-[150px]"
+              src={logo}
+              alt="Logo"
+            />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="space-x-6 text-lg px-1 gap-6">
+          <ul className="space-x-6 text-base px-1 gap-6">
             {/* <NavLink
               className={({ isActive }) =>
                 `font-semibold ${
