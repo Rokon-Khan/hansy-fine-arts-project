@@ -13,10 +13,7 @@ const Card = ({ image, category, author, route }) => {
       <div className="paint-title">
         <h2 style={{ color: "teal" }}>{category}</h2>
         <p>
-          <span
-            style={{ color: "teal" }}
-            className="font-yesterYear lowercase text-3xl"
-          >
+          <span style={{ color: "teal" }} className="lowercase text-2xl italic">
             by
           </span>{" "}
           {author}

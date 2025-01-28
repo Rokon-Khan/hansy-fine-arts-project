@@ -8,7 +8,7 @@ import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [sticky, setSticky] = useState(false);
+  // const [sticky, setSticky] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
@@ -41,17 +41,17 @@ const Navbar = () => {
   // }, []);
 
   // Sticky Navbar Logic
-  useEffect(() => {
-    const handleScroll = () => {
-      setSticky(window.scrollY > 0);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setSticky(window.scrollY > 0);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div className="  bg-base-200 sticky top-0 z-50">
@@ -151,11 +151,11 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
-          {/* <Link to="/" className="lg:flex hidden">
+          <Link to="/" className="lg:flex hidden">
             <img className="max-w-[150px] max-h-[150px]" src={logo} alt="" />
-          </Link> */}
+          </Link>
           {/* Logo */}
-          <Link
+          {/* <Link
             to="/"
             className={`logo transition-opacity duration-300 ${
               sticky ? "opacity-100 visible" : "opacity-0 invisible"
@@ -166,7 +166,7 @@ const Navbar = () => {
               src={logo}
               alt="Logo"
             />
-          </Link>
+          </Link> */}
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="space-x-6 text-base px-1 gap-6">

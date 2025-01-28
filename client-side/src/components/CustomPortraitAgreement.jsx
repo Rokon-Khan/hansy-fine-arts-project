@@ -138,23 +138,21 @@
 
 // export default CustomPortraitAgreement;
 
-import { useState } from "react";
-
 const CustomPortraitAgreement = () => {
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  // const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const handleCheckboxToggle = () => {
-    setTermsAccepted(!termsAccepted);
-  };
+  // const handleCheckboxToggle = () => {
+  //   setTermsAccepted(!termsAccepted);
+  // };
 
-  const handleBecomeMember = () => {
-    if (!termsAccepted) {
-      alert("Please accept the terms and conditions before proceeding.");
-    } else {
-      alert("Thank you for becoming a member!");
-      // Add navigation or API call logic here
-    }
-  };
+  // const handleBecomeMember = () => {
+  //   if (!termsAccepted) {
+  //     alert("Please accept the terms and conditions before proceeding.");
+  //   } else {
+  //     alert("Thank you for becoming a member!");
+  //     // Add navigation or API call logic here
+  //   }
+  // };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
@@ -253,7 +251,7 @@ const CustomPortraitAgreement = () => {
             </p>
           </li>
         </ol>
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <label className="flex items-center space-x-3">
             <input
               type="checkbox"
@@ -265,15 +263,18 @@ const CustomPortraitAgreement = () => {
               I agree to the terms and conditions.
             </span>
           </label>
-        </div>
+        </div> */}
       </div>
-      <button
+      {/* <button
         onClick={handleBecomeMember}
         disabled={!termsAccepted}
         className={`mt-6 w-full py-3 text-white font-semibold rounded-lg ${
           termsAccepted ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400"
         }`}
       >
+        Become a Member
+      </button> */}
+      <button className="mt-6 w-full py-3 text-white font-semibold rounded-lg bg-blue-500 hover:bg-blue-700">
         Become a Member
       </button>
     </div>

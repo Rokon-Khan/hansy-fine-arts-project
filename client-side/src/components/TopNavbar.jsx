@@ -4,8 +4,8 @@ import {
   FaPhoneAlt,
   FaTwitter,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import logo from "../assets/hansyeaggy-logo.png";
+// import { Link } from "react-router-dom";
+// import logo from "../assets/hansyeaggy-logo.png";
 
 const TopNavbar = () => {
   return (
@@ -32,9 +32,9 @@ const TopNavbar = () => {
         <div className="text-sm tracking-wide text-gray-500">
           CREATIVE FUTURE
         </div> */}
-        <Link to="/" className="lg:flex hidden">
+        {/* <Link to="/" className="lg:flex hidden">
           <img className="max-w-[150px] max-h-[150px]" src={logo} alt="" />
-        </Link>
+        </Link> */}
       </div>
       <div className="flex items-center space-x-2">
         <FaPhoneAlt className="text-2xl text-[#b09f7b]" />
