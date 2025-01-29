@@ -34,8 +34,8 @@ const CustomPortrait = () => {
         {/* <Slider></Slider> */}
         <PhotoCarousel></PhotoCarousel>
         <div>
-          <ArtCommissionAgreement></ArtCommissionAgreement>
           <CustomPortraitAgreement></CustomPortraitAgreement>
+          <ArtCommissionAgreement></ArtCommissionAgreement>
         </div>
       </div>
     </div>

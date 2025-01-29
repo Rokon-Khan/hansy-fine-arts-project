@@ -444,6 +444,9 @@ const ArtCommissionAgreement = () => {
           Submit
         </button>
       </form>
+      <button className="mt-6 w-full py-3 text-white font-semibold rounded-lg bg-blue-500 hover:bg-blue-700">
+        Become a Member
+      </button>
     </div>
   );
 };
