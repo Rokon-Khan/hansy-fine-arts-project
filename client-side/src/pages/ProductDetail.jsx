@@ -3,10 +3,12 @@ import { CiImageOn } from "react-icons/ci";
 import "react-image-lightbox/style.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import "../App.css";
 import { useCart } from "../cartprovider/CartContext";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
 // import ProductList from "../components/ProductList";
 // import { GlassMagnifier } from "react-image-magnifiers";
+import ThreeSixtyPreview from "../components/ThreeSixtyPreview";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
@@ -179,6 +181,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
+      <ThreeSixtyPreview></ThreeSixtyPreview>
 
       {/* Lightbox Component */}
       {/* {isLightboxOpen && (
