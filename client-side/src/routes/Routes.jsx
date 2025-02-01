@@ -381,11 +381,12 @@ import Faq from "../pages/Faq";
 import FileUploadComponent from "../pages/FileUploadComponent";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
+
+import Login from "../pages/Login/Login";
 import ProductDetails from "../pages/ProductDetails";
-import Register from "../pages/Register";
 import Shop from "../pages/Shop";
 import ShoppingCart from "../pages/ShoppingCart";
+import SignUp from "../pages/SignUp/SignUp";
 import Layout from "./dashboard/Layout";
 import DashboardPage from "./dashboard/page";
 
@@ -575,11 +576,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <Login></Login>,
   },
   {
-    path: "/register",
-    element: <Register />,
+    path: "/sign-up",
+    element: <SignUp></SignUp>,
   },
   {
     path: "*",

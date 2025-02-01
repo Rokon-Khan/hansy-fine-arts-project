@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/hansyeaggy-logo.png";
-import { AuthContext } from "../authprovider/AuthProvider";
+// import { AuthContext } from "../authprovider/AuthProvider";
 import { useCart } from "../cartprovider/CartContext";
+import { AuthContext } from "../providers/AuthProvider";
 import Dropdown from "./Dropdown";
 
 const Navbar = () => {
@@ -439,15 +440,22 @@ const Navbar = () => {
             </Link>
           </div> */}
 
-          {user && user.email ? (
+          {user ? (
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div>
+                {/* <div>
                   <FaRegCircleUser className="text-4xl bg-slate-100 p-2  rounded-full" />
+                </div> */}
+                <div className="w-10 rounded-full">
+                  <img
+                    className="w-[60px] h-[60px] border-4 border-zinc-300 rounded-full cursor-pointer"
+                    src={user?.photoURL}
+                    alt=""
+                  />
                 </div>
               </div>
               <ul
@@ -455,14 +463,17 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link to={"/dashboard"} className="justify-between">
-                    Dashboard
+                  <Link
+                    to={"/dashboard"}
+                    className="btn bg-amber-400 text-lg text-white font-semibold "
+                  >
+                    Go Dashboard
                   </Link>
                 </li>
                 <li>
                   <button
                     onClick={handleLogOut}
-                    className="btn bg-slate-800 text-lg text-white font-semibold "
+                    className="btn bg-amber-400 text-lg text-white font-semibold "
                   >
                     Log Out
                   </button>
@@ -487,15 +498,15 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/login"
-                    className="btn bg-slate-800 text-base text-white font-semibold "
+                    className="btn bg-amber-400 text-base text-white font-semibold "
                   >
                     Login
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/register"
-                    className="btn bg-slate-800 text-base text-white font-semibold "
+                    to="/sign-up"
+                    className="btn bg-amber-400 text-base text-white font-semibold "
                   >
                     Create An Account
                   </Link>
