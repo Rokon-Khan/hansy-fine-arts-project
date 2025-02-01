@@ -63,6 +63,7 @@ export const navbarLinks = [
         icon: Package,
         path: "/dashboard/products",
       },
+
       {
         label: "New product",
         icon: PackagePlus,

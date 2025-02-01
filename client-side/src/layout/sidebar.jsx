@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 
 import { navbarLinks } from "../constants/index";
 
-import logoDark from "../assets/logo-dark.svg";
-import logoLight from "../assets/logo-light.svg";
+import {
+  default as logoDark,
+  default as logoLight,
+} from "../assets/hansyeaggy-logo-1.png";
 
 import { cn } from "../utils/cn";
 
@@ -21,13 +23,21 @@ export const Sidebar = forwardRef(({ collapsed }, ref) => {
       )}
     >
       <div className="flex gap-x-3 p-3">
-        <img src={logoLight} alt="Logoipsum" className="dark:hidden" />
-        <img src={logoDark} alt="Logoipsum" className="hidden dark:block" />
-        {!collapsed && (
+        <img
+          src={logoLight}
+          alt="Logoipsum"
+          className="dark:hidden w-[150px]"
+        />
+        <img
+          src={logoDark}
+          alt="Logoipsum"
+          className="hidden dark:block w-[15%] h-[10%]"
+        />
+        {/* {!collapsed && (
           <p className="text-lg font-medium text-slate-900 transition-colors dark:text-slate-50">
-            Logoipsum
+            Hans Aeggy Art
           </p>
-        )}
+        )} */}
       </div>
       <div className="flex w-full flex-col gap-y-4 overflow-y-auto overflow-x-hidden p-3 [scrollbar-width:_thin]">
         {navbarLinks.map((navbarLink) => (

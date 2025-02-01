@@ -68,6 +68,19 @@ const AddArtFrom = ({ handleSubmit, uploadImage, setUploadImage, loading }) => {
                   required
                 />
               </div>
+              <div className="space-y-1 text-sm">
+                <label htmlFor="price" className="block text-gray-600 ">
+                  Art Product SKU
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md bg-white"
+                  name="sku"
+                  id="sku"
+                  type="text"
+                  placeholder="Input Art Product sku"
+                  required
+                />
+              </div>
 
               {/* Quantity */}
               <div className="space-y-1 text-sm">
@@ -102,6 +115,7 @@ const AddArtFrom = ({ handleSubmit, uploadImage, setUploadImage, loading }) => {
                       id="image"
                       accept="image/*"
                       hidden
+                      required
                     />
                     <div className="bg-blue-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-blue-500">
                       {uploadImage?.image?.name}

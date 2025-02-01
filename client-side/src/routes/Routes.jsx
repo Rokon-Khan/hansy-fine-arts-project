@@ -383,6 +383,8 @@ import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 
 import AddArt from "../dashboard/AddArt";
+import ArtProductTable from "../dashboard/ArtProductTable";
+import UpdateArt from "../dashboard/UpdateArt";
 import Login from "../pages/Login/Login";
 import ProductDetails from "../pages/ProductDetails";
 import Shop from "../pages/Shop";
@@ -559,7 +561,11 @@ const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <h1 className="title">Products</h1>,
+        element: <ArtProductTable></ArtProductTable>,
+      },
+      {
+        path: "update-arts/:id",
+        element: <UpdateArt />,
       },
       {
         path: "new-product",

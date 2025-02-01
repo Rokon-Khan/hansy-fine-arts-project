@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { uploadToCloudinary } from "../api/utlis";
 import useAuth from "../hooks/useAuth";
@@ -9,6 +10,7 @@ import AddArtFrom from "./Form/AddArtFrom";
 
 const AddArt = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [uploadImage, setUploadImage] = useState({
     image: { name: "Upload Button" },
@@ -24,6 +26,7 @@ const AddArt = () => {
     const description = form.description.value;
     const category = form.category.value;
     const price = parseFloat(form.price.value);
+    const sku = form.sku.value;
     const quantity = parseInt(form.quantity.value);
     const image = form.image.files[0];
     const imageUrl = await uploadToCloudinary(image);
@@ -41,6 +44,7 @@ const AddArt = () => {
       category,
       description,
       price,
+      sku,
       quantity,
       image: imageUrl,
       seller,
@@ -53,13 +57,13 @@ const AddArt = () => {
       await axiosSecure.post("/arts", artData);
       Swal.fire({
         title: "Success!",
-        text: "Your account has been created successfully!",
+        text: "Your Art Product has been added successfully!",
         icon: "success",
         confirmButtonText: "OK",
       });
 
       // 6. Navigate to homepage
-      //   navigate("/");
+      navigate("/dashboard/products");
     } catch (err) {
       console.error(err);
       toast.error(err.message);

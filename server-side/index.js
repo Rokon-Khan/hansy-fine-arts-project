@@ -375,10 +375,81 @@ async function run() {
       res.send(result);
     });
 
+    // Get All Users
     app.get("/users", async (req, res) => {
       const cursor = usersCollection.find();
       const result = await cursor.toArray();
       res.send(result);
+    });
+
+    // Get The Art Detail with  id
+
+    app.get("/arts/:id", async (req, res) => {
+      const { id } = req.params;
+
+      // Validate ID
+      if (!ObjectId.isValid(id)) {
+        return res
+          .status(400)
+          .send({ success: false, message: "Invalid class ID" });
+      }
+
+      try {
+        const artData = await artCollection.findOne({
+          _id: new ObjectId(id),
+        });
+
+        if (!artData) {
+          return res
+            .status(404)
+            .send({ success: false, message: "Class not found" });
+        }
+
+        res.send(artData);
+      } catch (error) {
+        console.error("Error fetching class data:", error);
+        res
+          .status(500)
+          .send({ success: false, message: "Failed to fetch class" });
+      }
+    });
+
+    // Delete My  Class
+
+    app.delete("/arts/:id", async (req, res) => {
+      const { id } = req.params;
+      try {
+        const result = await artCollection.deleteOne({
+          _id: new ObjectId(id),
+        });
+        res.send(result);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: "Failed to delete class" });
+      }
+    });
+
+    // Art Status Updated with ID
+    app.put("/arts/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedArt = req.body;
+
+      try {
+        const result = await artCollection.updateOne(
+          { _id: new ObjectId(id) },
+          { $set: updatedArt }
+        );
+        if (result.modifiedCount > 0) {
+          res.send({ success: true, message: "Class updated successfully" });
+        } else {
+          res.status(404).send({ success: false, message: "Class not found" });
+        }
+      } catch (error) {
+        console.error(error);
+        res
+          .status(500)
+          .send({ success: false, message: "Failed to update class" });
+      }
     });
 
     // FinerArts Product Get
