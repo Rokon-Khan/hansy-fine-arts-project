@@ -6,24 +6,6 @@ import { IoLogoYoutube } from "react-icons/io5";
 
 const TopNavbar = () => {
   return (
-<<<<<<< HEAD
-    <>
-      <div className="sm:flex sm:justify-between items-center justify-center py-4 px-6  border-b border-gray-200 ">
-        <div className="flex items-center justify-center space-x-4 mb-2">
-          <span className="text-sm text-gray-600">Follow Us:</span>
-          <a href="#" className="text-gray-600 hover:text-gray-800">
-            <FaInstagram className="text-2xl text-[#b09f7b]" />
-          </a>
-          <a href="#" className="text-gray-600 hover:text-gray-800">
-            <FaFacebookF className="text-2xl text-[#b09f7b]" />
-          </a>
-          <a href="#" className="text-gray-600 hover:text-gray-800">
-            <FaTwitter className="text-2xl text-[#b09f7b]" />
-          </a>
-        </div>
-        {/* <div className="text-center">
-        <span className="text-2xl font-bold border-2 border-l-[#1a1815] border-t-[#1a1815]  border-b-[#1a1815]">
-=======
     <div className="max-w-11/2 flex justify-between items-center py-4 px-6 border-b border-gray-200 mx-auto">
       <div className="flex items-center space-x-4">
         <span className="text-lg font-bold text-slate-800">Follow Us:</span>
@@ -45,7 +27,6 @@ const TopNavbar = () => {
       </div>
       <div className="text-center">
         {/* <span className="text-2xl font-bold border-2 border-l-[#1a1815] border-t-[#1a1815]  border-b-[#1a1815]">
->>>>>>> 95e6dd4a1de73a96de2f73203d41640d8f8d7481
           art
         </span>
         <span className="text-2xl font-light border-2 border-t-[#b09f7b] border-b-[#b09f7b] border-r-[#b09f7b]">
@@ -63,15 +44,11 @@ const TopNavbar = () => {
           <span className="text-gray-600">+1 (409) 987-5874</span>
         </div>
       </div>
-<<<<<<< HEAD
-    </>
-=======
       <div className="flex items-center space-x-2">
         <FaPhoneAlt className="text-2xl text-[#b09f7b] hover:text-[#e9c475]" />
         <span className="text-slate-800 font-bold">+1 (409) 987-5874</span>
       </div>
     </div>
->>>>>>> 95e6dd4a1de73a96de2f73203d41640d8f8d7481
   );
 };
 
