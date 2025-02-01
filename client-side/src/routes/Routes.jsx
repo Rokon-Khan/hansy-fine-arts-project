@@ -382,6 +382,7 @@ import FileUploadComponent from "../pages/FileUploadComponent";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 
+import AddArt from "../dashboard/AddArt";
 import Login from "../pages/Login/Login";
 import ProductDetails from "../pages/ProductDetails";
 import Shop from "../pages/Shop";
@@ -566,7 +567,7 @@ const router = createBrowserRouter([
       },
       {
         path: "inventory",
-        element: <h1 className="title">Inventory</h1>,
+        element: <AddArt />,
       },
       {
         path: "settings",

@@ -313,7 +313,7 @@ async function run() {
   try {
     const database = client.db("HansAeggyArts");
     const usersCollection = database.collection("users");
-    const artCollection = database.collection("arts");
+    const artCollection = database.collection("hansArts");
 
     // save or update a user in db
     app.post("/users/:email", async (req, res) => {
@@ -362,18 +362,18 @@ async function run() {
       }
     });
 
-    // save a plant data in db
-    // app.post("/plants", verifyToken, async (req, res) => {
-    //   const plant = req.body;
-    //   const result = await plantsCollection.insertOne(plant);
-    //   res.send(result);
-    // });
+    // save a art data in db
+    app.post("/arts", verifyToken, async (req, res) => {
+      const art = req.body;
+      const result = await artCollection.insertOne(art);
+      res.send(result);
+    });
 
-    // get all plants from db
-    // app.get("/plants", async (req, res) => {
-    //   const result = await plantsCollection.find().limit(20).toArray();
-    //   res.send(result);
-    // });
+    // get all arts from db
+    app.get("/arts", async (req, res) => {
+      const result = await artCollection.find().toArray();
+      res.send(result);
+    });
 
     app.get("/users", async (req, res) => {
       const cursor = usersCollection.find();

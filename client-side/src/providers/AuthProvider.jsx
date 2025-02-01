@@ -11,7 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import { app } from "../firebase/firebase.config";
+import app from "../firebase/firebase.config";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
