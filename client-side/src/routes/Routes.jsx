@@ -382,9 +382,11 @@ import FileUploadComponent from "../pages/FileUploadComponent";
 import Gallery from "../pages/Gallery";
 import Home from "../pages/Home";
 
+import OrderForm from "../components/OrderForm";
 import AddArt from "../dashboard/AddArt";
+import ArtCard from "../dashboard/ArtCard";
 import ArtProductTable from "../dashboard/ArtProductTable";
-import ArtCard from "../dashboard/Form/ArtCard";
+import FinerWorksSkuForm from "../dashboard/Form/FinerWorksSkuForm";
 import UpdateArt from "../dashboard/UpdateArt";
 import Login from "../pages/Login/Login";
 import ProductDetail from "../pages/ProductDetail";
@@ -445,6 +447,16 @@ const router = createBrowserRouter([
     path: "/contact",
     element: <MainLayout />,
     children: [{ path: "/contact", element: <Contact /> }],
+  },
+  {
+    path: "/finer-works-order",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/finer-works-order",
+        element: <OrderForm></OrderForm>,
+      },
+    ],
   },
   {
     path: "/roompreview/:id",
@@ -572,6 +584,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ArtProductTable></ArtProductTable>,
+      },
+      {
+        path: "finerworks",
+        element: <FinerWorksSkuForm />,
       },
       {
         path: "update-arts/:id",

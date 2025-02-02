@@ -110,7 +110,6 @@ const UpdateArt = () => {
     const sku = form.sku.value;
     const quantity = parseInt(form.quantity.value, 10);
     const image = uploadToCloudinary || artData?.image;
-
     const updatedData = {
       title,
       description,

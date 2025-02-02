@@ -2,8 +2,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-import LoadingSpinner from "../../components/Shared/LoadingSpinner";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import LoadingSpinner from "../components/Shared/LoadingSpinner";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ArtCard = () => {
   const { id } = useParams();

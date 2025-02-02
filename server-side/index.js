@@ -314,6 +314,7 @@ async function run() {
     const database = client.db("HansAeggyArts");
     const usersCollection = database.collection("users");
     const artCollection = database.collection("hansArts");
+    const finerArtsCollection = database.collection("finerArts");
 
     // save or update a user in db
     app.post("/users/:email", async (req, res) => {
@@ -452,10 +453,17 @@ async function run() {
       }
     });
 
+    // Post FinerArts a art data in db
+    app.post("/finerarts", verifyToken, async (req, res) => {
+      const art = req.body;
+      const result = await finerArtsCollection.insertOne(art);
+      res.send(result);
+    });
+
     // FinerArts Product Get
 
     app.get("/finerarts", async (req, res) => {
-      const cursor = finerArts.find().project({ _id: 0 });
+      const cursor = finerArtsCollection.find().project({ _id: 0 });
       const result = await cursor.toArray();
       // console.log(result);
       // const res = await apiClient.post(url, data);

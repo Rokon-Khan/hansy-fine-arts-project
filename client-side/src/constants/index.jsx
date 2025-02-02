@@ -65,9 +65,9 @@ export const navbarLinks = [
       },
 
       {
-        label: "New product",
+        label: "Add FinerWorks",
         icon: PackagePlus,
-        path: "/dashboard/new-product",
+        path: "/dashboard/finerworks",
       },
       {
         label: "Inventory",

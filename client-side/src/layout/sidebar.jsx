@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { navbarLinks } from "../constants/index";
 
@@ -23,16 +23,20 @@ export const Sidebar = forwardRef(({ collapsed }, ref) => {
       )}
     >
       <div className="flex gap-x-3 p-3">
-        <img
-          src={logoLight}
-          alt="Logoipsum"
-          className="dark:hidden w-[150px]"
-        />
-        <img
-          src={logoDark}
-          alt="Logoipsum"
-          className="hidden dark:block w-[15%] h-[10%]"
-        />
+        <Link to="/">
+          <img
+            src={logoLight}
+            alt="Logoipsum"
+            className="dark:hidden w-[150px]"
+          />
+        </Link>
+        <Link to="/">
+          <img
+            src={logoDark}
+            alt="Logoipsum"
+            className="hidden dark:block w-[15%] h-[10%]"
+          />
+        </Link>
         {/* {!collapsed && (
           <p className="text-lg font-medium text-slate-900 transition-colors dark:text-slate-50">
             Hans Aeggy Art
