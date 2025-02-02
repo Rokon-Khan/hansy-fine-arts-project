@@ -48,9 +48,7 @@ const Slider = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/products`
-        );
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/arts`);
         const data = await response.json();
         setProducts(data);
         setLoading(false);
@@ -89,7 +87,7 @@ const Slider = () => {
           <SwiperSlide key={product._id}>
             <SwiperCard
               _id={product._id}
-              productImage={product.productImage}
+              image={product.image}
               className="w-full h-auto"
               // Replace with the actual key for the image URL
               // productTitle={product.productTitle} // Replace with the actual key for the product title

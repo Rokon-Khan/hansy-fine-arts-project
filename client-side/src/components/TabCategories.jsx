@@ -12,9 +12,7 @@ const TabCategories = () => {
     fetchAllProdcuts();
   }, [products]);
   const fetchAllProdcuts = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/products`
-    );
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/arts`);
     // setProducts(data.data);
     setProducts(data);
   };
@@ -49,7 +47,7 @@ const TabCategories = () => {
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
             {products
-              .filter((product) => product.category === "Contemporary")
+              .filter((product) => product.category === "contemporary")
               .map((product) => (
                 <CategoryCard key={product._id} product={product} />
               ))}
@@ -59,7 +57,7 @@ const TabCategories = () => {
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
             {products
-              .filter((product) => product.category === "Abstract")
+              .filter((product) => product.category === "abstract")
               .map((product) => (
                 <CategoryCard key={product._id} product={product} />
               ))}
@@ -69,7 +67,16 @@ const TabCategories = () => {
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
             {products
-              .filter((product) => product.category === "Portrait")
+              .filter((product) => product.category === "portrait")
+              .map((product) => (
+                <CategoryCard key={product._id} product={product} />
+              ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
+            {products
+              .filter((product) => product.category === "artsy")
               .map((product) => (
                 <CategoryCard key={product._id} product={product} />
               ))}

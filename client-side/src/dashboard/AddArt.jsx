@@ -13,7 +13,7 @@ const AddArt = () => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [uploadImage, setUploadImage] = useState({
-    image: { name: "Upload Button" },
+    image: { name: "Upload Image" },
   });
   console.log(uploadImage);
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const AddArt = () => {
     e.preventDefault();
     setLoading(true);
     const form = e.target;
-    const name = form.name.value;
+    const title = form.title.value;
     const description = form.description.value;
     const category = form.category.value;
     const price = parseFloat(form.price.value);
@@ -40,7 +40,7 @@ const AddArt = () => {
 
     // Create plant data object
     const artData = {
-      name,
+      title,
       category,
       description,
       price,

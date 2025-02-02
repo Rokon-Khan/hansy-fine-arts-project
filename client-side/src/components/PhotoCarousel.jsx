@@ -12,9 +12,7 @@ const PhotoCarousel = () => {
 
   const fetchAllProducts = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/products`
-      );
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/arts`);
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -43,7 +41,7 @@ const PhotoCarousel = () => {
       {products.length > 0 && (
         <div className="relative">
           <img
-            src={products[currentIndex].productImage}
+            src={products[currentIndex].image}
             alt={`Slide ${currentIndex}`}
             className="w-full h-auto object-cover rounded-lg shadow-md"
           />
@@ -75,7 +73,7 @@ const PhotoCarousel = () => {
             }`}
           >
             <img
-              src={product.productImage}
+              src={product.image}
               alt={`Thumbnail ${index}`}
               className="w-full h-full object-cover"
             />

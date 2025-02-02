@@ -54,7 +54,7 @@ const ArtProductTable = () => {
 
   // Handle View Details Action (Navigate to Detail Page)
   const handleView = (id) => {
-    navigate(`/art-details/${id}`);
+    navigate(`/dashboard/art-details/${id}`);
   };
 
   if (isLoading) return <LoadingSpinner />;

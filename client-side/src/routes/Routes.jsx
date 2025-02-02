@@ -48,7 +48,7 @@
 //         element: <Gallery></Gallery>,
 //         loader: async () => {
 //           const response = await fetch(
-//             `${import.meta.env.VITE_API_URL}/products`
+//             `${import.meta.env.VITE_API_URL}/arts`
 //           );
 //           if (!response.ok) {
 //             throw new Error("Failed to fetch products");
@@ -126,7 +126,7 @@
 //         path: "/roompreview/:id",
 //         element: <RoomPreview></RoomPreview>,
 //         loader: async ({ params }) =>
-//           fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+//           fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`),
 //       },
 //     ],
 //   },
@@ -139,7 +139,7 @@
 //         element: <Shop></Shop>,
 //         loader: async () => {
 //           const response = await fetch(
-//             `${import.meta.env.VITE_API_URL}/products`
+//             `${import.meta.env.VITE_API_URL}/arts`
 //           );
 //           if (!response.ok) {
 //             throw new Error("Failed to fetch products");
@@ -152,7 +152,7 @@
 //             element: <ProductCards></ProductCards>, // Render all products here
 //             loader: async () => {
 //               const response = await fetch(
-//                 `${import.meta.env.VITE_API_URL}/products`
+//                 `${import.meta.env.VITE_API_URL}/arts`
 //               );
 //               if (!response.ok) {
 //                 throw new Error("Failed to fetch products");
@@ -165,7 +165,7 @@
 //             element: <ProductCards></ProductCards>,
 //             loader: async ({ params }) => {
 //               const response = await fetch(
-//                 `${import.meta.env.VITE_API_URL}/products`
+//                 `${import.meta.env.VITE_API_URL}/arts`
 //               );
 //               if (!response.ok) {
 //                 throw new Error("Failed to fetch products");
@@ -229,11 +229,11 @@
 //         path: "/product/:id",
 //         element: <ProductDetails></ProductDetails>,
 //         loader: async ({ params }) =>
-//           fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+//           fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`),
 //         // fetch(`http://localhost:5000/products/${params.id}`),
 
 //         // loader: async ({ params }) =>
-//         //   fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`).then(
+//         //   fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`).then(
 //         //     (res) => res.json()
 //         //   ),
 //       },
@@ -247,11 +247,11 @@
 //         path: "/product-detail/:id",
 //         element: <ProductDetail></ProductDetail>,
 //         loader: async ({ params }) =>
-//           fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+//           fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`),
 //         // fetch(`http://localhost:5000/products/${params.id}`),
 
 //         // loader: async ({ params }) =>
-//         //   fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`).then(
+//         //   fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`).then(
 //         //     (res) => res.json()
 //         //   ),
 //       },
@@ -276,7 +276,7 @@
 //         path: "/finer-works-product-detail/sku/:sku",
 //         element: <FinerWorksProductDetail />,
 //         loader: async ({ params }) =>
-//           fetch(`${import.meta.env.VITE_API_URL}/products/sku/${params.sku}`),
+//           fetch(`${import.meta.env.VITE_API_URL}/arts/sku/${params.sku}`),
 //       },
 //     ],
 //   },
@@ -384,8 +384,10 @@ import Home from "../pages/Home";
 
 import AddArt from "../dashboard/AddArt";
 import ArtProductTable from "../dashboard/ArtProductTable";
+import ArtCard from "../dashboard/Form/ArtCard";
 import UpdateArt from "../dashboard/UpdateArt";
 import Login from "../pages/Login/Login";
+import ProductDetail from "../pages/ProductDetail";
 import ProductDetails from "../pages/ProductDetails";
 import Shop from "../pages/Shop";
 import ShoppingCart from "../pages/ShoppingCart";
@@ -407,9 +409,7 @@ const router = createBrowserRouter([
         path: "/shop-art",
         element: <Gallery />,
         loader: async () => {
-          const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/products`
-          );
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/arts`);
           if (!response.ok) throw new Error("Failed to fetch products");
           return response.json();
         },
@@ -454,7 +454,7 @@ const router = createBrowserRouter([
         path: "/roompreview/:id",
         element: <RoomPreview />,
         loader: async ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`),
       },
     ],
   },
@@ -466,9 +466,7 @@ const router = createBrowserRouter([
         path: "/shop",
         element: <Shop />,
         loader: async () => {
-          const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/products`
-          );
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/arts`);
           if (!response.ok) throw new Error("Failed to fetch products");
           return response.json();
         },
@@ -478,7 +476,7 @@ const router = createBrowserRouter([
             element: <ProductCards />,
             loader: async () => {
               const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/products`
+                `${import.meta.env.VITE_API_URL}/arts`
               );
               if (!response.ok) throw new Error("Failed to fetch products");
               return response.json();
@@ -489,7 +487,7 @@ const router = createBrowserRouter([
             element: <ProductCards />,
             loader: async ({ params }) => {
               const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/products`
+                `${import.meta.env.VITE_API_URL}/arts`
               );
               if (!response.ok) throw new Error("Failed to fetch products");
               const products = await response.json();
@@ -523,14 +521,26 @@ const router = createBrowserRouter([
     children: [{ path: "/custom-art", element: <FileUploadComponent /> }],
   },
   {
-    path: "/product/:id",
+    path: "/art/:id",
     element: <MainLayout />,
     children: [
       {
-        path: "/product/:id",
+        path: "/art/:id",
         element: <ProductDetails />,
         loader: async ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/products/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "/product-detail/:id",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/product-detail/:id",
+        element: <ProductDetail />,
+        loader: async ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/arts/${params.id}`),
       },
     ],
   },
@@ -568,8 +578,8 @@ const router = createBrowserRouter([
         element: <UpdateArt />,
       },
       {
-        path: "new-product",
-        element: <h1 className="title">New Product</h1>,
+        path: "art-details/:id",
+        element: <ArtCard />,
       },
       {
         path: "inventory",

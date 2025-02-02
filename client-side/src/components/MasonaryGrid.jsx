@@ -20,7 +20,7 @@
 //   }, [products]);
 //   const fetchAllProdcuts = async () => {
 //     const { data } = await axios.get(
-//       `${import.meta.env.VITE_API_URL}/products`
+//       `${import.meta.env.VITE_API_URL}/arts`
 //     );
 //     // setProducts(data.data);
 //     setProducts(data);
@@ -28,7 +28,7 @@
 
 // const MasonaryGrid = () => {
 //   // { productItem }
-//   // const { _id, productTitle, productImage } = productItem || {};
+//   // const { _id, productTitle, image } = productItem || {};
 
 //   return (
 //     <>
@@ -39,7 +39,7 @@
 //         {/* <div className=" mb-4 break-inside-avoid transition hover:scale-105 shadow-xl ">
 //           <img
 //             className="w-full h-auto object-cover rounded-lg"
-//             src={productImage}
+//             src={image}
 //             alt=""
 //           />
 //         </div> */}
@@ -81,7 +81,7 @@
 //   const fetchAllProducts = async () => {
 //     try {
 //       const { data } = await axios.get(
-//         `${import.meta.env.VITE_API_URL}/products`
+//         `${import.meta.env.VITE_API_URL}/arts`
 //       );
 //       setProducts(data); // Assuming `data` is an array of products
 //     } catch (error) {
@@ -101,11 +101,11 @@
 //               className="mb-4 break-inside-avoid transition hover:scale-105 shadow-xl"
 //               key={product._id}
 //             >
-//               <PhotoView src={product.productImage}>
+//               <PhotoView src={product.image}>
 //                 <Link to={`/product-detail/${product._id}`}>
 //                   <img
 //                     className="w-full h-auto object-cover rounded-lg cursor-pointer"
-//                     src={product.productImage}
+//                     src={product.image}
 //                     alt={product.productTitle}
 //                   />
 //                 </Link>
@@ -136,9 +136,7 @@ const MasonaryGrid = () => {
 
   const fetchAllProducts = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/products`
-      );
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/arts`);
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -169,16 +167,16 @@ const MasonaryGrid = () => {
                 <Link to={`/product-detail/${product._id}`}>
                   <img
                     className="w-full h-auto object-cover rounded-lg cursor-pointer"
-                    src={product.productImage}
+                    src={product.image}
                     alt={product.productTitle}
                   />
                 </Link>
               ) : (
                 // Open PhotoView on first click
-                <PhotoView src={product.productImage}>
+                <PhotoView src={product.image}>
                   <img
                     className="w-full h-auto object-cover rounded-lg cursor-pointer"
-                    src={product.productImage}
+                    src={product.image}
                     alt={product.productTitle}
                     onClick={() => handleImageClick(product._id)}
                   />

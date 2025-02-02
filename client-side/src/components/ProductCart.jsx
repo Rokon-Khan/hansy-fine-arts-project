@@ -3,7 +3,7 @@
 // import { useCart } from "../cartprovider/CartContext";
 
 // const ProductCart = ({ product }) => {
-//   // const { productTitle, productImage, description, category, price } =
+//   // const { productTitle, image, description, category, price } =
 //   //   product || {};
 
 //   const { cart, dispatch } = useCart();
@@ -39,7 +39,7 @@
 //           {cart.map((item) => (
 //             <div key={item._id} className="flex items-center border-b pb-4">
 //               <img
-//                 src={item.productImage}
+//                 src={item.image}
 //                 alt={item.productTitle || "Product Image"}
 //                 className="w-16 h-16 object-cover rounded mr-4"
 //               />
@@ -163,7 +163,7 @@ const ProductCart = () => {
               {cart.map((item) => (
                 <div key={item._id} className="flex items-center border-b pb-4">
                   <img
-                    src={item.productImage}
+                    src={item.image}
                     alt={item.productTitle || "Product Image"}
                     className="w-16 h-16 object-cover rounded mr-4"
                   />

@@ -3,7 +3,7 @@
 // import { Link } from "react-router-dom";
 
 // const CategoryCard = ({ product }) => {
-//   const { _id, productTitle, productImage } = product || {};
+//   const { _id, productTitle, image } = product || {};
 //   return (
 //     <Link
 //       to={`/product-detail/${_id}`}
@@ -27,7 +27,7 @@
 //                 group-hover:scale-110
 //                 transition
 //               "
-//             src={productImage}
+//             src={image}
 //             alt="Product Image"
 //           />
 //           <div
@@ -54,7 +54,7 @@
 //     category: PropTypes.string,
 //     quantity: PropTypes.number,
 //     price: PropTypes.number,
-//     productImage: PropTypes.string,
+//     image: PropTypes.string,
 //     _id: PropTypes.string,
 //   }).isRequired,
 // };
@@ -65,7 +65,7 @@
 // import "../App.css";
 
 // const CategoryCard = ({ product }) => {
-//   const { _id, productTitle, productImage, category } = product || {};
+//   const { _id, productTitle, image, category } = product || {};
 //   return (
 //     <Link
 //       to={`/product-detail/${_id}`}
@@ -88,7 +88,7 @@
 //                 group-hover:scale-110
 //                 transition
 //               "
-//             src={productImage}
+//             src={image}
 //             alt="Product Image"
 //           />
 //           <div
@@ -120,7 +120,7 @@
 //   product: PropTypes.shape({
 //     _id: PropTypes.string.isRequired,
 //     productTitle: PropTypes.string.isRequired,
-//     productImage: PropTypes.string.isRequired,
+//     image: PropTypes.string.isRequired,
 //   }).isRequired,
 // };
 
@@ -131,10 +131,10 @@ import { Link } from "react-router-dom";
 import "../App.css";
 
 const CategoryCard = ({ product }) => {
-  const { _id, productImage, category } = product || {};
+  const { _id, image, category } = product || {};
   return (
     <Link to={`/product-detail/${_id}`} className="pain-fram">
-      <img src={productImage} alt="Product Image" />
+      <img src={image} alt="Product Image" />
       <div className="paint-title">
         <h2>Category: {category}</h2>
       </div>
@@ -146,7 +146,7 @@ CategoryCard.propTypes = {
   product: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     productTitle: PropTypes.string,
-    productImage: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
   }).isRequired,
 };

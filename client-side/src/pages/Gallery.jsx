@@ -41,7 +41,7 @@ const Gallery = () => {
             <div className="mb-4 break-inside-avoid transition hover:scale-105 shadow-xl">
               <img
                 className="w-full h-auto object-cover rounded-lg"
-                src={productItem.productImage}
+                src={productItem.image}
                 alt={productItem.productTitle}
               />
             </div>

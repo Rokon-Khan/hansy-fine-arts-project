@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 
 const RoomPreview = () => {
   const product = useLoaderData();
-  const { productImage } = product || {};
+  const { image } = product || {};
   const [wallColor, setWallColor] = useState("#ffffff");
   const [frameSize, setFrameSize] = useState({ width: 150, height: 120 });
   const [backgroundImage, setBackgroundImage] = useState(
@@ -177,7 +177,7 @@ const RoomPreview = () => {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <img src={productImage} alt="" />
+            <img src={image} alt="" />
           </div>
         </Draggable>
       </div>

@@ -46,7 +46,7 @@
 //   const [error, setError] = useState(null);
 
 //   const navigate = useNavigate();
-//   // const { _id, productTitle, productImage, price } = product || {};
+//   // const { _id, productTitle, image, price } = product || {};
 
 //   // console.log(price);
 //   const { dispatch } = useCart();

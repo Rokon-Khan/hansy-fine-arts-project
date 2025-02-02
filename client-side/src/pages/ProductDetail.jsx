@@ -14,7 +14,7 @@ import ARLivePreview from "./ARLivePreview";
 const ProductDetail = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
-  const { _id, productTitle, productImage, price } = product || {}; // Ensure fallback in case `product` is undefined
+  const { _id, name, image, price } = product || {}; // Ensure fallback in case `product` is undefined
 
   console.log(price);
   const { dispatch } = useCart();
@@ -26,7 +26,7 @@ const ProductDetail = () => {
     // Show success alert
     Swal.fire({
       title: "Added to Cart!",
-      text: `${productTitle} has been added to your cart.`,
+      text: `${name} has been added to your cart.`,
       icon: "success",
       confirmButtonText: "Go to Cart",
     }).then((result) => {
@@ -52,7 +52,7 @@ const ProductDetail = () => {
         <div className="relative">
           <div className="group">
             <img
-              src={productImage}
+              src={image}
               alt="Product"
               className="rounded-lg w-[85%] max-h-auto object-cover transform transition duration-300 group-hover:scale-110"
             />
@@ -64,13 +64,13 @@ const ProductDetail = () => {
             </button> */}
             {/* <GlassMagnifier
               magnifierSize="30%"
-              imageSrc={productImage}
+              imageSrc={image}
               imageAlt="Example"
-              largeImageSrc={productImage} // Optional
+              largeImageSrc={image} // Optional
             /> */}
-            {/* <SideBySideMagnifier switchSides="true" imageSrc={productImage} /> */}
+            {/* <SideBySideMagnifier switchSides="true" imageSrc={image} /> */}
             {/* <Magnifier
-              imageSrc={productImage}
+              imageSrc={image}
               imageAlt="Example"
               largeImageSrc="./large-image.jpg" // Optional
               mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
@@ -78,11 +78,11 @@ const ProductDetail = () => {
             />  */}
             {/* <MagnifierContainer>
               <div className="example-class">
-                <MagnifierPreview imageSrc={productImage} />
+                <MagnifierPreview imageSrc={image} />
               </div>
               <MagnifierZoom
                 style={{ height: "400px" }}
-                imageSrc={productImage}
+                imageSrc={image}
               />
             </MagnifierContainer> */}
           </div>
@@ -96,18 +96,18 @@ const ProductDetail = () => {
             <Link to={`/roompreview/${_id}`}>
               <CiImageOn className="text-5xl border-2 border-dotted bg-white p-2" />
             </Link>
-            {/* <WebXRPreview imageUrl={productImage}></WebXRPreview> */}
-            <ARLivePreview image={productImage}></ARLivePreview>
+            {/* <WebXRPreview imageUrl={image}></WebXRPreview> */}
+            <ARLivePreview image={image}></ARLivePreview>
 
-            {/* <ArtPreview image={productImage}></ArtPreview> */}
-            {/* <Google3DModelPreview modelSrc={productImage} /> */}
+            {/* <ArtPreview image={image}></ArtPreview> */}
+            {/* <Google3DModelPreview modelSrc={image} /> */}
             {/* <Google3DModelPreview modelSrc="https://modelviewer.dev/shared-assets/models/Astronaut.glb" /> */}
           </div>
         </div>
 
         {/* Product Details */}
         <div>
-          <h1 className="text-3xl font-bold mb-2">{productTitle}</h1>
+          <h1 className="text-3xl font-bold mb-2">{name}</h1>
           <p className="text-xl text-gray-600 font-semibold mb-4">${price}</p>
           <p className="text-sm text-gray-500">
             {/* or 4 interest-free payments of $13.39 with{" "} */}
@@ -187,7 +187,7 @@ const ProductDetail = () => {
       {/* Lightbox Component */}
       {/* {isLightboxOpen && (
         <Lightbox
-          mainSrc={productImage}
+          mainSrc={image}
           onCloseRequest={() => setIsLightboxOpen(false)} // Close Lightbox
         />
       )} */}
@@ -196,7 +196,7 @@ const ProductDetail = () => {
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="flex justify-center">
-            <img className="width-full h-auto" src={productImage} alt="" />
+            <img className="width-full h-auto" src={image} alt="" />
           </div>
 
           <div className="modal-action justify-center">

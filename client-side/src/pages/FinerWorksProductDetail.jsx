@@ -18,7 +18,7 @@
 //     const fetchProduct = async () => {
 //       try {
 //         const response = await fetch(
-//           `${import.meta.env.VITE_API_URL}/products/${sku}`
+//           `${import.meta.env.VITE_API_URL}/arts/${sku}`
 //         );
 //         if (!response.ok) {
 //           throw new Error("Failed to fetch product details.");
@@ -47,7 +47,7 @@
 //         <div className="relative">
 //           <div className="group">
 //             <img
-//               src={productImage}
+//               src={image}
 //               alt="Product"
 //               className="rounded-lg max-w-[400px] max-h-[400px] object-cover transform transition duration-300 group-hover:scale-110"
 //             />
@@ -56,10 +56,10 @@
 //             <Link to={`/roompreview/${_id}`}>
 //               <CiImageOn className="text-5xl border-2 border-dotted bg-white p-2" />
 //             </Link>
-//             {/* <WebXRPreview imageUrl={productImage}></WebXRPreview> */}
-//             <ARLivePreview image={productImage}></ARLivePreview>
-//             <ArtPreview image={productImage}></ArtPreview>
-//             {/* <Google3DModelPreview modelSrc={productImage} /> */}
+//             {/* <WebXRPreview imageUrl={image}></WebXRPreview> */}
+//             <ARLivePreview image={image}></ARLivePreview>
+//             <ArtPreview image={image}></ArtPreview>
+//             {/* <Google3DModelPreview modelSrc={image} /> */}
 //             {/* <Google3DModelPreview modelSrc="https://modelviewer.dev/shared-assets/models/Astronaut.glb" /> */}
 //           </div>
 //         </div>

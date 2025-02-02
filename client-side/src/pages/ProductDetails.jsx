@@ -12,7 +12,7 @@
 //   const product = useLoaderData();
 //   // console.log(product);
 
-//   const { productTitle, productImage, description, stockList, price } =
+//   const { productTitle, image, description, stockList, price } =
 //     product.data || {};
 
 //   const { dispatch } = useCart();
@@ -47,7 +47,7 @@
 //         <div className="hero-content flex-col lg:flex-row gap-6">
 //           <img
 //             className="max-w-[424px] max-h-[503px] rounded-2xl"
-//             src={productImage}
+//             src={image}
 //           />
 //           <div className="space-y-3">
 //             <h3 className="text-3xl semi-bold">{productTitle}</h3>
@@ -94,7 +94,6 @@
 
 // export default ProductDetails;
 
-/* eslint-disable react-hooks/rules-of-hooks */
 // import { Helmet } from "react-helmet";
 // import { Toaster } from "react-hot-toast";
 // import { FiHeart } from "react-icons/fi";
@@ -107,7 +106,7 @@
 // const ProductDetails = () => {
 //   const product = useLoaderData();
 //   const navigate = useNavigate(); // Initialize `navigate`
-//   const { productTitle, productImage, description, stockList, price } =
+//   const { productTitle, image, description, stockList, price } =
 //     product.data || {};
 
 //   const { dispatch } = useCart();
@@ -154,7 +153,7 @@
 //         <div className="hero-content flex-col lg:flex-row gap-6">
 //           <img
 //             className="max-w-[424px] max-h-[503px] rounded-2xl"
-//             src={productImage}
+//             src={image}
 //             alt={productTitle}
 //           />
 //           <div className="space-y-3">
@@ -212,7 +211,7 @@ import { useCart } from "../cartprovider/CartContext";
 const ProductDetails = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
-  const { productTitle, productImage, description, stockList, price } =
+  const { _id, name, image, description, stockList, price } =
     product.data || {}; // Ensure fallback in case `product` is undefined
 
   console.log(price);
@@ -225,7 +224,7 @@ const ProductDetails = () => {
     // Show success alert
     Swal.fire({
       title: "Added to Cart!",
-      text: `${productTitle} has been added to your cart.`,
+      text: `${name} has been added to your cart.`,
       icon: "success",
       confirmButtonText: "Go to Cart",
     }).then((result) => {
@@ -239,7 +238,7 @@ const ProductDetails = () => {
   const handleAddToWishlist = () => {
     Swal.fire({
       title: "Added to Wishlist!",
-      text: `${productTitle} has been added to your wishlist.`,
+      text: `${name} has been added to your wishlist.`,
       icon: "success",
     });
   };
@@ -262,11 +261,11 @@ const ProductDetails = () => {
         <div className="hero-content flex-col lg:flex-row gap-6">
           <img
             className="max-w-[424px] max-h-[503px] rounded-2xl"
-            src={productImage}
-            alt={productTitle}
+            src={image}
+            alt={name}
           />
           <div className="space-y-3">
-            <h3 className="text-3xl semi-bold">{productTitle}</h3>
+            <h3 className="text-3xl semi-bold">{name}</h3>
             <p className="text-lg text-gray-600 font-regular">
               Price: ${price} {/* Ensure `price` is shown correctly */}
             </p>

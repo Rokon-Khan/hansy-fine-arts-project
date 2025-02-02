@@ -4,20 +4,21 @@ import { TbFidgetSpinner } from "react-icons/tb";
 const AddArtFrom = ({ handleSubmit, uploadImage, setUploadImage, loading }) => {
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+      <h2 className="text-4xl font-bold mb-10">Add Arts From Dashboard</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
             {/* Name */}
             <div className="space-y-1 text-sm">
               <label htmlFor="name" className="block text-gray-600">
-                Name
+                Art Name
               </label>
               <input
                 className="w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md bg-white"
-                name="name"
-                id="name"
+                name="title"
+                id="title"
                 type="text"
-                placeholder="Plant Name"
+                placeholder="Write Yiur Paintinig Ot Art Name"
                 required
               />
             </div>

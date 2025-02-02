@@ -3,7 +3,7 @@
 
 // const Card = ({ product, handleRemove }) => {
 //   const { pathname } = useLocation();
-//   const { _id, title, productImage, category, price } = product || {};
+//   const { _id, title, image, category, price } = product || {};
 //   const { dispatch } = useCart();
 
 //   const handleAddToCart = (product) => {
@@ -24,7 +24,7 @@
 //         className="transition  hover:scale-105 shadow-xl rounded-xl overflow-hidden"
 //       >
 //         <figure className=" w-[282px] h-[300px] overflow-hidden">
-//           <img className="" src={productImage} alt="" />
+//           <img className="" src={image} alt="" />
 //         </figure>
 //         <div className="p-4">
 //           <h1 className="text-2xl font-bold">{title}</h1>
@@ -64,7 +64,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Card = ({ product, handleRemove }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate(); // Initialize navigate function
-  const { _id, productTitle, productImage, category, price } = product || {};
+  const { _id, productTitle, image, category, price } = product || {};
   // const { dispatch } = useCart();
 
   // const handleAddToCart = (product) => {
@@ -89,7 +89,7 @@ const Card = ({ product, handleRemove }) => {
       <Link to={`/product-detail/${_id}`}>
         <div className="transition hover:scale-105 shadow-xl rounded-xl overflow-hidden">
           <figure className="w-[282px] h-[300px] overflow-hidden">
-            <img src={productImage} alt={productTitle} />
+            <img src={image} alt={productTitle} />
           </figure>
           <div className="p-4">
             <h1 className="text-2xl font-bold">{productTitle}</h1>

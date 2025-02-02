@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react";
 
-import ProductImage from "../assets/product-image.jpg";
+import image from "../assets/product-image.jpg";
 import ProfileImage from "../assets/profile-image.jpg";
 
 export const navbarLinks = [
@@ -195,7 +195,7 @@ export const topProducts = [
   {
     number: 1,
     name: "Wireless Headphones",
-    image: ProductImage,
+    image: image,
     description: "High-quality noise-canceling wireless headphones.",
     price: 99.99,
     status: "In Stock",
@@ -204,7 +204,7 @@ export const topProducts = [
   {
     number: 2,
     name: "Smartphone",
-    image: ProductImage,
+    image: image,
     description: "Latest 5G smartphone with excellent camera features.",
     price: 799.99,
     status: "In Stock",
@@ -213,7 +213,7 @@ export const topProducts = [
   {
     number: 3,
     name: "Gaming Laptop",
-    image: ProductImage,
+    image: image,
     description: "Powerful gaming laptop with high-end graphics.",
     price: 1299.99,
     status: "In Stock",
@@ -222,7 +222,7 @@ export const topProducts = [
   {
     number: 4,
     name: "Smartwatch",
-    image: ProductImage,
+    image: image,
     description: "Stylish smartwatch with fitness tracking features.",
     price: 199.99,
     status: "Out of Stock",
@@ -231,7 +231,7 @@ export const topProducts = [
   {
     number: 5,
     name: "Bluetooth Speaker",
-    image: ProductImage,
+    image: image,
     description: "Portable Bluetooth speaker with deep bass sound.",
     price: 59.99,
     status: "In Stock",
@@ -240,7 +240,7 @@ export const topProducts = [
   {
     number: 6,
     name: "4K Monitor",
-    image: ProductImage,
+    image: image,
     description: "Ultra HD 4K monitor with stunning color accuracy.",
     price: 399.99,
     status: "In Stock",
@@ -249,7 +249,7 @@ export const topProducts = [
   {
     number: 7,
     name: "Mechanical Keyboard",
-    image: ProductImage,
+    image: image,
     description: "Mechanical keyboard with customizable RGB lighting.",
     price: 89.99,
     status: "In Stock",
@@ -258,7 +258,7 @@ export const topProducts = [
   {
     number: 8,
     name: "Wireless Mouse",
-    image: ProductImage,
+    image: image,
     description: "Ergonomic wireless mouse with precision tracking.",
     price: 49.99,
     status: "In Stock",
@@ -267,7 +267,7 @@ export const topProducts = [
   {
     number: 9,
     name: "Action Camera",
-    image: ProductImage,
+    image: image,
     description: "Waterproof action camera with 4K video recording.",
     price: 249.99,
     status: "In Stock",
@@ -276,7 +276,7 @@ export const topProducts = [
   {
     number: 10,
     name: "External Hard Drive",
-    image: ProductImage,
+    image: image,
     description: "Portable 2TB external hard drive for data storage.",
     price: 79.99,
     status: "Out of Stock",
