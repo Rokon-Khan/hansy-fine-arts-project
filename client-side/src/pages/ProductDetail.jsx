@@ -8,13 +8,14 @@ import { useCart } from "../cartprovider/CartContext";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
 // import ProductList from "../components/ProductList";
 // import { GlassMagnifier } from "react-image-magnifiers";
-import ThreeSixtyPreview from "../components/ThreeSixtyPreview";
+import PhoneCaseMockup from "../mockups/PhoneCaseMockup";
+import TShirtMockup from "../mockups/TShirtMockup";
 import ARLivePreview from "./ARLivePreview";
 
 const ProductDetail = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
-  const { _id, name, image, price } = product || {}; // Ensure fallback in case `product` is undefined
+  const { _id, title, image, price } = product || {}; // Ensure fallback in case `product` is undefined
 
   console.log(price);
   const { dispatch } = useCart();
@@ -26,7 +27,7 @@ const ProductDetail = () => {
     // Show success alert
     Swal.fire({
       title: "Added to Cart!",
-      text: `${name} has been added to your cart.`,
+      text: `${title} has been added to your cart.`,
       icon: "success",
       confirmButtonText: "Go to Cart",
     }).then((result) => {
@@ -107,7 +108,7 @@ const ProductDetail = () => {
 
         {/* Product Details */}
         <div>
-          <h1 className="text-3xl font-bold mb-2">{name}</h1>
+          <h1 className="text-3xl font-bold mb-2">{title}</h1>
           <p className="text-xl text-gray-600 font-semibold mb-4">${price}</p>
           <p className="text-sm text-gray-500">
             {/* or 4 interest-free payments of $13.39 with{" "} */}
@@ -143,7 +144,9 @@ const ProductDetail = () => {
             {/* <ProductList></ProductList> */}
             {/* <FinerWorksAPI></FinerWorksAPI> */}
             {/* <FrameCollection></FrameCollection> */}
-
+            <TShirtMockup image={image} />
+            <PhoneCaseMockup image={image} />
+            {/* <TShirtMockup></TShirtMockup> */}
             <h2 className="text-lg font-bold mb-2">Medium</h2>
             <div className="grid grid-cols-4 gap-2">
               <button className="border p-4 rounded hover:bg-gray-200">
@@ -175,14 +178,14 @@ const ProductDetail = () => {
           <div className="mt-6">
             <h2 className="text-lg font-bold mb-2">Styles</h2>
             <select className="border rounded p-2 w-full">
-              <option>Just the Print - 1" Border</option>
+              <option>Just the Print - 1 Border</option>
               <option>Framed Print</option>
             </select>
           </div>
         </div>
       </div>
 
-      <ThreeSixtyPreview></ThreeSixtyPreview>
+      {/* <ThreeSixtyPreview></ThreeSixtyPreview> */}
 
       {/* Lightbox Component */}
       {/* {isLightboxOpen && (
