@@ -1,7 +1,7 @@
 import banner from "../assets/gallery-banner.jpg";
 import ArtCommissionAgreement from "../components/ArtCommissionAgreement";
 import CustomPortraitAgreement from "../components/CustomPortraitAgreement";
-import PhotoCarousel from "../components/PhotoCarousel";
+import PortraitCarousel from "../components/PortraitCarousel";
 const CustomPortrait = () => {
   return (
     <div>
@@ -32,7 +32,8 @@ const CustomPortrait = () => {
 
       <div className="max-w-7xl mx-auto my-10 grid lg:grid-cols-2 grid-cols-1 gap-50">
         {/* <Slider></Slider> */}
-        <PhotoCarousel></PhotoCarousel>
+        {/* <PhotoCarousel></PhotoCarousel> */}
+        <PortraitCarousel />
         <div>
           <CustomPortraitAgreement></CustomPortraitAgreement>
           <ArtCommissionAgreement></ArtCommissionAgreement>

@@ -540,13 +540,49 @@ const phoneCaseData = {
     case: "/Iphone_16_Snap_Mask.png",
     overlay: "/Iphone_16_Overlay.png",
   },
-  "iPhone 16 Pro": {
-    case: "/Iphone_16_Pro_Snap_Mask.png",
-    overlay: "/Iphone_16_Pro_Overlay.png",
-  },
   "iPhone 16 Plus": {
-    case: "/Iphone_16_Plus_Snap_Mask.png",
-    overlay: "/Iphone_16_Plus_Overlay.png",
+    case: "/Iphone_16_Snap_Mask.png",
+    overlay: "/Iphone_16_Plus_Snap_Overlay.png",
+  },
+  "iPhone 16 Pro": {
+    case: "/Iphone_16_Snap_Mask.png",
+    overlay: "/Iphone_16_Pro_Snap_Overlay.png",
+  },
+  "iPhone 16 Pro Max": {
+    case: "/Iphone_16_Snap_Mask.png",
+    overlay: "/Iphone_16_Pro_Max_Snap_Overlay.png",
+  },
+  "iPhone 15": {
+    case: "/iPhone_15_Pro_Snap_Mask.png",
+    overlay: "/iPhone_15_Snap_Overlay.png",
+  },
+  "iPhone 15 Plus": {
+    case: "/iPhone_15_Pro_Snap_Mask.png",
+    overlay: "/iPhone_15_Plus_Snap_Overlay.png",
+  },
+  "iPhone 15 Pro": {
+    case: "/iPhone_15_Pro_Snap_Mask.png",
+    overlay: "/iPhone_15_Pro_Snap_Overlay.png",
+  },
+  "iPhone 15 Pro Max": {
+    case: "/iPhone_15_Pro_Snap_Mask.png",
+    overlay: "/iPhone_15_Pro_Max_Snap_Overlay.png",
+  },
+  "iPhone 14": {
+    case: "/iPhone_14_Pro_Snap_Mask.png",
+    overlay: "/iPhone_14_Snap_Overlay.png",
+  },
+  "iPhone 14 Plus": {
+    case: "/iPhone_14_Pro_Snap_Mask.png",
+    overlay: "/iPhone_14_Plus_Snap_Overlay.png",
+  },
+  "iPhone 14 Pro": {
+    case: "/iPhone_14_Pro_Snap_Mask.png",
+    overlay: "/iPhone_14_Pro_Snap_Overlay.png",
+  },
+  "iPhone 14 Pro Max": {
+    case: "/iPhone_14_Pro_Snap_Mask.png",
+    overlay: "/iPhone_14_Pro_Max_Snap_Overlay.png",
   },
 };
 

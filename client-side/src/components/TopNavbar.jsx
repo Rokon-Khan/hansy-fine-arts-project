@@ -39,10 +39,10 @@ const TopNavbar = () => {
           <img className="max-w-[150px] max-h-[150px]" src={logo} alt="" />
         </Link>
       </div> */}
-        <div className="flex items-center justify-center space-x-2">
+        {/* <div className="flex items-center justify-center space-x-2">
           <FaPhoneAlt className="text-2xl text-[#b09f7b]" />
           <span className="text-gray-600">+1 (409) 987-5874</span>
-        </div>
+        </div> */}
       </div>
       <div className="flex items-center space-x-2">
         <FaPhoneAlt className="text-2xl text-[#b09f7b] hover:text-[#e9c475]" />
