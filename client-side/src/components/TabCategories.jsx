@@ -7,14 +7,14 @@ import CategoryCard from "./CategoryCard";
 
 const TabCategories = () => {
   // const { user } = useContext(AuthContext)
-  const [products, setProducts] = useState([]);
+  const [arts, setArts] = useState([]);
   useEffect(() => {
     fetchAllProdcuts();
-  }, [products]);
+  }, [arts]);
   const fetchAllProdcuts = async () => {
     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/arts`);
-    // setProducts(data.data);
-    setProducts(data);
+    // setarts(data.data);
+    setArts(data);
   };
   //   const [arts, setArts] = useState([]);
   //   useEffect(() => {
@@ -46,39 +46,39 @@ const TabCategories = () => {
         </div>
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
-            {products
-              .filter((product) => product.category === "contemporary")
-              .map((product) => (
-                <CategoryCard key={product._id} product={product} />
+            {arts
+              .filter((art) => art.category === "contemporary")
+              .map((art) => (
+                <CategoryCard key={art._id} art={art} />
               ))}
           </div>
         </TabPanel>
 
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
-            {products
-              .filter((product) => product.category === "abstract")
-              .map((product) => (
-                <CategoryCard key={product._id} product={product} />
+            {arts
+              .filter((art) => art.category === "abstract")
+              .map((art) => (
+                <CategoryCard key={art._id} art={art} />
               ))}
           </div>
         </TabPanel>
 
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
-            {products
-              .filter((product) => product.category === "portrait")
-              .map((product) => (
-                <CategoryCard key={product._id} product={product} />
+            {arts
+              .filter((art) => art.category === "portrait")
+              .map((art) => (
+                <CategoryCard key={art._id} art={art} />
               ))}
           </div>
         </TabPanel>
         <TabPanel>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 ">
-            {products
-              .filter((product) => product.category === "artsy")
-              .map((product) => (
-                <CategoryCard key={product._id} product={product} />
+            {arts
+              .filter((art) => art.category === "artsy")
+              .map((art) => (
+                <CategoryCard key={art._id} art={art} />
               ))}
           </div>
         </TabPanel>

@@ -315,6 +315,7 @@ async function run() {
     const usersCollection = database.collection("users");
     const artCollection = database.collection("hansArts");
     const finerArtsCollection = database.collection("finerArts");
+    const portraitsCollection = database.collection("customPortrait");
 
     // save or update a user in db
     app.post("/users/:email", async (req, res) => {
@@ -367,6 +368,12 @@ async function run() {
     app.post("/arts", verifyToken, async (req, res) => {
       const art = req.body;
       const result = await artCollection.insertOne(art);
+      res.send(result);
+    });
+    // save a Csutom Portrait Art data in db
+    app.post("/custom-portrait", async (req, res) => {
+      const portrait = req.body;
+      const result = await portraitsCollection.insertOne(portrait);
       res.send(result);
     });
 
@@ -592,7 +599,7 @@ async function run() {
     });
 
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    // await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );

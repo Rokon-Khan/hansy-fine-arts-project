@@ -130,8 +130,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-const CategoryCard = ({ product }) => {
-  const { _id, image, category } = product || {};
+const CategoryCard = ({ art }) => {
+  const { _id, image, category } = art || {};
   return (
     <Link to={`/product-detail/${_id}`} className="pain-fram">
       <img src={image} alt="Product Image" />
@@ -143,7 +143,7 @@ const CategoryCard = ({ product }) => {
 };
 
 CategoryCard.propTypes = {
-  product: PropTypes.shape({
+  art: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     productTitle: PropTypes.string,
     image: PropTypes.string.isRequired,

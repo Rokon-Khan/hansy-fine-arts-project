@@ -1,5 +1,5 @@
 import banner from "../assets/gallery-banner.jpg";
-import FinerWorksArt from "../components/FinerWorksArt";
+import AbstractArtGallery from "../components/AbstractArtGallery";
 const AbstractDesign = () => {
   return (
     <>
@@ -27,7 +27,8 @@ const AbstractDesign = () => {
         </ul>
       </nav> */}
       </div>
-      <FinerWorksArt></FinerWorksArt>
+      {/* <FinerWorksArt></FinerWorksArt> */}
+      <AbstractArtGallery />
     </>
   );
 };

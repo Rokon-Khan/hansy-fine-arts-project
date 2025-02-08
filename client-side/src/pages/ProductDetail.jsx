@@ -8,6 +8,7 @@ import { useCart } from "../cartprovider/CartContext";
 // import Google3DModelPreview from "../components/Google3DModelPreview";
 // import ProductList from "../components/ProductList";
 // import { GlassMagnifier } from "react-image-magnifiers";
+import ScrollToTop from "../components/Shared/ScrollTop";
 import PhoneCaseMockup from "../mockups/PhoneCaseMockup";
 import TShirtMockup from "../mockups/TShirtMockup";
 import ARLivePreview from "./ARLivePreview";
@@ -47,6 +48,7 @@ const ProductDetail = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 lg:my-20 my-10 bg-gray-100">
+      <ScrollToTop />
       {/* Title and Price */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Image Section */}
@@ -55,7 +57,7 @@ const ProductDetail = () => {
             <img
               src={image}
               alt="Product"
-              className="rounded-lg w-[85%] max-h-auto object-cover transform transition duration-300 group-hover:scale-110"
+              className="rounded-lg w-[90%] max-h-auto object-cover transform transition duration-300 group-hover:scale-110"
             />
             {/* <button
               onClick={handleEnlargeImage}
