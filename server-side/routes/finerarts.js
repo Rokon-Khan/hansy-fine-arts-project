@@ -4,7 +4,7 @@ const router = express.Router();
 const verifyToken = require("../middleware/auth");
 const { client } = require("../config/db");
 
-const API_URL = "https://api.finerworks.com/v3/list_collections";
+const API_URL = `${process.env.FINEARTS_BASE_URL}/list_collections`;
 
 const finerArtsCollection = client.db("HansAeggyArts").collection("finerArts");
 

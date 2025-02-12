@@ -7,6 +7,10 @@ const productRoutes = require("./products");
 const orderRoutes = require("./orders");
 const customPortraitRoutes = require("./customPortrait");
 const listRoutes = require("./list");
+const virtualInventoryRoutes = require("./virtualInvertory");
+const framesRoutes = require("./frames");
+const matsRoutes = require("./mats");
+const glassRoutes = require("./glass");
 
 router.use("/users", userRoutes);
 router.use("/arts", artRoutes);
@@ -15,6 +19,13 @@ router.use("/products", productRoutes);
 router.use("/list", listRoutes);
 router.use("/custom-portrait", customPortraitRoutes);
 router.use("/submit-order", orderRoutes);
+router.use("/virtualInvertory", virtualInventoryRoutes);
+router.use("/frames", framesRoutes);
+router.use("/mats", matsRoutes);
+router.use("/glass", glassRoutes);
+
+
+
 
 
 
