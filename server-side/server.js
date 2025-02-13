@@ -9,7 +9,7 @@ const morgan = require("morgan");
 const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 const { dbConnect } = require("./config/db");
-const apiRoutes = require("./routes");
+const apiRoutes = require("./routes/index");
 const app = express();
 
 const PORT = process.env.PORT || 5001;

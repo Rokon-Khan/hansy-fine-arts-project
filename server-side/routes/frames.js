@@ -8,7 +8,6 @@ const getFineArtsHeaders = require("../shared/finerArtsheader");
 const API_URL = `${process.env.FINEARTS_BASE_URL}/list_collections`;
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const response = await axios.post(API_URL, req.body, {
       headers: getFineArtsHeaders(),

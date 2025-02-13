@@ -11,6 +11,7 @@ const virtualInventoryRoutes = require("./virtualInvertory");
 const framesRoutes = require("./frames");
 const matsRoutes = require("./mats");
 const glassRoutes = require("./glass");
+const imageFileManagerRoutes = require("./imageFileManager");
 
 router.use("/users", userRoutes);
 router.use("/arts", artRoutes);
@@ -23,6 +24,8 @@ router.use("/virtualInvertory", virtualInventoryRoutes);
 router.use("/frames", framesRoutes);
 router.use("/mats", matsRoutes);
 router.use("/glass", glassRoutes);
+router.use("/image-file-manager", imageFileManagerRoutes);
+
 
 
 

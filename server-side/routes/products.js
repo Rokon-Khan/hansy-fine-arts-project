@@ -50,7 +50,7 @@ router.post("/product-type", async (req, res) => {
     const { ids } = req.body;
 
     // ✅ Validate if `ids` is an array
-    if (!Array.isArray(ids) || ids.length === 0) {
+    if (!Array.isArray(ids)) {
       return res.status(400).json({ error: "'ids' must be a non-empty array" });
     }
 
