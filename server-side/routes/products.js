@@ -81,13 +81,11 @@ router.post("/product-type", async (req, res) => {
 });
 
 
-const MEDIA_API_URL = "https://api.finerworks.com/v3/list_media_types";
-
+const MEDIA_API_URL = "https://test-api.finerworks.com/v3/list_media_types";
 
 router.post("/media-type", async (req, res) => {
   try {
-    console.log("📌 Incoming Request Body:", req.body);
-
+    console.log("📌 Incoming Request Body:", MEDIA_API_URL);
     const { ids } = req.body;
 
     // ✅ Validate if `ids` is an array and not empty
@@ -121,9 +119,7 @@ router.post("/media-type", async (req, res) => {
   }
 });
 
-const STYLE_API_URL = "https://api.finerworks.com/v3/list_style_types";
-
-
+const STYLE_API_URL = "https://test-api.finerworks.com/v3/list_style_types";
 
 router.post("/style-type", async (req, res) => {
   try {
@@ -137,7 +133,7 @@ router.post("/style-type", async (req, res) => {
     }
 
     const response = await axios.post(
-      API_URL,
+      STYLE_API_URL,
       { ids }, // ✅ Sending correct request body
       { headers: getFineArtsHeaders(), maxRedirects: 5 } // ✅ Limited redirects
     );
