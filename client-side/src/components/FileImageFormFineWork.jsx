@@ -87,6 +87,8 @@ export default function FileImageFormFineWork() {
     staleTime: 1000 * 60 * 5,
   });
 
+  console.log(mediaTypes, "media types");
+
   const { data: framesData } = useQuery({
     queryKey: ["frames", selectedMediaType],
     queryFn: () => fetchFrames(selectedMediaType),
