@@ -24,7 +24,7 @@ const fetchFileImages = async () => {
       active: null,
     }
   );
-  return data;
+  return data.images;
 };
 
 const fetchProductTypes = async () => {
@@ -32,79 +32,104 @@ const fetchProductTypes = async () => {
     `${import.meta.env.VITE_API_URL}/products/product-type`,
     { ids: [] }
   );
-  return data;
+  return data.product_types;
 };
 
-const fetchMediaTypes = async () => {
+const fetchMediaTypes = async (productType) => {
   const { data } = await axios.post(
     `${import.meta.env.VITE_API_URL}/products/media-type`,
-    { ids: [] }
+    { ids: [productType] }
   );
   return data;
 };
-const fetchFrames = async () => {
-  const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/frames`);
-  console.log(data, "from frames");
+
+const fetchFrames = async (mediaType) => {
+  const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/frames`, {
+    mediaType,
+  });
+  return data.collections;
+};
+
+const fetchStyleType = async () => {
+  const { data } = await axios.post(
+    `${import.meta.env.VITE_API_URL}/style-type`
+  );
   return data.collections;
 };
 
 export default function FileImageFormFineWork() {
-  const {
-    data: imagesData,
-    isLoading,
-    error,
-  } = useQuery({ queryKey: ["fileImages"], queryFn: fetchFileImages });
-  const { data: productTypesData } = useQuery({
-    queryKey: ["productTypes"],
-    queryFn: fetchProductTypes,
-  });
-
+  // State Management
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedProductType, setSelectedProductType] = useState(null);
   const [selectedMediaType, setSelectedMediaType] = useState(null);
 
-  const { data: mediaTypesData } = useQuery({
+  // Fetching Data
+  const {
+    data: images,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["fileImages"],
+    queryFn: fetchFileImages,
+    staleTime: 1000 * 60 * 5,
+  });
+
+  const { data: productTypes } = useQuery({
+    queryKey: ["productTypes"],
+    queryFn: fetchProductTypes,
+    staleTime: 1000 * 60 * 10,
+  });
+
+  const { data: mediaTypes } = useQuery({
     queryKey: ["mediaTypes", selectedProductType],
-    queryFn: fetchMediaTypes,
+    queryFn: () => fetchMediaTypes(selectedProductType),
     enabled: !!selectedProductType,
     staleTime: 1000 * 60 * 5,
   });
+
   const { data: framesData } = useQuery({
-    queryKey: ["frames"],
-    queryFn: fetchFrames,
+    queryKey: ["frames", selectedMediaType],
+    queryFn: () => fetchFrames(selectedMediaType),
     enabled: !!selectedMediaType,
+    staleTime: 1000 * 60 * 5,
   });
 
-  const images = imagesData?.images || [];
-  const productTypes = productTypesData?.product_types || [];
-  const mediaTypes = mediaTypesData || [];
+  const { data: styleTypes } = useQuery({
+    queryKey: ["styleTypes"],
+    queryFn: fetchStyleType,
+    enabled: !!selectedMediaType,
+    staleTime: 1000 * 60 * 10,
+  });
 
+  console.log(styleTypes, "style types");
+
+  // Event Handlers
   const handleProductTypeChange = (e) => {
     const selectedId = e.target.value;
     setSelectedProductType(selectedId);
-    console.log("Selected Product Type:", selectedId);
+    setSelectedMediaType(null); // Reset Media Type when Product Type changes
   };
 
   const handleMediaTypeChange = (e) => {
     const selectedId = e.target.value;
     setSelectedMediaType(selectedId);
-    console.log("Selected Media Type:", selectedId);
   };
 
+  // Render
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-        {images.map((image) => (
+        {images?.map((image) => (
           <div
             key={image.guid}
-            className="card w-full bg-base-100 shadow-xl"
+            className="card w-full bg-base-100 shadow-xl cursor-pointer"
             onClick={() => setSelectedImage(image)}
           >
             <figure>
               <img
                 src={image.public_preview_uri}
                 alt={image.title}
-                className="w-full h-auto object-cover cursor-pointer"
+                className="w-full h-auto object-cover"
               />
             </figure>
             <div className="card-body">
@@ -126,14 +151,16 @@ export default function FileImageFormFineWork() {
             <div className="md:w-1/2">
               <h3 className="text-lg font-bold mb-2">{selectedImage.title}</h3>
               <p className="mb-4">{selectedImage.description}</p>
+
               <select
                 className="select select-bordered w-full mb-4"
                 onChange={handleProductTypeChange}
+                value={selectedProductType || ""}
               >
-                <option disabled selected>
+                <option value="" disabled>
                   Select Product Type
                 </option>
-                {productTypes.map((type) => (
+                {productTypes?.map((type) => (
                   <option key={type.id} value={type.id}>
                     {type.name}
                   </option>
@@ -144,17 +171,19 @@ export default function FileImageFormFineWork() {
                 <select
                   className="select select-bordered w-full mb-4"
                   onChange={handleMediaTypeChange}
+                  value={selectedMediaType || ""}
                 >
-                  <option disabled selected>
+                  <option value="" disabled>
                     Select Media Type
                   </option>
-                  {mediaTypes.map((media) => (
+                  {mediaTypes?.map((media) => (
                     <option key={media.id} value={media.id}>
                       {media.name}
                     </option>
                   ))}
                 </select>
               )}
+
               {selectedMediaType && (
                 <div className="h-72 border overflow-scroll">
                   <h3 className="text-lg font-bold mb-2">Select Frame</h3>
