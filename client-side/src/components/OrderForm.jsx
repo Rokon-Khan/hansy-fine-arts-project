@@ -157,7 +157,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const OrderForm = () => {
+const OrderForm = ({ productSKU, productTitle, Price }) => {
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
   // const [isPaid, setIsPaid] = useState(false);
   // const handlePaymentSuccess = (details) => {
@@ -181,8 +181,7 @@ const OrderForm = () => {
   // };
 
   const location = useLocation();
-  const { productSKU, productTitle, Price } = location.state;
-  console.log(productSKU, productTitle);
+  // const { productSKU, productTitle, Price } = location.state;
   // const { SKU, Title } = location.state || {};
   const [formData, setFormData] = useState({
     firstName: "",
