@@ -6,7 +6,7 @@ const Bio = () => {
       <div className="max-w-7xl flex flex-col  md:flex-row justify-between items-center md:items-start mx-auto">
         {/* Left content */}
         <div className="md:w-1/2 text-center md:text-left">
-          <h1 className="lg:text-5xl text-3xl font-semibold font-yesterYear text-blue-500 mb-2">
+          <h1 className="lg:text-5xl text-3xl font-semibold text-blue-500 mb-2">
             Captain Hans Yaeggy
           </h1>
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
