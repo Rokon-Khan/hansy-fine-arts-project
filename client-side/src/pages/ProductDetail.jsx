@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { CiImageOn } from "react-icons/ci";
-import "react-image-lightbox/style.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../App.css";

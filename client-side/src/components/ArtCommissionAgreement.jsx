@@ -808,7 +808,6 @@ const ArtCommissionAgreement = () => {
     address: "",
     phone: "",
     email: "",
-    signature: null,
     image: null,
   });
 
@@ -834,16 +833,16 @@ const ArtCommissionAgreement = () => {
     }
 
     let photoURL = null;
-    let signatureURL = null;
+    // let signatureURL = null;
 
     try {
       // Upload Image and Signature to Cloudinary
       if (formData.image) {
         photoURL = await uploadToCloudinary(formData.image);
       }
-      if (formData.signature) {
-        signatureURL = await uploadToCloudinary(formData.signature);
-      }
+      // if (formData.signature) {
+      //   signatureURL = await uploadToCloudinary(formData.signature);
+      // }
 
       // Prepare submission data
       const submissionData = {
@@ -851,7 +850,6 @@ const ArtCommissionAgreement = () => {
         address: formData.address,
         phone: formData.phone,
         email: formData.email,
-        signature: signatureURL,
         image: photoURL,
         termsAccepted: "yes",
       };

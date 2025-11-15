@@ -15,7 +15,7 @@ const Contact = () => {
 
         {/* Right Section - Contact Form */}
         <div className="md:w-1/2 p-8">
-          <h1 className="lg:text-5xl text-3xl font-semibold font-yesterYear text-blue-500 mb-6">
+          <h1 className="lg:text-5xl text-3xl font-semibold text-blue-500 mb-6">
             Contact Me
           </h1>
           <p className="text-gray-600 mb-8">

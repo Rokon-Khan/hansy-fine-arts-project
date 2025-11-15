@@ -266,7 +266,7 @@ const jwt = require("jsonwebtoken");
 const morgan = require("morgan");
 const axios = require("axios");
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 const app = express();
 // middleware
 const corsOptions = {
@@ -535,6 +535,8 @@ async function run() {
       }
     });
 
+    // Product Detail by SKU need to update latest code
+
     app.get("/products/sku/:sku", async (req, res) => {
       // console.log(req.params.sku, "sku");
       // // You might also want to send a response back
@@ -581,6 +583,8 @@ async function run() {
     const API_URL_Select =
       "https://api.finerworks.com/v3/list_file_selection?guid={guid}";
 
+    // need to add update code  
+    
     app.get("/api/select", async (req, res) => {
       try {
         console.log(req.body);
